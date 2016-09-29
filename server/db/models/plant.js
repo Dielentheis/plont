@@ -18,8 +18,7 @@ module.exports = db.define('plant', {
         allowNull: false
     },
     bestGerminationTemp: {
-        type: Sequelize.INTEGER,
-        allowNull: false
+        type: Sequelize.INTEGER
     },
     notes: {
         type: Sequelize.TEXT
@@ -60,18 +59,18 @@ module.exports = db.define('plant', {
         allowNull: false
     },
     watering: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     feeding: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     diseases: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     },
     pests: {
         type: Sequelize.ARRAY(Sequelize.STRING)
     },
     image: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
     }
 });
