@@ -106,6 +106,7 @@ gulp.task('buildCSS', function () {
         .pipe(gulp.dest('./public'));
 });
 
+
 // Production tasks
 // --------------------------------------------------------------
 
@@ -169,3 +170,7 @@ gulp.task('default', function () {
     livereload.listen();
 
 });
+
+gulp.task('seed', function() {
+    require('./seed');
+})
