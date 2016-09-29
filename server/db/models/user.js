@@ -7,6 +7,17 @@ var db = require('../_db');
 
 module.exports = db.define('user', {
     email: {
+        type: Sequelize.STRING,
+        unique: true,
+        validate: {
+            isEmail: true,
+            isNull: false
+        }
+    },
+    firstName: {
+        type: Sequelize.STRING
+    },
+    lastName: {
         type: Sequelize.STRING
     },
     password: {
@@ -42,6 +53,11 @@ module.exports = db.define('user', {
             hash.update(plainText);
             hash.update(salt);
             return hash.digest('hex');
+        }
+    },
+    getterMethods: {
+        fullName: function () {
+            return this.firstName + ' ' + this.lastName;
         }
     },
     hooks: {
