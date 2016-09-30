@@ -15,31 +15,31 @@ describe('Plant model', function () {
 
     describe('on creation', function () {
         it ('has all required fields', function() {
-    	  return Plant.create({
-    	    name: "Rose",
-    	    description: "A plant",
-    	    sun: 2,
-    	    isPerennial: false,
-    	    firstHarvest: 50,
-    	    harvestPeriod: 10,
-    	    afterFrost: true,
-    	    howFarBefore: 0,
-    	    howFarAfter: 14,
-    	    width: 10,
-    	    height: 20
-    		})
-    	    .then(function(product) {
-        	    expect(product.name).to.exist;
-        	    expect(product.description).to.exist;
-        	    expect(product.isPerennial).to.exist;
-        	    expect(product.firstHarvest).to.exist;
-        	    expect(product.harvestPeriod).to.exist;
-        	    expect(product.howFarBefore).to.exist;
-        	    expect(product.howFarAfter).to.exist;
-        	    expect(product.width).to.exist;
-        	    expect(product.height).to.exist;
-    		});
-	    });
+          return Plant.create({
+            name: "Rose",
+            description: "A plant",
+            sun: 2,
+            isPerennial: false,
+            firstHarvest: 50,
+            harvestPeriod: 10,
+            afterFrost: true,
+            howFarBefore: 0,
+            howFarAfter: 14,
+            width: 10,
+            height: 20
+            })
+            .then(function(product) {
+                expect(product.name).to.exist;
+                expect(product.description).to.exist;
+                expect(product.isPerennial).to.exist;
+                expect(product.firstHarvest).to.exist;
+                expect(product.harvestPeriod).to.exist;
+                expect(product.howFarBefore).to.exist;
+                expect(product.howFarAfter).to.exist;
+                expect(product.width).to.exist;
+                expect(product.height).to.exist;
+            });
+        });
 
         it('will not allow a long title', function() {
             var invalidName = "This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description!";

@@ -147,6 +147,20 @@ describe('User model', function () {
             });
         });
 
+        describe('full name method', function () {
+
+            var createUser = function () {
+                return User.create({ firstName: 'Barack', lastName: 'Obama', email: 'obama@gmail.com', password: 'potus' });
+            };
+
+            it('should create a full name virtual field', function () {
+                createUser().then(function (user) {
+                    var createdUser = user.fullName();
+                    expect(createdUser.fullName).to.equal("Barack Obama");
+                });
+            });
+        });
+
     });
 
 });
