@@ -29,17 +29,17 @@ describe('Plant model', function () {
     	    height: 20
     		})
     	    .then(function(product) {
-        	    expect(product.name).to.exist;
-        	    expect(product.description).to.exist;
-        	    expect(product.isPerennial).to.exist;
-        	    expect(product.firstHarvest).to.exist;
-        	    expect(product.harvestPeriod).to.exist;
-        	    expect(product.howFarBefore).to.exist;
-        	    expect(product.howFarAfter).to.exist;
-        	    expect(product.width).to.exist;
-        	    expect(product.height).to.exist;
-    		});
-	    });
+        	expect(product.name).to.exist;
+        	expect(product.description).to.exist;
+        	expect(product.isPerennial).to.exist;
+        	expect(product.firstHarvest).to.exist;
+        	expect(product.harvestPeriod).to.exist;
+        	expect(product.howFarBefore).to.exist;
+        	expect(product.howFarAfter).to.exist;
+        	expect(product.width).to.exist;
+        	expect(product.height).to.exist;
+            });
+	});
 
         it('will not allow a long title', function() {
             var invalidName = "This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description! This is not supposed to be a title it is supposed to be a description!";
