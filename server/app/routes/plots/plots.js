@@ -6,6 +6,7 @@ var db = require('../../../db/_db.js');
 var Plot = db.model('plot');
 var PlotPlants = db.model('PlotPlants');
 
+// get all plots
 router.get('/', function(req, res, next) {
 	Plot.findAll()
 	.then(function(plots) {
@@ -14,6 +15,7 @@ router.get('/', function(req, res, next) {
 	.catch(next);
 });
 
+// get plot by id
 router.get('/:id', function(req, res, next) {
 	Plot.findById(req.params.id)
 	.then(function(plot) {
@@ -25,13 +27,13 @@ router.get('/:id', function(req, res, next) {
 // creates a plot associated with a specific user (aliased as Gardener) -- pass in 
 // userId as part of req.body!!
 router.post('/', function(req, res, next) {
-	Plot.create()
+	Plot.create(req.body)
 	.then(function(plot) {
 		plot.setUser(req.body.userId);
 		res.send(plot);
 	})
 	.catch(next);
-})
+});
 
 // updating plot by adding a plant
 router.put('/:plotId/:plantId', function(req, res, next) {
