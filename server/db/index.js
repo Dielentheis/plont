@@ -4,6 +4,9 @@ module.exports = db;
 
 var User = require('./models/user');
 var Plant = require('./models/plant');
+var Plot = require('./models/plot');
 
-User.belongsToMany(Plant, {through: 'Plot'});
-Plant.belongsToMany(User, {through: 'Plot'});
+Plot.belongsToMany(Plant, {through: 'plot_plants'});
+Plant.belongsToMany(Plot, {through: 'plot_plants'});
+User.hasMany(Plot);
+Plot.belongsTo(User);
