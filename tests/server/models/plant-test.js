@@ -103,5 +103,29 @@ describe('Plant model', function () {
                 expect(orchid.notes).to.equal(longTextBlock);
             });
         });
+
+        it('expects neighbors and pests to be arrays', function() {
+            var neighbors = ["strawbs", "corn"];
+            var pests = ["aphids"];
+            return Plant.create({
+                name: "onion",
+                description: "a simple plant",
+                sun: 2,
+                goodNeighbors: neighbors,
+                isPerennial: false,
+                firstHarvest: 50,
+                harvestPeriod: 10,
+                afterFrost: true,
+                howFarBefore: 0,
+                howFarAfter: 14,
+                width: 10,
+                height: 20,
+                pests: pests
+            })
+            .then(function(plant) {
+                expect(plant.goodNeighbors).to.be.an.instanceof(Array);
+                expect(plant.pests).to.be.an.instanceof(Array);
+            });
+        });
     });
 });
