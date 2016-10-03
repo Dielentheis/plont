@@ -6,7 +6,7 @@ var User = require('./models/user');
 var Plant = require('./models/plant');
 var Plot = require('./models/plot');
 
-Plot.belongsToMany(Plant, {through: 'PlotPlants'});
-Plant.belongsToMany(Plot, {through: 'PlotPlants'});
+Plot.belongsToMany(Plant, {through: 'plot_plants'});
+Plant.belongsToMany(Plot, {through: 'plot_plants'});
 User.hasMany(Plot);
 Plot.belongsTo(User);
