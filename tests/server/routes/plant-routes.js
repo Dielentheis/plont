@@ -25,8 +25,9 @@ describe('api/plants', function() {
     describe('Plant requests', function () {
 
         var guestAgent;
+        var plant1;
 
-        var plant = {
+        var plantInfo = {
             name: "Rose",
             description: "A plant",
             sun: 2,
@@ -41,7 +42,10 @@ describe('api/plants', function() {
         };
 
         beforeEach('Create a plant', function () {
-            return Plant.create(plant);
+            return Plant.create(plantInfo)
+            .then(function(plant){
+                plant1 = plant;
+            });
         });
 
         beforeEach('Create guest agent', function () {
@@ -83,7 +87,7 @@ describe('api/plants', function() {
 
         it('GET by id', function (done) {
             guestAgent
-            .get('/api/plants/3')
+            .get('/api/plants/' + plant1.id)
             .expect(200)
             .end(function (err, res) {
               if (err) return done(err);

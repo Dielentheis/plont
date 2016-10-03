@@ -11,7 +11,7 @@ var supertest = require('supertest');
 
 describe('api/plots', function() {
 
-    var app, Plot, guestAgent;
+    var app, Plot, Plant, PlotPlants, guestAgent;
 
     beforeEach('Sync DB', function () {
         return db.sync({ force: true });
@@ -20,19 +20,47 @@ describe('api/plots', function() {
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
         Plot = db.model('plot');
+        Plant = db.model('plant');
+        PlotPlants = db.model('plot_plants')
     });
 
     describe('Plot requests', function () {
 
         var guestAgent;
+        var plot1;
+        var plant1;
 
-        var plot = {
+        var plotInfo = {
             height: 20,
             width: 20
         };
 
+        var plantInfo = {
+            name: "Rose",
+            description: "A plant",
+            sun: 2,
+            isPerennial: false,
+            firstHarvest: 50,
+            harvestPeriod: 10,
+            afterFrost: true,
+            howFarBefore: 0,
+            howFarAfter: 14,
+            width: 10,
+            height: 20
+        };
+
         beforeEach('Create a plot', function () {
-            return Plot.create(plot);
+            return Plot.create(plotInfo)
+            .then(function(plot){
+                plot1 = plot;
+            });
+        });
+
+        beforeEach('Create a plant', function () {
+            return Plant.create(plantInfo)
+            .then(function(plant){
+                plant1 = plant;
+            });
         });
 
         beforeEach('Create guest agent', function () {
@@ -44,41 +72,70 @@ describe('api/plots', function() {
             .get('/api/plots')
             .expect(200)
             .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Array);
-              expect(res.body).to.have.length(1);
-              done();
+                if (err) return done(err);
+                expect(res.body).to.be.instanceof(Array);
+                expect(res.body).to.have.length(1);
+                done();
             });
         });
 
         it('GET by id', function (done) {
             guestAgent
-            .get('/api/plots/' + plot.id)
+            .get('/api/plots/' + plot1.id)
             .expect(200)
             .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Object);
-              done();
+                if (err) return done(err);
+                expect(res.body).to.be.instanceof(Object);
+                done();
+            });
+        });
+
+        it('POST userid to the plot', function (done) {
+            guestAgent
+            .post('/api/plots/' + plot1.id)
+            .send({
+               userId: 1
+            })
+            .expect(200)
+            .end(function (err, res) {
+                if (err) return done(err);
+                plot1.setUser(req.body.userId)
+                .then(function(plot){
+                    expect(plot).to.not.be.null;
+                    done();
+                })
             });
         });
 
         it('PUT by adding a plant', function (done) {
             guestAgent
-            .get('/api/plots/3/plants/1')
+            .put('/api/plots/' + plot1.id + '/plants/' + plant1.id)
+            .send(plantInfo)
             .expect(201)
             .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Object);
+                if (err) return done(err);
+                PlotPlants.findAll({where: {plantId: plant1.id}})
+                    .then(function(plant){
+                    expect(plant).to.not.be.null;
+                    done();
+                })
+                .catch(done);
             });
         });
 
         it('DELETE a plant from a plot', function (done) {
             guestAgent
-            .get('/api/plots/3/plants/1')
+            .delete('/api/plots/' + plot1.id + '/plants/' + plant1.id)
             .expect(200)
             .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Object);
+                if (err) return done(err);
+                PlotPlants.findAll({where: {plantId: plant1.id}})
+                .then(function(plant){
+                    expect(plant).to.be.instanceof(Array);
+                    expect(plant).to.have.length(0);
+                    done();
+                })
+                .catch(done);
             });
         });
 
