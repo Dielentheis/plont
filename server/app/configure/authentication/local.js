@@ -56,4 +56,18 @@ module.exports = function (app, db) {
 
     });
 
+    app.post('/signup', function (req, res, next) {
+        User.create(req.body)
+        .then(function(newUser){
+            req.logIn(newUser, function (loginErr) {
+                if (loginErr) return next(loginErr);
+                // We respond with a response object that has user with _id and email.
+                res.status(200).send({
+                    user: newUser.sanitize()
+                });
+            });
+        })
+        .catch(next);
+    });
+
 };

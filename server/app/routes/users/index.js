@@ -43,7 +43,7 @@ router.get('/:id', function(req, res, next) {
 
 // get all plots associated to a certain user
 router.get('/:id/plots', function(req, res, next) {
-    User.findById(req.params.id) 
+    User.findById(req.params.id)
     .then(function(user) {
         return user.getPlots();
     })
