@@ -1,7 +1,6 @@
  'use strict';
 // assume all routes begin with /api/plots
-var router = require('express').Router();
-var _ = require('lodash');
+var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var Plot = db.model('plot');
 var PlotPlants = db.model('plot_plants');

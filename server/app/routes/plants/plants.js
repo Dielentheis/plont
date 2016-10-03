@@ -1,9 +1,8 @@
 'use strict';
 // assume all routes begin with /api/plants
-var router = require('express').Router();
-var _ = require('lodash');
+var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
-var Plant = db.model('plant');
+var Plant = db.model('plant'); // eslint-disable-line
 
 // get all plants
 router.get('/', function(req, res, next) {

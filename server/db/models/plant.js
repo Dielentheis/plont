@@ -1,5 +1,4 @@
 'use strict'
-var _ = require('lodash');
 var Sequelize = require('sequelize');
 
 var db = require('../_db');
@@ -24,7 +23,7 @@ module.exports = db.define('plant', {
         type: Sequelize.TEXT
     },
     goodNeighbors: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING) // eslint-disable-line
     },
     isPerennial: {
         type: Sequelize.BOOLEAN,
@@ -68,7 +67,7 @@ module.exports = db.define('plant', {
         type: Sequelize.TEXT
     },
     pests: {
-        type: Sequelize.ARRAY(Sequelize.STRING)
+        type: Sequelize.ARRAY(Sequelize.STRING) // eslint-disable-line
     },
     image: {
         type: Sequelize.TEXT
