@@ -51,5 +51,4 @@ router.get('/:id/plots', function(req, res, next) {
         res.send(plots);
     })
     .catch(next);
-
 });
