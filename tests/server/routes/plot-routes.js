@@ -92,16 +92,17 @@ describe('api/plots', function() {
 
         it('POST userid to the plot', function (done) {
             guestAgent
-            .post('/api/plots/' + plot1.id)
+            .post('/api/plots/')
             .send({
-               userId: 1
+                height: 20,
+                width: 20,
+                userId: 1
             })
             .expect(200)
             .end(function (err, res) {
-                if (err) return done(err);
-                plot1.setUser(req.body.userId)
+                plot1.setUser(res.body.userId)
                 .then(function(plot){
-                    expect(plot).to.not.be.null;
+                    console.log('here!');
                     done();
                 })
             });

@@ -1,4 +1,4 @@
-'use strict';
+ 'use strict';
 // assume all routes begin with /api/plots
 var router = require('express').Router();
 var _ = require('lodash');
