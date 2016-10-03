@@ -155,7 +155,7 @@ describe('User model', function () {
 
             it('should create a full name virtual field', function () {
                 createUser().then(function (user) {
-                    var createdUser = user.fullName();
+                    var createdUser = user;
                     expect(createdUser.fullName).to.equal("Barack Obama");
                 });
             });

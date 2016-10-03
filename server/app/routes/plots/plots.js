@@ -4,7 +4,7 @@ var router = require('express').Router();
 var _ = require('lodash');
 var db = require('../../../db/_db.js');
 var Plot = db.model('plot');
-var PlotPlants = db.model('PlotPlants');
+var PlotPlants = db.model('plot_plants');
 
 // get all plots
 router.get('/', function(req, res, next) {
@@ -24,7 +24,7 @@ router.get('/:id', function(req, res, next) {
 	.catch(next);
 });
 
-// creates a plot associated with a specific user (aliased as Gardener) -- pass in 
+// creates a plot associated with a specific user (aliased as Gardener) -- pass in
 // userId as part of req.body!!
 router.post('/', function(req, res, next) {
 	Plot.create(req.body)
