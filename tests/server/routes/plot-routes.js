@@ -9,9 +9,9 @@ var db = require('../../../server/db');
 var supertest = require('supertest');
 
 
-describe('api/plants', function() {
+describe('api/plots', function() {
 
-    var app, Plant, guestAgent;
+    var app, Plot, guestAgent;
 
     beforeEach('Sync DB', function () {
         return db.sync({ force: true });
@@ -19,29 +19,20 @@ describe('api/plants', function() {
 
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
-        Plant = db.model('plant');
+        Plot = db.model('plot');
     });
 
-    describe('Plant requests', function () {
+    describe('Plot requests', function () {
 
         var guestAgent;
 
-        var plant = {
-            name: "Rose",
-            description: "A plant",
-            sun: 2,
-            isPerennial: false,
-            firstHarvest: 50,
-            harvestPeriod: 10,
-            afterFrost: true,
-            howFarBefore: 0,
-            howFarAfter: 14,
-            width: 10,
-            height: 20
+        var plot = {
+            height: 20,
+            width: 20
         };
 
-        beforeEach('Create a plant', function () {
-            return Plant.create(plant);
+        beforeEach('Create a plot', function () {
+            return Plot.create(plot);
         });
 
         beforeEach('Create guest agent', function () {
@@ -50,40 +41,19 @@ describe('api/plants', function() {
 
         it('GET all', function (done) {
             guestAgent
-            .get('/api/plants')
+            .get('/api/plots')
             .expect(200)
             .end(function (err, res) {
               if (err) return done(err);
               expect(res.body).to.be.instanceof(Array);
-              done();
-            });
-        });
-
-        it('GET sunPlants', function (done) {
-            guestAgent
-            .get('/api/plants/sunPlants')
-            .expect(200)
-            .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Array);
-              done();
-            });
-        });
-
-        it('GET shadePlants', function (done) {
-            guestAgent
-            .get('/api/plants/partShadePlants')
-            .expect(200)
-            .end(function (err, res) {
-              if (err) return done(err);
-              expect(res.body).to.be.instanceof(Array);
+              expect(res.body).to.have.length(1);
               done();
             });
         });
 
         it('GET by id', function (done) {
             guestAgent
-            .get('/api/plants/3')
+            .get('/api/plots/' + plot.id)
             .expect(200)
             .end(function (err, res) {
               if (err) return done(err);
@@ -92,5 +62,26 @@ describe('api/plants', function() {
             });
         });
 
+        it('PUT by adding a plant', function (done) {
+            guestAgent
+            .get('/api/plots/3/plants/1')
+            .expect(201)
+            .end(function (err, res) {
+              if (err) return done(err);
+              expect(res.body).to.be.instanceof(Object);
+            });
+        });
+
+        it('DELETE a plant from a plot', function (done) {
+            guestAgent
+            .get('/api/plots/3/plants/1')
+            .expect(200)
+            .end(function (err, res) {
+              if (err) return done(err);
+              expect(res.body).to.be.instanceof(Object);
+            });
+        });
+
     });
+
 });
