@@ -36,7 +36,7 @@ router.post('/', function(req, res, next) {
 });
 
 // updating plot by adding a plant
-router.put('/:plotId/:plantId', function(req, res, next) {
+router.put('/:plotId/plants/:plantId', function(req, res, next) {
 	Plot.findById(req.params.plotId)
 	.then(function(plot) {
 		return plot.addPlant(req.params.plantId);
@@ -49,7 +49,7 @@ router.put('/:plotId/:plantId', function(req, res, next) {
 
 // deletes association between plot and plant (removes a specific plant
 // from a specific plot)
-router.delete('/:plotId/:plantId', function(req, res, next) {
+router.delete('/:plotId/plants/:plantId', function(req, res, next) {
 	PlotPlants.destroy({
 		where: {
 			plotId: req.params.plotId,
