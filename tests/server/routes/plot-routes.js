@@ -13,10 +13,6 @@ describe('api/plots', function() {
 
     var app, Plot, Plant, PlotPlants, guestAgent;
 
-    // beforeEach('Sync DB', function () {
-    //     return db.sync({ force: true });
-    // });
-
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
         Plot = db.model('plot');
@@ -102,7 +98,7 @@ describe('api/plots', function() {
                 .then(function(plot){
                     console.log('here!');
                     done();
-                })
+                });
             });
         });
 
@@ -137,7 +133,5 @@ describe('api/plots', function() {
                 .catch(done);
             });
         });
-
     });
-
 });
