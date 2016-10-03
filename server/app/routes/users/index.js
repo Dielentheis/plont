@@ -34,7 +34,7 @@ router.get('/secret-stash', ensureAuthenticated, function (req, res) {
 
 // get user by id
 router.get('/:id', function(req, res, next) {
-    User.findById(req.params.id) 
+    User.findById(req.params.id)
     .then(function(user) {
         res.send(user);
     })
