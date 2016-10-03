@@ -13,9 +13,9 @@ describe('api/plots', function() {
 
     var app, Plot, Plant, PlotPlants, guestAgent;
 
-    beforeEach('Sync DB', function () {
-        return db.sync({ force: true });
-    });
+    // beforeEach('Sync DB', function () {
+    //     return db.sync({ force: true });
+    // });
 
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
@@ -94,8 +94,6 @@ describe('api/plots', function() {
             guestAgent
             .post('/api/plots/')
             .send({
-                height: 20,
-                width: 20,
                 userId: 1
             })
             .expect(200)

@@ -84,6 +84,7 @@ gulp.task('testServerJSWithCoverage', function (done) {
 gulp.task('testBrowserJS', function (done) {
     //testing environment variable
     process.env.NODE_ENV = 'testing';
+    node(seed.js);
     karma.start({
         configFile: __dirname + '/tests/browser/karma.conf.js',
         singleRun: true

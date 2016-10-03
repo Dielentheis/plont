@@ -951,4 +951,4 @@ db.sync({ force: true })
     .catch(function (err) {
         console.error(err);
         process.exit(1);
-    });
+});

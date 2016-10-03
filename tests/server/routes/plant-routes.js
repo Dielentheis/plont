@@ -13,10 +13,6 @@ describe('api/plants', function() {
 
     var app, Plant, guestAgent;
 
-    beforeEach('Sync DB', function () {
-        return db.sync({ force: true });
-    });
-
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
         Plant = db.model('plant');

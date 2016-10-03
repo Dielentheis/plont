@@ -9,10 +9,6 @@ var Plot = db.model('plot');
 
 describe('Plot model', function () {
 
-    beforeEach('Sync DB', function () {
-        return db.sync({ force: true });
-    });
-
     describe('on creation', function () {
         it ('has all required fields', function() {
             return Plot.create({
@@ -33,7 +29,7 @@ describe('Plot model', function () {
             })
             return plot.validate()
             .then(function(plot) {
-                expect(plot).to.equal(null);
+                expect(plot).to.have.any.keys('Errors', 'name', 'message', 'SequelizeValidationError')
             });
         });
 

@@ -11,10 +11,6 @@ describe('Members Route', function () {
 
     var app, User;
 
-    beforeEach('Sync DB', function () {
-        return db.sync({ force: true });
-    });
-
     beforeEach('Create app', function () {
         app = require('../../../server/app')(db);
         User = db.model('user');
