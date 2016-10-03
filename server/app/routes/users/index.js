@@ -1,7 +1,20 @@
 'use strict';
+// assume all routes start with /api/members
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var _ = require('lodash');
+var db = require('../../../db/_db.js');
+var User = db.model('user');
+
+
+
+router.get('/:id', function(req, res, next) {
+    User.findById(req.params.id) 
+    .then(function(user) {
+        res.send(user);
+    })
+    .catch(next);
+});
 
 var ensureAuthenticated = function (req, res, next) {
     if (req.isAuthenticated()) {
