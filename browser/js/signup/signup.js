@@ -20,6 +20,6 @@ app.factory('SignupFactory', function($state, $log, AuthService) {
         })
         .catch($log.error)
     };
-    
+
     return returnObj;
 });
