@@ -73,4 +73,29 @@ module.exports = db.define('plant', {
     image: {
         type: Sequelize.TEXT
     }
+},
+{
+    classMethods: {
+        getSunPlants: function() {
+            return this.findAll({
+                where: {
+                    sun: 2
+                }
+            })
+        },
+        getShadePlants: function() {
+            return this.findAll({
+                where: {
+                    sun: 0
+                }
+            })
+        },
+        getPartShadePlants: function() {
+            return this.findAll({
+                where: {
+                    sun: 1
+                }
+            })
+        }
+    }
 });
