@@ -1,6 +1,9 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
+var apiKey = require('./apis.js').zip;
+var http = require('http');
+var request = require('request-promise');
 
 module.exports = function (app, db) {
 
@@ -30,11 +33,8 @@ module.exports = function (app, db) {
 
     // A POST /login route is created to handle login.
     app.post('/login', function (req, res, next) {
-
         var authCb = function (err, user) {
-
             if (err) return next(err);
-
             if (!user) {
                 var error = new Error('Invalid login credentials.');
                 error.status = 401;
@@ -51,23 +51,62 @@ module.exports = function (app, db) {
             });
 
         };
-
         passport.authenticate('local', authCb)(req, res, next);
-
     });
 
-    app.post('/signup', function (req, res, next) {
-        User.create(req.body)
-        .then(function(newUser){
-            req.logIn(newUser, function (loginErr) {
-                if (loginErr) return next(loginErr);
-                // We respond with a response object that has user with _id and email.
-                res.status(200).send({
-                    user: newUser.sanitize()
-                });
-            });
+    var findFrostDates = function(userObj, zip) {
+        var findLatAndLongUrl = 'http://www.zipcodeapi.com/rest/' + apiKey + '/info.json/' + zip + '/degrees';
+
+        return request(findLatAndLongUrl)
+        .then(function(zipInfo) {
+            zipInfo = JSON.parse(zipInfo);
+            console.log("\n\n\n\nzipinfo", zipInfo, "\n\n\n\n\n", zipInfo["lat"], zipInfo.lng);
+            return request('http://farmsense-prod.apigee.net/v1/frostdates/stations/?lat=' + zipInfo["lat"] + '&lon=' + zipInfo["lng"])
         })
-        .catch(next);
+        .then(function(stations) {
+            console.log("\n\n\n\n\n stations", stations);
+            stations = JSON.parse(stations);
+            var stationId = stations[0].id;
+            return request('http://farmsense-prod.apigee.net/v1/frostdates/probabilities/?station=' + stationId + '&season=1')
+        })
+        .then(function(tempObjs) {
+            tempObjs = JSON.parse(tempObjs);
+            console.log("\n\n\n\n\n\n\n\n\n\n temoObjs", tempObjs);
+            var springDate = tempObjs[1].prob_50;
+            var month = parseInt(springDate.slice(0, 2));
+            var day = parseInt(springDate.slice(-2));
+            var dateDate = new Date(2017, month - 1, day);
+            userObj.springFrostDate = dateDate;
+            return userObj;
+        })
+        .catch(function(error) { console.log(error) });
+    }
+
+    app.post('/signup', function (req, res, next) {
+        var userObj = {
+            firstName: req.body.firstName,
+            lastName: req.body.lastName,
+            email: req.body.email,
+            password: req.body.password,
+            zip: req.body.zip
+        }
+
+        userObj = findFrostDates(userObj, req.body.zip)
+        .then(function(user) {
+            console.log("userobj before create\n\n\n\n\n\n\n\n", user);
+            User.create(user)
+            .then(function(newUser){
+                req.logIn(newUser, function (loginErr) {
+                    if (loginErr) return next(loginErr);
+                    // We respond with a response object that has user with _id and email.
+                    res.status(200).send({
+                        user: newUser.sanitize()
+                    });
+                });
+            })
+            .catch(next); 
+        });
+
     });
 
 };

@@ -20,11 +20,17 @@ module.exports = db.define('user', {
     lastName: {
         type: Sequelize.STRING
     },
+    zip: {
+        type: Sequelize.INTEGER
+    },
     password: {
         type: Sequelize.STRING
     },
     salt: {
         type: Sequelize.STRING
+    },
+    springFrostDate: {
+        type: Sequelize.DATE
     },
     twitter_id: {
         type: Sequelize.STRING
