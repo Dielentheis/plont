@@ -1,6 +1,18 @@
-<section id="plants">
-	<h1>check out these uggo plants</h1>
- 	<div class="col-sm-4" ng-repeat="plant in plants">
- 		<a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
- 	</div>
-</section>
+<container>
+    <div class="row"  ng-repeat="plant in plants | groupBy:3">
+        <div class="col s4"
+            ng-repeat="plant in plants">
+            <div class="card-small">
+                <div class="card">
+                    <img class="plant-img" src="{{plant.image}}">
+                    <div class="card-content">
+                    <p>{{plant.description}}</p>
+                    </div>
+                    <div class="card-action">
+                        <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</container>
