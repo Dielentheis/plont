@@ -1,17 +1,47 @@
-<div class="plants">
-    <div class="row"  ng-repeat="plant in plants | groupBy:3">
-        <div class="col s4"
-            ng-repeat="plant in plants">
-            <div class="card-small hoverable">
-                <div class="card">
-                    <div class="card-content">
-                    <p>{{plant.description | limitTo:220}}...</p>
-                    </div>
-                    <div class="card-action">
-                        <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+<!-- <md-content class="md-padding" >
+    <div layout="column" layout-gt-xs="row" >
+    <div class="plants">
+        <div class="row"  ng-repeat="plant in plants | groupBy:3">
+            <div class="col s4"
+                ng-repeat="plant in plants">
+                <div class="card-small hoverable">
+                    <div class="card">
+                        <div class="card-content">
+                        <p>{{plant.description | limitTo:220}}...</p>
+                        </div>
+                        <div class="card-action">
+                            <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </div>
+</md-content> -->
+
+<div ng-controller="PlantsCtrl" ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap flex>
+        <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
+          <md-card flex='100' layout-fill>
+            <md-card-title>
+              <md-card-title-media>
+                <div class="md-media-lg card-media">
+                </div>
+              </md-card-title-media>
+            </md-card-title>
+            <md-card-title>
+              <md-card-title-text>
+                <span class="md-headline">{{plant.name}}</span>
+              </md-card-title-text>
+              <md-card-content>
+                <p>{{plant.description}}</p>
+             </md-card-content>
+            </md-card-title>
+          </md-card>
+        </div>
+    </md-content>
 </div>
+
+
+
