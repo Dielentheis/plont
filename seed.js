@@ -48,7 +48,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Variety of bacterial and fungal leaf, stem, and root diseases",
         pests: ["aphids"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/002/original/02_basil.jpg?1461825930"
+        image: "/images/plants/basil.jpg"
     },
     {
         name: "Carrot",
@@ -69,7 +69,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Aster Yellow Disease will cause shortened and discolored carrot tops and hairy roots. This disease is spread by pests as they feed from plant to plant. Keep weeds down and invest in a control plan for pests such as leafhoppers. This disease has the ability to overwinter.",
         pests: ["wireworms", "flea beetles"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/002/original/02_basil.jpg?1461825930"
+        image: "/images/plants/carrot.jpg"
     },
     {
         name: "Lettuce",
@@ -90,7 +90,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "White Mold",
         pests: ["aphids", "earwigs"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/003/original/03_lettuce.jpg?1461825932"
+        image: "/images/plants/lettuce.jpg"
     },
     {
         name: "Broccoli",
@@ -111,7 +111,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Downy mildew: Yellow patches on leaves are usually caused by moist weather. Keep leaves as dry as possible with good air circulation. Buy resistant varieties. Nitrogen deficiency: If the bottom leaves turn yellow and the problem continues toward the top of the plant, the plants need a high nitrogen (but low phosphorus) fertilizer or bloodmeal. Blood meal is a quick Nitrogen fix for yellowing leaves.",
         pests: ["aphids", "cabbage loopers", "worms"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/008/original/08_Broccoli.jpg?1461825938"
+        image: "/images/plants/broccoli.jpg"
     },
     {
         name: "Parsnip",
@@ -132,7 +132,7 @@ var seedPlants = function() {
         feeding: "Always keep the beds free of weeds.",
         diseases: "n/a",
         pests: [],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/022/original/22_parsnips.jpg?1461825963"
+        image: "/images/plants/parsnip.jpg"
     },
     {
         name: "Brussel Sprout",
@@ -153,7 +153,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Clubroot, Downy Mildew, White Mold",
         pests: ["aphids", "flea beetles"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/009/original/09_brussels_sprouts.jpg?1461825940"
+        image: "/images/plants/brusselsprout.jpg"
     },
     {
         name: "Cabbage",
@@ -174,7 +174,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Splitting",
         pests: ["cabbageworms", "aphids", "flea beetles"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/010/original/10_cabbage.jpg?1461825941"
+        image: "/images/plants/cabbage.jpg"
 
     },
     {
@@ -196,7 +196,7 @@ var seedPlants = function() {
         feeding: "If you've worked in organic matter into the soil before planting, you may only need to side-dress your plants with compost. Or, if you wish, use a fertilizer from your garden store which is low nitrogen/high potassium and phosphorus formula and apply at planting, 1 week after bloom, and every 3 weeks with liquid food, applying directly to the soil around the plants. Or, you can work a granular fertilizer into the soil. Do not overfertilize or the fruits will get stunted.",
         diseases: "Bacterial Wilt, Mosaic Viruses",
         pests: ["Cucumber Beetles", "Whiteflies"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/015/original/15_cucumber.jpg?1461825949",
+        image: "/images/plants/cucumber.jpg",
     },
     {
         name: "Sweet Corn",
@@ -217,7 +217,7 @@ var seedPlants = function() {
         feeding:  "You may choose to fertilize at planting time, corn is meant to grow rapidly. If you are confident that the soil is adequate, this can be skipped.",
         diseases: "n/a",
         pests: ["Flea Beetles", "Cutworms"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/016/original/16_sweet_corn.jpg?1461825952"
+        image: "/images/plants/corn.jpg"
     },
     {
         name: "Eggplant",
@@ -238,7 +238,7 @@ var seedPlants = function() {
         feeding: "Apply a balanced fertilizer or compost every two weeks during the growing season.",
         diseases: "Downy and Powdery Mildew",
         pests: ["Aphids", "Spider Mites", "Tomato Hornworms"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/017/original/17_eggplant.JPG?1461825953"
+        image: "/images/plants/eggplant.jpg"
     },
     {
         name: "Kale",
@@ -259,7 +259,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "n/a",
         pests: ["Cabbageworms", "Flea beetles", "Aphids"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/020/original/20_kale.jpg?1461825957"
+        image: "/images/plants/kale.jpg"
     },
     {
         name: "Onion",
@@ -280,7 +280,7 @@ var seedPlants = function() {
         feeding: "Fertilize every few weeks with nitrogen to get big bulbs. Cease fertilizing when the onions push the soil away and the bulbing process has started. Do not put the soil back around the onions; the bulb needs to emerge above the soil.",
         diseases: "n/a",
         pests: ["Onion Maggots"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/018/original/18_onion.jpg?1461825955"
+        image: "/images/plants/onion.jpg"
     },
     {
         name: "Garlic",
@@ -301,7 +301,7 @@ var seedPlants = function() {
         feeding: "Garlic requires adequate levels of nitrogen. Fertilize accordingly, especially if you see yellowing leaves.",
         diseases: "White Rot",
         pests: [],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/019/original/19_garlic.jpg?1461825956"
+        image: "/images/plants/garlic.jpg"
     },
     {
         name: "Cantaloupe",
@@ -322,7 +322,7 @@ var seedPlants = function() {
         feeding: "Fertilize when vines start growing.",
         diseases: "Fusarium Wilt",
         pests: ["Aphids", "Cucumber Beetles", "Squash Borers"] ,
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/021/original/21_cantaloupe.jpg?1461825961"
+        image: "/images/plants/cantaloupe.jpg"
     },
     {
         name: "Pea",
@@ -343,7 +343,7 @@ var seedPlants = function() {
         feeding: "Be sure, too, that you don’t fertilize the soil too much. Peas are especially sensitive to too much nitrogen, but they may like a little bonemeal, for the phosphorus content.",
         diseases: "Fusarium Wilt",
         pests: ["Aphids", "Mexican Bean Beetles"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/023/original/23_peas.jpg?1461825964"
+        image: "/images/plants/pea.jpg"
     },
     {
         name: "Potato",
@@ -364,7 +364,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Early/Late Blight",
         pests: ["Aphids", "Flea Beetles", "Leaf Hoppers"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/025/original/25_potatoes.jpg?1461825967"
+        image: "/images/plants/potato.jpg"
     },
     {
         name: "Pumpkin",
@@ -385,7 +385,7 @@ var seedPlants = function() {
         feeding: "Pumpkins are HEAVY feeders. Regular treatments of manure or compost mixed with water will sustain good growth.",
         diseases: "Powdery Mildew, Anthracnose",
         pests: ["Aphids", "Squash Borers"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/026/original/26_pumpkin.jpg?1461825970"
+        image: "/images/plants/pumpkin.jpg"
     },
     {
         name: "Radishes",
@@ -406,7 +406,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Clubroot",
         pests: ["Cabbage Root Maggot"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/027/original/27_radish.jpg?1461825971"
+        images: "/images/plants/radish.jpg"
     },
     {
         name: "Celery",
@@ -427,7 +427,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Fusarium Wilt, Mosaic Virus",
         pests: ["Cutworms", "Aphids", "Whiteflies"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/012/original/12_celery.jpg?1461825944"
+        images: "/images/plants/celery.jpg"
     },
     {
         name: "Chives",
@@ -448,7 +448,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Bulb Rots, White Rot, Rust",
         pests: ["Onion fly"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/013/original/13_chives.jpg?1461825945"
+        images: "/images/plants/chives.jpg"
     },
     {
         name: "Cilantro",
@@ -469,7 +469,7 @@ var seedPlants = function() {
         feeding: "Fertilize once or twice during the growing season with nitrogen fertilizer. Apply ¼ cup of fertilizer per 25 feet of row. Be sure not to over-fertilizer the plants.",
         diseases: "Fungal wilt, Mildew",
         pests: ["Aphids"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/038/original/38_cilantro.jpg?1461825988"
+        images: "/images/plants/cilantro.jpg"
     },
     {
         name: "Mint",
@@ -490,7 +490,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Powdery mildew, Rust, Leaf spot",
         pests: [],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/040/original/40_mint.jpg?1461825991"
+        images: "/images/plants/mint.jpg"
     },
     {
         name: "Tomatoes",
@@ -511,7 +511,7 @@ var seedPlants = function() {
         feeding: "Water seedlings with a high-phosphate fertilizer solution for best results.",
         diseases: "Learn the common tomato diseases in your area and try to select the most resistant varieties. For prevention, use young, healthy transplants, avoid overhead irrigation, rotate crops, and do not handle tobacco or smoke before handling plants. Fungicides can reduce certain diseases when properly selected and applied. Prevent blossom end rot by providing abundant soil calcium and an even supply of soil moisture.",
         pests: ["Flea Beetles", "Tomato hornworms"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/001/original/01_tomato.jpg?1461825924"
+        images: "/images/plants/tomato.jpg"
     },
     {
         name: "Parsley",
@@ -532,7 +532,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Stem rot, Leaf spots",
         pests: ["black swallowtail larvae, carrot fly larvae, celery fly larvae"],
-        image: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/039/original/39_parsley.jpg?1461825990"
+        image: "/images/plants/parsley.jpg"
     },
     {
         name: "Sage",
@@ -552,7 +552,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Rust, Powdery mildew, Stem rot, Fungal leaf spots",
         pests: ["whiteflies", "aphids"],
-        image:  "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/041/original/41_sage.jpg?1461825992"
+        image:  "/images/plants/sage.jpg"
     },
     {
         name: "Tarragon",
@@ -573,7 +573,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Many rusts, including white rust, downy mildew, powdery mildew",
         pests: [],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/042/original/42_tarragon.jpg?1461825994"
+        images: "/images/plants/tarragon.jpg"
     },
     {
         name: "Dill",
@@ -594,7 +594,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Leaf spot and occasionally a few other types of fungal leaf and root diseases",
         pests: [],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/045/original/45_dill.JPG?1461825998"
+        images: "/images/plants/dill.jpg"
     },
     {
         name: "Cauliflower",
@@ -615,7 +615,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "Clubroot, black rot",
         pests: ["cabbageworm", "aphids", "harlequin bugs"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/011/original/11_cauliflower.jpg?1461825943"
+        images: "/images/plants/cauliflower.jpg"
     },{
         name: "Beans",
         description: "Pole and bush beans (more commonly called green beans) are a tender vegetable and a great addition to any garden, great eaten fresh off the plant or incorporated into a recipe. Bush beans require less maintenance, so they are easier to grow.",
@@ -635,7 +635,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "White Mold, mosaic viruses, bean blossoms will drop from the plant if the weather is too hot and too much nitrogen in the soil will prevent pods from setting.",
         pests: ["aphids", "Mexican bean beetles", "Japanese beetles"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/006/original/06_beans.jpg?1461825935"
+        images: "/images/plants/bean.jpg"
     }, {
         name: "Collard Greens",
         description: "Collard Greens are a hardy, cool-season green that are part of the cabbage family. They grow best in the spring and fall and can tolerate all fall frosts.",
@@ -655,7 +655,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "",
         pests: ["cabbageworms", "flea beetles", "aphids"],
-        images: "http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/014/original/14_collard_greens.jpg?1461825947"
+        images: "/images/plants/collardgreens.jpg"
     },{
         name: 'Rhubarb',
         description: 'Rhubarb is a perennial vegetable, though it is generally used as a fruit in desserts and jams. You only eat the stalks, which have a rich tart flavor. The leaves of this plant are poisonous, so be sure that they are not ingested. Rhubarb is easy to grow, but needs cool weather to thrive.',
@@ -675,7 +675,7 @@ var seedPlants = function() {
         feeding: 'After the first spring, apply a light sprinkling of a high-nitrogen fertilizer (25-3-3 or 10-6-4) when the ground is thawing or has just thawed, so that the fertilizer will go into the ground and not harm the roots.',
         diseases: 'Crown rot',
         pests: [],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/028/original/28_rhubarb.jpg?1461825973'
+        image: "/images/plants/rhubarb.jpg"
     },
     {
         name: 'Spinach',
@@ -696,7 +696,7 @@ var seedPlants = function() {
         feeding: 'Fertilize only if necessary due to slow growth, or use as a supplement if your soil’s pH is inadequate. Use when plant reaches ⅓ growth.',
         diseases: 'Downy Mildew, Mosaic Virus, Blight',
         pests: ['Leaf Miners'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/029/original/29_spinach.JPG?1461825975'
+        image: "/images/plants/spinach.jpg"
     },
     {
         name: 'Turnip',
@@ -717,7 +717,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: 'Powdery Mildew, Downy Mildew',
         pests: ['Root Maggots', 'Flea Beetles'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/032/original/32_turnip.jpg?1461825980'
+        image: "/images/plants/turnip.jpg"
     },
     {
         name: 'Summer Squash',
@@ -738,7 +738,7 @@ var seedPlants = function() {
         feeding: 'When the first blooms appear, apply a small amount of fertilizer as a side dress application. After harvest begins, fertilize occasionally for vigorous growth and lots of fruits.',
         diseases: 'Blossom End Rot',
         pests: ['Squash Borer', 'Squash Bug', 'Aphids', 'Stink bug'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/030/original/30_summer_squash.jpg?1461825976'
+        image: "/images/plants/summersquash.jpg"
     },
     {
         name: 'Chard',
@@ -759,7 +759,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "n/a",
         pests: ['Slugs', 'Aphids'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/031/original/31_swiss_chard.jpg?1461825978'
+        image: "/images/plants/chard.jpg"
     },
     {
         name: 'Watermelon',
@@ -780,7 +780,7 @@ var seedPlants = function() {
         feeding: 'If you choose to fertilize (and many do), make sure it\'s deliver more nitrogen than phosphorus and potassium. However, after flowering begins, use a fertilizer with less nitrogen. We like to use liquid seaweed.',
         diseases: 'Aphids, Squash Borers',
         pests: ['Fusarium Wilt'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/033/original/33_watermelon.jpg?1461825981'
+        image: "/images/plants/watermelon.jpg"
     },
     {
         name: 'Winter Squash',
@@ -801,7 +801,7 @@ var seedPlants = function() {
         feeding: 'When the first blooms appear, apply a small amount of fertilizer as a side dress application. After harvest begins, fertilize occasionally for vigorous growth and lots of fruits.',
         diseases: 'Blossom End Rot',
         pests: ['Squash Borer', 'Squash Bug', 'Aphids', 'Stink bug'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/034/original/34_winter_squash.jpg?1461825982'
+        image: "/images/plants/wintersquash.jpg"
     },
     {
         name: 'Thyme',
@@ -822,7 +822,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: 'Gray Mold, Root Rot',
         pests: [],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/035/original/35_thyme.JPG?1461825983'
+        image: "/images/plants/thyme.jpg"
     },
     {
         name: 'Oregano',
@@ -843,7 +843,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: 'Root and Stem Rots',
         pests: ['Aphids'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/036/original/36_oregano.jpg?1461825985'
+        image: "/images/plants/oregano.jpg"
     },
     {
         name: 'Rosemary',
@@ -864,7 +864,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: 'Bacterial leaf spots, Aerial Blight, Root Rot',
         pests: [],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/037/original/37_rosemary.jpg?1461825987'
+        image: "/images/plants/rosemary.jpg"
     },
     {
         name: 'Okra',
@@ -885,7 +885,7 @@ var seedPlants = function() {
         feeding: 'Side-dress the plants with rich compost (½ pound per 25 feet of row). You could also apply a balanced liquid fertilizer monthly.',
         diseases: 'Fusarium wilt',
         pests: ['Aphids', 'Corn Earworms', 'Stinkbugs'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/043/original/43_okra.JPG?1461825995'
+        image: "/images/plants/okra.jpg"
       },
       {
         name: 'Sweet Potato',
@@ -906,7 +906,7 @@ var seedPlants = function() {
         feeding: 'Sweet Potatoes like high phosphorus fertilizers.',
         diseases: 'Sweet potato scurf, White blister, Fungal leaf rot',
         pests: ['Flea beetles'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/044/original/44_sweet_potato.JPG?1461825996'
+        image: "/images/plants/sweetpotato.jpg"
     },
     {
         name: 'Beets',
@@ -927,7 +927,7 @@ var seedPlants = function() {
         feeding: "n/a",
         diseases: "n/a",
         pests: ['Flea Beetles', 'Leaf Hoppers', 'Mexican Bean Beetles'],
-        image: 'http://s3.amazonaws.com/harvest-helper-production/plants/images/000/000/007/original/07_beet.jpg?1461825936'
+        image: "/images/plants/beet.jpg"
     }];
 
     var creatingPlants = plants.map(function (plantObj) {
