@@ -1,3 +1,25 @@
-<section id="plant">
-	<h1>{{plant.name}}</h1>
+<section id="plant" ng-controller="PlantCtrl">
+    <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap flex>
+        <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center'>
+            <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+            ng-mouseleave="hover = ''" ng-class="hover">
+                <md-card-title-text>
+                    <span class="md-headline">
+                        <p>{{plant.name}}</p>
+                    </span>
+                </md-card-title-text>
+                    <md-card-content>
+                        <p>{{plant.description}}</p>
+                        <p>{{plant.notes}}</p>
+                        <p ng-repeat="neighbor in plants.goodNeighbors">{{neighbor}}</p>
+                        <p ng-if="plant.isPerennial">This plant is perennial.</p>
+                        <p ng-if="!plant.isPerennial">This plant not perennial.</p>
+                        <p ng-hide="if (plant.watering==='n/a')">{{plant.watering}}</p>
+                        <p>{{plant.feeding}}</p>
+                        <p ng-hide="plant.diseases === []">{{plant.diseases}}</p>
+                        <p ng-hide="plant.pests === []" ng-repeat="pest in plant.pests">{{pest}}</p>
+                </md-card-content>
+            </md-card>
+        </div>
+    </md-content>
 </section>

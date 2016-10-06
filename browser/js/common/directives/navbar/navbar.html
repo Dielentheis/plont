@@ -1,16 +1,20 @@
-<nav class="nav-wrapper">
-    <div class="container">
-        <ul class="nav navbar-nav">
-            <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-            </li>
-            <li ng-show="!user" ui-sref="login" class="btn login-button">Login</li>
-            <li ng-show="!user" ui-sref="signup" class="btn login-button">Sign Up</li>
-            <li ng-show="user" class="welcome">
-                <span>Welcome, {{ user.email }}!</span>
-                <li ng-click="logout()">Logout</li>
-            </div>
-        </ul>
+<nav>
+    <div class="navbar">
+        <div class="nav-wrapper">
+            <a ui-sref="home" class="brand-logo">
+                Brand logo
+            </a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
+                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
+                </li>
+                <li ng-show="!user"><a ui-sref="login">Login</a></li>
+                <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+                <li ng-hide="!user" ng-click="logout()"><a>Logout</a></li>
+            </ul>
+        </div>
     </div>
 </nav>
+
+
 
