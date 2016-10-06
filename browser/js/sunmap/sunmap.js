@@ -1,4 +1,13 @@
-var gameUtilities = {
+
+const plotWidthInches = 12,
+      plotHeightInches = 12,
+      plotWidthHalfFeet = Math.ceil(plotWidthInches / 6),
+      plotHeightHalfFeet = Math.ceil(plotHeightInches / 6);
+
+
+
+
+var sunPlotUtils = {
     selectCellWithCoordinates: function (x, y) {
         return document.getElementById(x + '-' + y);
     },
@@ -10,23 +19,23 @@ var gameUtilities = {
         cell.setAttribute('data-status', status);
     },
     toggleStatus: function (cell) {
-        // switch (this.gameUtilites.getStatus(cell)) {
+        // switch (this.sunPlotUtils.getStatus(cell)) {
         //     case 'sun':
-        //         this.gameUtilities.setStatus(cell, 'partial_shade');
+        //         this.sunPlotUtils.setStatus(cell, 'partial_shade');
         //         break;
         //     case 'partial_shade':
-        //         this.gameUtilities.setStatus(cell, 'full_shade');
+        //         this.sunPlotUtils.setStatus(cell, 'full_shade');
         //         break;
         //     case 'full_shade':
-        //         this.gameUtilities.setStatus(cell, 'sun');
+        //         this.sunPlotUtils.setStatus(cell, 'sun');
         //         break;
         // }
-        if (gameUtilities.getStatus(cell) === 'sun') {
-            gameUtilities.setStatus(cell, 'partial_shade');
-        } else if (gameUtilities.getStatus(cell) === 'partial_shade') {
-            gameUtilities.setStatus(cell, 'full_shade');
+        if (sunPlotUtils.getStatus(cell) === 'sun') {
+            sunPlotUtils.setStatus(cell, 'partial_shade');
+        } else if (sunPlotUtils.getStatus(cell) === 'partial_shade') {
+            sunPlotUtils.setStatus(cell, 'full_shade');
         } else {
-            gameUtilities.setStatus(cell, 'sun');
+            sunPlotUtils.setStatus(cell, 'sun');
         }
     },
     getCellCoords: function (cell) {
@@ -36,20 +45,16 @@ var gameUtilities = {
             y: parseInt(idSplit[1], 10)
         };
     },
-    getAmountOfAliveCells: function (cells) {
-
+    getAmountOfSunnyCells: function (cells) {
         return cells.filter(function (cell) {
-            return gameUtilities.getStatus(cell) === 'alive';
+            return sunPlotUtils.getStatus(cell) === 'sun';
         }).length;
-
     },
 };
 
-let width = 120, height = 120;  // Temporary variables -- a way of using user input
-
 var gameOfLife = {
-    width: Math.round(width / 12), // <<feet; half-feet: width / 12 * 2
-    height: Math.round(height / 12), // <<feet; half-feet: height / 12 * 2
+    width: plotWidthHalfFeet,
+    height: plotHeightHalfFeet,
     stepInterval: null,
 
     createAndShowBoard: function () {
@@ -98,8 +103,8 @@ var gameOfLife = {
         // cells to setup the initial state of the game
         // before clicking "Step" or "Auto-Play"
 
-        // clicking on a cell should toggle the cell between "alive" & "dead"
-        // for ex: an "alive" cell be colored "blue", a dead cell could stay white
+        // clicking on a cell should toggle the cell between "sun" & "full_shade"
+        // for ex: an "sun" cell be colored "blue", a full_shade cell could stay white
 
         // EXAMPLE FOR ONE CELL
         // Here is how we would catch a click event on just the 0-0 cell
@@ -109,7 +114,7 @@ var gameOfLife = {
             // QUESTION TO ASK YOURSELF: What is "this" equal to here?
 
             // how to set the style of the cell when it's clicked
-            gameUtilities.toggleStatus(this);
+            sunPlotUtils.toggleStatus(this);
         };
 
         this.forEachCell(function (cellElement) {
@@ -123,7 +128,7 @@ var gameOfLife = {
     clearBoard: function () {
 
         this.forEachCell(function (cell) {
-            gameUtilities.setStatus(cell, 'full_shade');
+            sunPlotUtils.setStatus(cell, 'full_shade');
         });
 
     }
