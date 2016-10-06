@@ -1,0 +1,50 @@
+<section id="plots">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 offset-l3">
+                <h1 class="title">Create Your Plot</h1>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <div class="row">
+            <div class="col l6 offset-l3">
+                <h2 class="size">Plot Size?</h2>
+            </div>
+        <div class="row">
+            <div class="col l6 offset-l5">
+                <div class="plotselect">
+                    <label class="label">Height:</label>
+                    <div class="height">
+                        <select class="browser-default" ng-model="heightFeet">
+                            <option value="" disabled selected>Height Feet</option>
+                            <option ng-repeat="foot in feet">{{ foot }}</option>
+                        </select>
+                        <select class="browser-default" ng-model="heightInches">
+                            <option value="" disabled selected>Height Inches</option>
+                            <option ng-repeat="inch in inches">{{ inch }}</option>
+                        </select>
+                    </div>
+                    <div class="bydiv">
+                        <p class="by"> X </p>
+                    </div>
+                    <div class="width">
+                        <label class="label">Width:</label>
+                        <select class="browser-default" ng-model="widthFeet">
+                            <option value="" disabled selected>Width Feet</option>
+                            <option ng-repeat="foot in feet">{{ foot }}</option>
+                        </select>
+                        <select class="browser-default" ng-model="widthInches">
+                            <option value="" disabled selected>Width Inches</option>
+                            <option ng-repeat="inch in inches">{{ inch }}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col l2 offset-l8">
+                <a class="waves-effect btn-flat" type="submit" ng-click="createPlot()"> Done </a>
+            </div>
+        </div>
+    </div>
+</section>
