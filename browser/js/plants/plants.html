@@ -1,7 +1,8 @@
 <div ng-controller="PlantsCtrl" ng-cloak>
     <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap flex>
         <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
-            <md-card flex='100' layout-fill>
+            <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+            ng-mouseleave="hover = ''" ng-class="hover">
                 <md-card-title-text>
                     <span class="md-headline">
                         <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
