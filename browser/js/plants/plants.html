@@ -1,18 +1,17 @@
-<container>
-    <div class="row"  ng-repeat="plant in plants | groupBy:3">
-        <div class="col s4"
-            ng-repeat="plant in plants">
-            <div class="card-small">
-                <div class="card">
-                    <img class="plant-img" src="{{plant.image}}">
-                    <div class="card-content">
-                    <p>{{plant.description}}</p>
-                    </div>
-                    <div class="card-action">
+<div ng-controller="PlantsCtrl" ng-cloak>
+    <md-content class="md-padding" layout-xs="column" layout-gt-xs="row" layout-wrap flex>
+        <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
+            <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+            ng-mouseleave="hover = ''" ng-class="hover">
+                <md-card-title-text>
+                    <span class="md-headline">
                         <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
-                    </div>
-                </div>
-            </div>
+                    </span>
+                </md-card-title-text>
+                    <md-card-content>
+                        <p>{{plant.description | limitTo:160}}...</p>
+                </md-card-content>
+            </md-card>
         </div>
-    </div>
-</container>
+    </md-content>
+</div>
