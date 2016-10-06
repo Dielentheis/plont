@@ -1,0 +1,16 @@
+#signup-form {
+  width: 60%;
+  margin: 0 auto;
+}
+
+.btn, .btn-large {
+    background-color: #388e3c;
+}
+
+.btn:hover, .btn-large:hover {
+    background-color: #43a047;
+}
+
+button:focus {
+    background-color: #66bb6a;
+}
