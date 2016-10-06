@@ -1,6 +1,8 @@
-.idea
+apis.js
 node_modules
+coverage
+.idea
 npm-debug.log
 public
-.DS_Store
+**/.DS_Store
 coverage
