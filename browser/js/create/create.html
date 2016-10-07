@@ -57,9 +57,7 @@
         <div class="row">
             <label class="label"> Add Plants: </label>
             <div class="input-field col l6 offset-l3">
-                <multiple-autocomplete ng-model="selectedPlants"
-                    object-property="name"
-                    suggestions-arr="optionsList">
+                <multiple-autocomplete ng-model="selectedPlants" after-select-item="afterSelectItem" after-remove-item="afterRemoveItem" object-property="name" suggestions-arr="optionsList">
                 </multiple-autocomplete>
             </div>
             <p ng-show="plantsDontFit"> Your current plant selection exceeds the area of your plot. </p>

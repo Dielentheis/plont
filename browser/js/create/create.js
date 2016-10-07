@@ -35,11 +35,15 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         })
         .catch($log.error);
     }
-    $scope.plantArea = 0;
+
+    $scope.totalPlantArea = 0;
+
     $scope.switch = false;
-    $scope.plot = {};
+
     $scope.feet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
     $scope.inches = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+
     $scope.createPlot = function (hf, hi, wf, wi) {
         if ( hf === undefined) hf = 0;
         if ( hi === undefined) hi = 0;
@@ -50,17 +54,17 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         createPlantOptions();
         $scope.switch = true;
     }
+
     $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
     }
-    $scope.afterSelectItem = function (plant) {
-        console.log(plant);
-        $scope.plantArea += (plant.height * plant.width);
-        console.log("total plant area", $scope.plantArea);
+
+    // below is not yet functioning:
+    $scope.afterSelectItem = function (item) {
+        $scope.totalPlantArea += (item.height * item.width);
     }
-    $scope.afterRemoveItem = function(plant) {
-        console.log(plant);
-        $scope.plantArea += (plant.height * plant.width)
+    $scope.afterRemoveItem = function(item) {
+        $scope.totalPlantArea += (item.height * item.width)
     }
     $scope.plantsDontFit = ($scope.plantArea >= $scope.area);
 
@@ -94,12 +98,11 @@ app.factory('CreatePlotFactory', function () {
         console.log(returnObj.usersPlants);
     }
 
-
     // returnObj.renderPlot = function (plotData) {
     //     //send plot data to backend
     //     //plot data will be 2 params
     //     //1 array of objects {sun: 0/1/2, taken:false} (returnObj.plot);
-    //     //2 array of plants, either full plant obj or plant id
+    //     //2 array of plants, full plant object (returnObj.usersPlants);
     // }
 
     return returnObj;
