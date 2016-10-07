@@ -1,22 +1,22 @@
 <container class="container">
     <div class="row">
         <div class="col s6 offset-s3">
-            <h1>Welcome, {{ user.firstName }}.</h1>
-        </div>
-        <div class="col s6 offset-s3">
-            <img class="responsive-img" src="images/plontPlant.png">
-        </div>
-        <div class="col s6 offset-s3" ng-show="loggedIn">
-            <a class="waves-effect btn-flat" ui-sref="plot">View My Plots</a>
-            <a class="waves-effect btn-flat" ui-sref="user-plots">Create a New Plot</a>
-        </div>
-        <div class="col s6 offset-s3" ng-show="!loggedIn">
-            <p>
-            <a class="waves-effect btn-flat" ui-sref="signup">Sign up</a>
-            or
-            <a class="waves-effect btn-flat" ui-sref="login">log in</a>
-            to create or view plots
-            </p>
+            <h2> Welcome, {{ user.firstName }} </h2>
+            <hr noshade>
+            <div class="welcome">
+               <div ng-show="loggedIn">
+                    <a class="waves-effect btn-flat" ui-sref="user-plots">View My Plots</a>
+                    <a class="waves-effect btn-flat" ui-sref="create">Create a New Plot</a>
+                </div>
+                <div ng-show="!loggedIn">
+                    <p>
+                    <a class="waves-effect btn-flat" ui-sref="signup">Sign up</a>
+                    or
+                    <a class="waves-effect btn-flat" ui-sref="login">log in</a>
+                    to create or view plots
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
 </container>

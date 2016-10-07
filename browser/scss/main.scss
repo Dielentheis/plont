@@ -2,8 +2,12 @@
   box-sizing: border-box;
 }
 
+html {
+  background-image: url("../images/light_wool.png");
+}
+
 body {
-  background: #fdfdfd;
+  background-image: url("../images/light_wool.png");
 }
 
 @mixin clearfix {
@@ -15,10 +19,31 @@ body {
 }
 
 #main {
-  padding-top: 60px;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
+<<<<<<< HEAD
+=======
+h1, h2 {
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 100;
+    text-transform:uppercase;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dotted #000000;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  overflow-x: scroll;
+}
+
+.layout-fill {
+  opacity: 0.8;
+}
+>>>>>>> 3668a6cd1d7ac65aeda0186034f7b6b0866233cd
 
 
 @import 'home/main';
@@ -27,3 +52,9 @@ body {
 @import 'login/main';
 @import 'navbar/main';
 @import 'signup/main';
+<<<<<<< HEAD
+=======
+@import 'create/main';
+@import 'plants/main';
+@import 'plant/main';
+>>>>>>> 3668a6cd1d7ac65aeda0186034f7b6b0866233cd
