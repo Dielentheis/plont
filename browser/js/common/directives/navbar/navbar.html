@@ -1,10 +1,8 @@
 <nav>
     <div class="navbar">
         <div class="nav-wrapper">
-            <a ui-sref="home" class="brand-logo">
-                Brand logo
-            </a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <a class="brand-logo">Plont</a>
+            <ul id="nav-fixed" class="right hide-on-med-and-down">
                 <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>

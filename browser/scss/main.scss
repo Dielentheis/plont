@@ -2,8 +2,12 @@
   box-sizing: border-box;
 }
 
+html {
+  background-image: url("../images/light_wool.png");
+}
+
 body {
-  background: #fdfdfd;
+  background-image: url("../images/light_wool.png");
 }
 
 @mixin clearfix {
@@ -15,10 +19,28 @@ body {
 }
 
 #main {
-  padding-top: 60px;
   margin: 0 auto;
+  padding-top: 20px;
 }
 
+h1, h2 {
+    margin-top: 40px;
+    text-align: center;
+    font-weight: 100;
+    text-transform:uppercase;
+}
+
+hr {
+  border: 0;
+  border-top: 1px dotted #000000;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  overflow-x: scroll;
+}
+
+.layout-fill {
+  opacity: 0.8;
+}
 
 
 @import 'home/main';
@@ -28,3 +50,5 @@ body {
 @import 'navbar/main';
 @import 'signup/main';
 @import 'create/main';
+@import 'plants/main';
+@import 'plant/main';
