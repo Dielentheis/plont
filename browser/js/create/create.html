@@ -55,14 +55,23 @@
             </div>
         </div>
         <div class="row">
-            <div class="input-field col l6">
-                <input type="text" id="autocomplete" class="autocomplete" multiple>
-                <label for="autocomplete"> Add Plants </label>
+            <label class="label"> Add Plants: </label>
+            <div class="input-field col l6 offset-l3">
+                <multiple-autocomplete ng-model="selectedPlants"
+                    object-property="name"
+                    suggestions-arr="optionsList">
+                </multiple-autocomplete>
+            </div>
+            <div class="col l6 offset-l3" ng-show="largePlants.length">
+                <h3 class="toobig"> The following plants require more space then your plot allows: </h3>
+                <ul>
+                    <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
+                </ul>
             </div>
         </div>
         <div class="row">
             <div class="col l2 offset-l8">
-                <a class="waves-effect btn-flat" type="submit" ui-href="sunmap"> Done </a>
+                <a class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-href="sunmap"> Done </a>
             </div>
         </div>
     </div>
