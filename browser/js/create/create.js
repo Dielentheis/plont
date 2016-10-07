@@ -10,36 +10,36 @@ app.controller('CreateCtrl', function ($scope, CreatePlotFactory) {
     $scope.plot = {};
     $scope.feet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
     $scope.inches = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-    //NOTE end of day 10/6 ---> this function is wrong!!!!
-    $scope.createPlot = function (){
-        let height = ($scope.heightFeet * 12) + $scope.heightInches;
-        let width = ($scope.widthFeet * 12) + $scope.widthInches;
-        let plot = [];
-        for (var i = 0; i < height; i++) {
-            let row = [];
-            for (var j = 0; j < width; j++) {
-                let cell = new CreatePlotFactory.Cell();
-                row.push(cell)
-            }
-            plot.push(row);
-        }
-        $scope.plot = plot;
-        console.log($scope.plot);
-    }
+    $scope.createPlot = CreatePlotFactory.createPlot;
 });
 
 app.factory('CreatePlotFactory', function () {
     var returnObj = {};
 
-    returnObj.Cell =function () {
+    returnObj.Cell = function () {
         this.sun = 0;
         this.taken = false;
     };
 
+    returnObj.createPlot = function (hf, hi, wf, wi){
+        let height = (+hf * 12) + (+hi);
+        let width = (+wf * 12) + (+wi);
+        let plot = [];
+        for (var i = 0; i < height; i++) {
+            let row = [];
+            for (var j = 0; j < width; j++) {
+                let cell = new returnObj.Cell();
+                row.push(cell)
+            }
+            plot.push(row);
+        }
+        returnObj.plot = plot;
+    }
+
     // returnObj.renderPlot = function (plotData) {
     //     //send plot data to backend
     //     //plot data will be 2 params
-    //     //1 array of objects {sun: 0/1/2, taken:false}
+    //     //1 array of objects {sun: 0/1/2, taken:false} (returnObj.plot);
     //     //2 array of plants, either full plant obj or plant id
     // }
 
