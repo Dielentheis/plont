@@ -35,7 +35,7 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         })
         .catch($log.error);
     }
-
+    $scope.plantArea = 0;
     $scope.switch = false;
     $scope.plot = {};
     $scope.feet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -50,9 +50,19 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         createPlantOptions();
         $scope.switch = true;
     }
-    $scope.createPlantList = function (slectedPlants) {
+    $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
     }
+    $scope.afterSelectItem = function (plant) {
+        console.log(plant);
+        $scope.plantArea += (plant.height * plant.width);
+        console.log("total plant area", $scope.plantArea);
+    }
+    $scope.afterRemoveItem = function(plant) {
+        console.log(plant);
+        $scope.plantArea += (plant.height * plant.width)
+    }
+    $scope.plantsDontFit = ($scope.plantArea >= $scope.area);
 
 });
 
@@ -81,6 +91,7 @@ app.factory('CreatePlotFactory', function () {
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
+        console.log(returnObj.usersPlants);
     }
 
 

@@ -62,6 +62,7 @@
                     suggestions-arr="optionsList">
                 </multiple-autocomplete>
             </div>
+            <p ng-show="plantsDontFit"> Your current plant selection exceeds the area of your plot. </p>
             <div class="col l6 offset-l3" ng-show="largePlants.length">
                 <h3 class="toobig"> The following plants require more space then your plot allows: </h3>
                 <ul>
