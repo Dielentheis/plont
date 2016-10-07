@@ -21,6 +21,9 @@ module.exports = db.define('plot', {
         }
     },
     layout: {
-        type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.JSON))
+        type: Sequelize.JSON
+    },
+    important_dates: {
+        type: Sequelize.ARRAY(Sequelize.JSON)
     }
 });

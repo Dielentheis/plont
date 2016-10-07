@@ -11,15 +11,19 @@ app.controller('PlotsCtrl', function ($scope, PlotsFactory) {
     $scope.makePlot = PlotsFactory.makesThenStoresThenRedirects;
 });
 
-app.factory('PlotsFactory', function($http, $state) {
+app.factory('PlotsFactory', function($http, $state, AuthService) {
     var returnObj = {};
 
     returnObj.makesThenStoresThenRedirects = function(plot, plants) {
-        plot = returnObj.makePlot(plot, plants);
-        $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot})
-        .then(function(savedPlot) {
-            $state.go('plot({id: savedPlot.id})');
-        });
+        return AuthService.getLoggedInUser()
+        .then(function(user) {
+            plot = returnObj.makePlot(plot, plants);
+            var importantDates = returnObj.findImportantDates(user.springFrostDate, plants);
+            $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates})
+            .then(function(savedPlot) {
+                $state.go('plot({id: savedPlot.id})');
+            });
+        })
     };
 
     returnObj.makePlot = function(plot, plants) {
@@ -46,7 +50,7 @@ app.factory('PlotsFactory', function($http, $state) {
             plants.forEach(function(plant) {
                 var plantArea = plant.height * plant.width;
                 var numPlantsToPlant = Math.floor(approxPlantArea / plantArea);
-                plant["numToPlant"] = numPlantsToPlant;
+                plant.numToPlant = numPlantsToPlant;
             });
             return plants;
         }
@@ -101,7 +105,7 @@ app.factory('PlotsFactory', function($http, $state) {
                     plot[i][j].taken = true;
                 }
             }
-            plot[row][col]["marker"] = plant.id;
+            plot[row][col].marker = plant.id;
         }
 
         function fillInExtraSpace() {
@@ -115,5 +119,33 @@ app.factory('PlotsFactory', function($http, $state) {
             }
         }
     };
+
+    returnObj.findImportantDates = function(frostDate, plants) {
+        var importantDates = [];
+        // {event: xxx, date: xxx}
+
+        plants.forEach(function(plant) {
+            var plantEvent = {};
+            plantEvent.event = "Plant the " + plant.name;
+            plantEvent.date = plant.springFrostDate;
+            if (plant.howFarBefore) {
+                plantEvent.date.setTime(plantEvent.date.getTime() - plant.howFarBefore * 86400000);
+            }
+            else if (plant.howFarAfter) {
+                plantEvent.date.setTime(plantEvent.date.getTime() + plant.howFarAfter * 86400000);
+            }
+            var harvestBeginEvent = {};
+            harvestBeginEvent.event = "Begin " + plant.name.toLowercase() + " harvest";
+            harvestBeginEvent.date = plantEvent.date;
+            harvestBeginEvent.date.setTime(harvestBeginEvent.date.getTime() + plant.firstHarvest * 86400000);
+            var harvestEndEvent = {};
+            harvestEndEvent.event = "End " + plant.name.toLowercase() + " harvest";
+            harvestEndEvent.date = harvestBeginEvent.date;
+            harvestEndEvent.date = harvestEndEvent.date.setTime(harvestEndEvent.date.getTime() + plant.harvestPeriod * 86400000);
+            importantDates.push(plantEvent, harvestBeginEvent, harvestEndEvent);
+        });
+
+        return importantDates;
+    }
     return returnObj;
 }); 
