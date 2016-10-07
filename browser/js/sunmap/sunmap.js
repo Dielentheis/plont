@@ -2,8 +2,39 @@
 const plotWidthInches = 12,
       plotHeightInches = 12,
       plotWidthHalfFeet = Math.ceil(plotWidthInches / 6),
-      plotHeightHalfFeet = Math.ceil(plotHeightInches / 6);
+      plotHeightHalfFeet = Math.ceil(plotHeightInches / 6),
+      shadeDict = {
+          sun: 2,
+          partial_shade: 1,
+          shade: 0
+      };
 
+
+// CREATES A PLOTARR OF SHADY OBJECTS
+const plotArr = new Array(plotHeightHalfFeet).fill(new Array(plotWidthHalfFeet).fill(new Plant())); // On submit don't forget to slice the array to length!!
+
+
+// PLANT CONSTRUCTOR
+function Plant(sunVal) {
+    this.sun = sunVal || 0;
+    this.taken = false;
+}
+
+
+// CHANGES CLICKED CELL'S SUN STATUS IN THE ARRAY
+function plontIt(cellData) {
+    const cellSunStatus = cellData.dataset.status,
+          Xcoord = parseInt(cellData.id.slice(0, cellData.id.indexOf('-'))),
+          Ycoord = parseInt(cellData.id.slice(cellData.id.indexOf('-') + 1));
+
+    const sunniness = cellSunStatus === 'sun'
+            ? 2
+            : cellSunStatus === 'partial_shade'
+                ? 1
+                : 0;
+
+    plotArr[Ycoord][Xcoord] = new Plant(sunniness);
+}
 
 
 
@@ -18,7 +49,7 @@ var sunPlotUtils = {
         cell.className = status;
         cell.setAttribute('data-status', status);
     },
-    toggleStatus: function (cell) {
+    toggleStatus: function (cell) {                 // THE LOGIC FOR CHANGING THE COLOR
         switch (sunPlotUtils.getStatus(cell)) {
             case 'sun':
                 sunPlotUtils.setStatus(cell, 'partial_shade');
@@ -45,17 +76,19 @@ var sunPlotUtils = {
     },
 };
 
-var gameOfLife = {
+
+// CREATES A SHADY PLOT
+const plontPlot = {
     width: plotWidthHalfFeet,
     height: plotHeightHalfFeet,
     stepInterval: null,
 
     createAndShowBoard: function () {
         // create <table> element
-        var goltable = document.createElement("tbody");
+        const plontTable = document.createElement("tbody");
 
         // build Table HTML
-        var tablehtml = '';
+        let tablehtml = '';
         for (var h = 0; h < this.height; h++) {
             tablehtml += "<tr id='row+" + h + "'>";
             for (var w = 0; w < this.width; w++) {
@@ -63,51 +96,32 @@ var gameOfLife = {
             }
             tablehtml += "</tr>";
         }
-        goltable.innerHTML = tablehtml;
+        plontTable.innerHTML = tablehtml;
 
         // add table to the #board element
-        var board = document.getElementById('board');
-        board.appendChild(goltable);
+        const board = document.getElementById('board');
+        board.appendChild(plontTable);
 
         // once html elements are added to the page, attach events to them
         this.setupBoardEvents();
     },
 
+    // CREATES ID COMPRISING COORDINATES FOR EACH CELL
     forEachCell: function (iteratorFunc) {
-        /*
-         Write forEachCell here. You will have to visit
-         each cell on the board, call the "iteratorFunc" function,
-         and pass into func, the cell and the cell's x & y
-         coordinates. For example: iteratorFunc(cell, x, y)
-         */
-        var cellElements = document.getElementsByTagName('td');
+        const cellElements = document.getElementsByTagName('td');
 
         [].slice.call(cellElements).forEach(function (cellElement) {
-            var idHalves = cellElement.id.split('-');
+            const idHalves = cellElement.id.split('-');
             iteratorFunc(cellElement, parseInt(idHalves[0], 10), parseInt(idHalves[1], 10));
         });
     },
 
     setupBoardEvents: function () {
-        // each board cell has an CSS id in the format of: "x-y"
-        // where x is the x-coordinate and y the y-coordinate
-        // use this fact to loop through all the ids and assign
-        // them "on-click" events that allow a user to click on
-        // cells to setup the initial state of the game
-        // before clicking "Step" or "Auto-Play"
 
-        // clicking on a cell should toggle the cell between "sun" & "full_shade"
-        // for ex: an "sun" cell be colored "blue", a full_shade cell could stay white
-
-        // EXAMPLE FOR ONE CELL
-        // Here is how we would catch a click event on just the 0-0 cell
-        // You need to add the click event on EVERY cell on the board
-
-        var onCellClick = function (e) {
-            // QUESTION TO ASK YOURSELF: What is "this" equal to here?
-
-            // how to set the style of the cell when it's clicked
+        // CHANGES THE CELL COLOR
+        const onCellClick = function (e) {
             sunPlotUtils.toggleStatus(this);
+            plontIt(this);
         };
 
         this.forEachCell(function (cellElement) {
@@ -118,13 +132,14 @@ var gameOfLife = {
 
     },
 
+    // RESETS ALL CELLS TO SHADY
     clearBoard: function () {
-
         this.forEachCell(function (cell) {
             sunPlotUtils.setStatus(cell, 'full_shade');
         });
-
     }
 };
 
-gameOfLife.createAndShowBoard();
+
+// ACTUALLY RENDERS THE SHADY PLOT
+plontPlot.createAndShowBoard();
