@@ -19,6 +19,8 @@ module.exports = db.define('plot', {
             max: 240,
             min: 12,
         }
+    },
+    layout: {
+        type: Sequelize.ARRAY(Sequelize.ARRAY(Sequelize.JSON))
     }
 });
-
