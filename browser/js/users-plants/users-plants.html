@@ -1,0 +1,26 @@
+<section id="myPlants">
+    <h1> {{user.firstName}}'s Plants</h1>
+    <div class="divider"></div>
+    <div class="container">
+        <div class="col s5">
+            <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
+                <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in userPlants" >
+                    <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+                    ng-mouseleave="hover = ''" ng-class="hover">
+                        <md-card-title-text>
+                            <span class="md-headline">
+                                <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+                            </span>
+
+                        </md-card-title-text>
+                            <img ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image">
+                            <img ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9">
+                            <md-card-content>
+                                <p>{{plant.description | limitTo: 50}}...</p>
+                        </md-card-content>
+                    </md-card>
+                </div>
+            </md-content>
+        </div>
+    </div>
+</section>

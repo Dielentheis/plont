@@ -17,6 +17,15 @@ app.factory('PlantFactory', function($http, $log) {
         .catch($log.error);
 	};
 
+    returnObj.addToUser = function (plantId) {
+        //needs to be hooked up on backend
+        return $http.put('api/addplant')
+        .then(function(plant) {
+            //let user know the plant has been added
+        })
+        .catch($log.error);
+    }
+
 	return returnObj;
 });
 
@@ -26,4 +35,6 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, $stateParams, $log) {
 		$scope.plant = plant;
 	})
 	.catch($log.error);
+
+    $scope.addPlant = PlantFactory.addToUser();
 });
