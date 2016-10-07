@@ -19,23 +19,16 @@ var sunPlotUtils = {
         cell.setAttribute('data-status', status);
     },
     toggleStatus: function (cell) {
-        // switch (this.sunPlotUtils.getStatus(cell)) {
-        //     case 'sun':
-        //         this.sunPlotUtils.setStatus(cell, 'partial_shade');
-        //         break;
-        //     case 'partial_shade':
-        //         this.sunPlotUtils.setStatus(cell, 'full_shade');
-        //         break;
-        //     case 'full_shade':
-        //         this.sunPlotUtils.setStatus(cell, 'sun');
-        //         break;
-        // }
-        if (sunPlotUtils.getStatus(cell) === 'sun') {
-            sunPlotUtils.setStatus(cell, 'partial_shade');
-        } else if (sunPlotUtils.getStatus(cell) === 'partial_shade') {
-            sunPlotUtils.setStatus(cell, 'full_shade');
-        } else {
-            sunPlotUtils.setStatus(cell, 'sun');
+        switch (sunPlotUtils.getStatus(cell)) {
+            case 'sun':
+                sunPlotUtils.setStatus(cell, 'partial_shade');
+                break;
+            case 'partial_shade':
+                sunPlotUtils.setStatus(cell, 'full_shade');
+                break;
+            case 'full_shade':
+                sunPlotUtils.setStatus(cell, 'sun');
+                break;
         }
     },
     getCellCoords: function (cell) {
