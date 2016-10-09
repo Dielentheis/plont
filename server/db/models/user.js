@@ -21,7 +21,18 @@ module.exports = db.define('user', {
         type: Sequelize.STRING
     },
     zip: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING(5)
+    },
+    dry: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    wet: {
+        type: Sequelize.INTEGER,
+        defaultValue: 0
+    },
+    weather: {
+        type: Sequelize.ARRAY(Sequelize.STRING)
     },
     password: {
         type: Sequelize.STRING
@@ -48,6 +59,12 @@ module.exports = db.define('user', {
         },
         correctPassword: function (candidatePassword) {
             return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
+        },
+        incrementWet: function() {
+            return this.wet++;
+        },
+        incrementDry: function() {
+            return this.dry++;
         }
     },
     classMethods: {

@@ -11,6 +11,12 @@ nav {
         font-style: italic;
         text-transform:uppercase;
     }
+    .material-icons {
+        color: #b71c1c;
+    }
+    li:focus {
+        outline:0 !important;
+    }
 }
 
 
