@@ -4,6 +4,7 @@ module.exports = router;
 
 router.use('/users', require('./users'));
 router.use('/plants', require('./plants/plants.js'));
+router.use('/weather', require('./weather/index.js'));
 router.use('/plots', require('./plots/plots.js'));
 
 // Make sure this is after all of

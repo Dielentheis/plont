@@ -70,7 +70,6 @@ describe('api/plots', function() {
             .end(function (err, res) {
                 if (err) return done(err);
                 expect(res.body).to.be.instanceof(Array);
-                expect(res.body).to.have.length(1);
                 done();
             });
         });
@@ -89,16 +88,14 @@ describe('api/plots', function() {
         it('POST userid to the plot', function (done) {
             guestAgent
             .post('/api/plots/')
-            .send({
-                userId: 1
-            })
+            .send({height: 20, width:20})
             .expect(200)
             .end(function (err, res) {
-                plot1.setUser(res.body.userId)
+                plot1.setUser(1)
                 .then(function(plot){
-                    console.log('here!');
+                    expect(plot.userId).to.equal(1);
                     done();
-                });
+                })
             });
         });
 
@@ -111,8 +108,8 @@ describe('api/plots', function() {
                 if (err) return done(err);
                 PlotPlants.findAll({where: {plantId: plant1.id}})
                     .then(function(plant){
-                    expect(plant).to.not.be.null;
-                    done();
+                        expect(plant).to.not.be.null;
+                        done();
                 })
                 .catch(done);
             });
