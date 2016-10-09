@@ -10,15 +10,15 @@ var simpleWeather = require("simple-weather")({
     debug: process.env.NODE_ENV === 'development'
 });
 
-//cron schedule to check the weather in each users location each day at 5:30AM
+// cron schedule to check the weather in each users location each day at 5:30AM
 var scheduler = cron.schedule('30 5 * * *', function(){
   console.log('running a task once a day at 5AM');
   findWeather();
 });
 
-//get weather for all users
+// get weather for all users
 // count hot days / rainy days in a row
-//if greater than a decided upon number >> alert && reset count
+// if greater than a decided upon number >> alert && reset count
 var findWeather = function() {
     console.log('hereeee')
     User.findAll({where: {
@@ -46,7 +46,7 @@ var findWeather = function() {
     });
 };
 
-//starts with api/weather
+// starts with api/weather
 router.get('/:id', function(req, res, next){
     User.findById(req.params.id)
     .then(function(user){
