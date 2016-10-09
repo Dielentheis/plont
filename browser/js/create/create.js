@@ -34,7 +34,7 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
             $scope.largePlants = largePlants.sort(sortByName);
         })
         .catch($log.error);
-    }
+    };
 
     $scope.totalPlantArea = 0;
 
@@ -53,19 +53,19 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         $scope.area = (((+hf * 12) + (+hi)) * ((+wf * 12) + (+wi)));
         createPlantOptions();
         $scope.switch = true;
-    }
+    };
 
     $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
-    }
+    };
 
     // below is not yet functioning:
     $scope.afterSelectItem = function (item) {
         $scope.totalPlantArea += (item.height * item.width);
-    }
+    };
     $scope.afterRemoveItem = function(item) {
-        $scope.totalPlantArea += (item.height * item.width)
-    }
+        $scope.totalPlantArea += (item.height * item.width);
+    };
     $scope.plantsDontFit = ($scope.plantArea >= $scope.area);
 
 });
@@ -79,24 +79,24 @@ app.factory('CreatePlotFactory', function () {
     };
 
     returnObj.createPlot = function (hf, hi, wf, wi){
-        let height = (+hf * 12) + (+hi);
-        let width = (+wf * 12) + (+wi);
-        let plot = [];
+        let height = (+hf * 12) + (+hi),
+            width = (+wf * 12) + (+wi),
+            plot = [];
         for (var i = 0; i < height; i++) {
             let row = [];
             for (var j = 0; j < width; j++) {
                 let cell = new returnObj.Cell();
-                row.push(cell)
+                row.push(cell);
             }
             plot.push(row);
         }
         returnObj.plot = plot;
-    }
+    };
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
-        console.log(returnObj.usersPlants);
-    }
+        // console.log(returnObj.usersPlants);
+    };
 
     // returnObj.renderPlot = function (plotData) {
     //     //send plot data to backend

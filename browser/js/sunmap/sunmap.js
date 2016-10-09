@@ -1,3 +1,10 @@
+app.config(function ($stateProvider) {
+    $stateProvider.state('sunmap', {
+        url: '/sunmap',
+        templateUrl: 'js/sunmap/sunmap.html'
+    });
+});
+
 
 const plotWidthInches = 12,
       plotHeightInches = 12,
