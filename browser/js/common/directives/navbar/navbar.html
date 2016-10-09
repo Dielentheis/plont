@@ -8,6 +8,9 @@
                 </li>
                 <li ng-show="!user"><a ui-sref="login">Login</a></li>
                 <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+
+                <li ng-show="showAlert && user"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
+
                 <li ng-hide="!user" ng-click="logout()"><a>Logout</a></li>
             </ul>
         </div>

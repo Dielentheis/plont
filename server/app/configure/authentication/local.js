@@ -1,7 +1,7 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var apiKey = require('../../../../apis.js').zip;
+var zipApiKey = require('../../../../apis.js').zip;
 var http = require('http');
 var request = require('request-promise');
 
@@ -55,7 +55,7 @@ module.exports = function (app, db) {
     });
 
     var findFrostDates = function(userObj, zip) {
-        var findLatAndLongUrl = 'http://www.zipcodeapi.com/rest/' + apiKey + '/info.json/' + zip + '/degrees';
+        var findLatAndLongUrl = 'http://www.zipcodeapi.com/rest/' + zipApiKey + '/info.json/' + zip + '/degrees';
 
         return request(findLatAndLongUrl)
         .then(function(zipInfo) {
@@ -104,7 +104,7 @@ module.exports = function (app, db) {
                     });
                 });
             })
-            .catch(next); 
+            .catch(next);
         });
 
     });

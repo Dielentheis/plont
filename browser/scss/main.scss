@@ -38,8 +38,20 @@ hr {
   overflow-x: scroll;
 }
 
-.layout-fill {
-  opacity: 0.8;
+.md-cancel-button {
+  display: none;
+}
+// for post-presentation styling
+// .layout-fill {
+// }
+
+.plot-header {
+  display: flex;
+  flex-direction: column;
+}
+
+md-dialog .md-dialog-content {
+  max-width: 450px;
 }
 
 
@@ -49,5 +61,6 @@ hr {
 @import 'login/main';
 @import 'navbar/main';
 @import 'signup/main';
+@import 'create/main';
 @import 'plants/main';
 @import 'plant/main';
