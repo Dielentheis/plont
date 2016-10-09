@@ -61,7 +61,6 @@ module.exports = function (app, db) {
         .then(function(zipInfo) {
             zipInfo = JSON.parse(zipInfo);
             console.log("\n\n\n\nzipinfo", zipInfo, "\n\n\n\n\n", zipInfo["lat"], zipInfo.lng);
-
             return request('http://farmsense-prod.apigee.net/v1/frostdates/stations/?lat=' + zipInfo["lat"] + '&lon=' + zipInfo["lng"])
         })
         .then(function(stations) {

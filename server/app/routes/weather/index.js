@@ -53,7 +53,8 @@ router.get('/:id', function(req, res, next){
         res.send({
             wet: user.wet,
             dry: user.dry,
-            weather: user.weather});
+            weather: user.weather
+        });
     });
 });
 

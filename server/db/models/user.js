@@ -59,12 +59,6 @@ module.exports = db.define('user', {
         },
         correctPassword: function (candidatePassword) {
             return this.Model.encryptPassword(candidatePassword, this.salt) === this.password;
-        },
-        incrementWet: function() {
-            return this.wet++;
-        },
-        incrementDry: function() {
-            return this.dry++;
         }
     },
     classMethods: {

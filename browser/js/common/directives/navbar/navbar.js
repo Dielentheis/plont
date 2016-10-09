@@ -1,4 +1,4 @@
-app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, NavFactory, $mdDialog) {
+app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $state, NavFactory, $mdDialog) {
 
     return {
         restrict: 'E',
@@ -41,31 +41,31 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
             var toggleAlert = function() {
                 AuthService.getLoggedInUser()
                 .then(function(user){
-                    console.log('hereee', user)
                     scope.userId = user.id;
                     NavFactory.getWeather(scope.userId)
                     .then(function(weather){
-                        console.log('hereee', weather)
                         if(weather.wet > 5){
-                            scope.weatherAlert = "You might want to skip out on watering your plants over the next few days. Nature is taking care of  it!";
+                            scope.weatherAlert = "You might want to skip out on watering your plants over the next few days. Nature is taking care of it! ";
                             if (scope.weather !== []) {
                                 scope.weather = "The forecast for today is " + Math.floor(weather.weather[1]) + " degrees and " + weather.weather[0].toLowerCase()+ ".";
                             }
                             scope.showAlert = true;
                         } else if (weather.dry>5) {
                             if (scope.weather !== []) {
-                            scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there."
+                            scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there. "
                             }
                             scope.showAlert = true;
                         }
                     })
+                    .catch($log.error);
                 })
-            }
+                .catch($log.error);
+            };
 
             scope.showConfirm = function(ev) {
                 var confirm = $mdDialog.confirm()
                     .title('Weather alert')
-                    .htmlContent(scope.weatherAlert + "\n" + scope.weather)
+                    .htmlContent(scope.weatherAlert + scope.weather)
                     .ariaLabel('Alert Dialog for Weather')
                     .targetEvent(ev)
                     .clickOutsideToClose(true)
@@ -85,8 +85,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $state, 
             $rootScope.$on(AUTH_EVENTS.sessionTimeout, removeUser);
 
         }
-
     };
-
 });
 
