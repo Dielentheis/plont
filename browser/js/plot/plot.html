@@ -1,3 +1,17 @@
 <section id="plot">
-{{plot}}
+<div>
+	<ngc-table
+        data="data" center-column-widths="'15px'"
+        row-heights="'15px'"
+        left-column-widths="'15px'" right-column-widths="'15px'"
+        right-column-number="0" left-column-number="0"
+        footer-row-number="0" header-row-number="0">
+        <ngc-range top="0" right="data[0].length" left="0" bottom="data.length" style-fn="colorFill"></ngc-range>
+	</ngc-table>
+</div>
 </section>
+
+<!-- 
+<div>
+    <div ngc-table data="data"></div>
+</div> -->

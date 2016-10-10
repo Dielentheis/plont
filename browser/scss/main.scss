@@ -54,6 +54,17 @@ md-dialog .md-dialog-content {
   max-width: 450px;
 }
 
+table.ngc {
+    border-collapse: collapse;
+    border-spacing: 0;
+    table-layout: fixed;
+    max-width: 70%;
+}
+
+div.ngc.scroll-wrapper {
+    display: inline-table;
+}
+
 
 @import 'home/main';
 @import 'about/main';

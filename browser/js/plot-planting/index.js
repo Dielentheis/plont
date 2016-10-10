@@ -104,9 +104,10 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
             for (var i = row; i < row + plantHeight; i++) {
                 for (var j = col; j < col + plantWidth; j++) {
                     plot[i][j].taken = true;
+                    plot[i][j].plantId = plant.id;
                 }
             }
-            plot[row][col].marker = plant.id;
+            //plot[row][col].marker = plant.id;
         }
 
         function fillInExtraSpace() {
