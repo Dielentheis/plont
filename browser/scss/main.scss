@@ -54,6 +54,10 @@ md-dialog .md-dialog-content {
   max-width: 450px;
 }
 
+.layout-column>.flex {
+    min-height: 70px;
+}
+
 
 @import 'home/main';
 @import 'about/main';
