@@ -49,7 +49,7 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         if ( hi === undefined) hi = 0;
         if ( wf === undefined) wf = 0;
         if ( wi === undefined) wi = 0;
-        CreatePlotFactory.createPlot(hf, hi, wf, wi);
+        CreatePlotFactory.setHeightAndWidth(hf, hi, wf, wi);
         $scope.area = (((+hf * 12) + (+hi)) * ((+wf * 12) + (+wi)));
         createPlantOptions();
         $scope.switch = true;
@@ -75,27 +75,30 @@ app.factory('CreatePlotFactory', function () {
 
     returnObj.Cell = function () {
         this.sun = 0;
+        this.sunniness = 'full_shade';
         this.taken = false;
     };
 
-    returnObj.createPlot = function (hf, hi, wf, wi){
-        let height = (+hf * 12) + (+hi),
-            width = (+wf * 12) + (+wi),
-            plot = [];
+    returnObj.setHeightAndWidth = function(hf, hi, wf, wi) {
+        returnObj.height = (+hf * 12) + (+hi);
+        returnObj.width = (+wf * 12) + (+wi);
+    }
+
+    returnObj.createPlot = function (height, width){
+        const plot = [];
         for (var i = 0; i < height; i++) {
-            let row = [];
+            const row = [];
             for (var j = 0; j < width; j++) {
-                let cell = new returnObj.Cell();
-                row.push(cell);
+                row.push(new returnObj.Cell());
             }
             plot.push(row);
         }
         returnObj.plot = plot;
+        return plot;
     };
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
-        // console.log(returnObj.usersPlants);
     };
 
     // returnObj.renderPlot = function (plotData) {
