@@ -1,5 +1,5 @@
 app.service('PlotService', function($http, AuthService, $log, $q, $state) {
-    var associatePlants = function(plot, plants) {
+    function associatePlants(plot, plants) {
         var promises = [];
         plants.forEach(function(plant) {
             promises.push($http.put('/' + plot.id + '/plants/' + plant.id));
@@ -9,7 +9,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
             return;
         })
         .catch($log.error);
-    };
+    }
 
     this.makesThenStoresThenRedirects = function(plot, plants) {
         return AuthService.getLoggedInUser()
@@ -19,10 +19,10 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
             return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates})
         })
         .then(function(savedPlot) {
-            return associatePlants(savedPlot, plants)
-        })
-        .then(function() {
-            $state.go('plot({id: savedPlot.id})');
+            associatePlants(savedPlot, plants)
+            .then(function() {
+                $state.go('plot({id: savedPlot.id})')
+            })
         })
         .catch($log.error);
     };
