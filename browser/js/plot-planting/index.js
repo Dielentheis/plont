@@ -6,7 +6,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         });
         $q.all(promises)
         .then(function() {
-            return;
+            return
         })
         .catch($log.error);
     }
