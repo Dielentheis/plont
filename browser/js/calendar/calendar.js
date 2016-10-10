@@ -6,7 +6,7 @@ app.config(function($stateProvider) {
     });
 });
 
-app.factory('CalendarFactory', function($http, AuthService, PlotsFactory){
+app.factory('CalendarFactory', function($http, AuthService){
     var CalendarFactory = {};
 
     // get user
