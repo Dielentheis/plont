@@ -30,6 +30,7 @@ h1, h2 {
     text-transform:uppercase;
 }
 
+
 hr {
   border: 0;
   border-top: 1px dotted #000000;
@@ -56,6 +57,21 @@ md-dialog .md-dialog-content {
 
 .layout-column>.flex {
     min-height: 70px;
+}
+
+md-card md-card-title {
+  display: inline;
+  padding: 0;
+  button .btn-flat {
+    text-align: left;
+    margin: auto;
+  }
+}
+
+#user-plots {
+  .btn-flat {
+    margin: 0 auto 0 auto;
+  }
 }
 
 

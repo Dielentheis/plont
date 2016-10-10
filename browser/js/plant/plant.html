@@ -1,20 +1,19 @@
 <section id="plant" ng-controller="PlantCtrl">
 
-    <div class="row">
-        <div class="col s6">
-            <h4>{{plant.name}}</h4>
-        </div>
-        <div class="col s6">
-            <a class="waves-effect btn-flat">Add to My Plants</a>
-            <a class="waves-effect btn-flat">View recipes</a>
-        </div>
-    </div>
 
     <div class="md-padding" layout-align="center">
         <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
         ng-mouseleave="hover = ''" ng-class="hover">
             <md-card-content>
+
+                <md-card-title>
+                    <h4>Broccoli</h4>
+                    <button class="btn-flat"><i class="material-icons">add_circle</i>Add to my plants</button><br><br>
+                </md-card-title>
+
+                <hr>
                 <h5>About this plant</h5>
+
                 <p>{{plant.description}}</p>
                 <p>{{plant.notes}}</p>
 
@@ -27,11 +26,15 @@
 
                 <p>{{plant.feeding}}</p>
 
-                <h5>Diseases</h5>
-                <p ng-hide="plant.diseases === []">{{plant.diseases}}</p>
+                <div class="diseases" ng-hide="plant.diseases == []">
+                    <h5>Diseases</h5>
+                    <p>{{plant.diseases}}</p>
+                </div>
 
-                <h5>Plant pests</h5>
-                <p ng-hide="plant.pests === []" ng-repeat="pest in plant.pests">{{pest}}</p>
+                <div class="pests" ng-hide="plant.pests == []">
+                    <h5>Plant pests</h5>
+                    <p>{{pests}}</p>
+                </div>
             </md-card-content>
         </md-card>
     </div>

@@ -4,6 +4,9 @@ var Sequelize = require('sequelize');
 var db = require('../_db');
 
 module.exports = db.define('plot', {
+    name: {
+        type: Sequelize.TEXT
+    },
     width: {
         type: Sequelize.INTEGER,
         allowNull: false,
