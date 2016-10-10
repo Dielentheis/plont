@@ -1,0 +1,34 @@
+<section id="plots">
+    <div class="container">
+        <div class="row">
+            <div class="col l6 offset-l3">
+                <h1 class="title">Create Your Plot</h1>
+            </div>
+        </div>
+        <div class="divider">
+        </div>
+        <div class="row">
+            <div class="col l6 offset-l3">
+                <h2 class="size">How sunny is your plot?</h2>
+            </div>
+        </div>
+        <div>
+            <table id='board'>
+                <tr ng-repeat="rows in board">
+                    <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'></td>
+                </tr>
+            </table>
+        </div>
+        <div id='control_panel'>
+            <button id='clear_btn' class='btn btn-info'>Clear</button>
+            <button class='btn btn-info' ng-click="changesTheGridSizeBackFromHalfFeetToInches()"><a ui-sref='plantlayout'>Next</a></button>
+        </div>
+        <div='legend'>
+            <table>
+                <tr><td class='sun'></td><td>sunny</td></tr>
+                <tr><td class='partial_shade'></td><td>semi-shady</td></tr>
+                <tr><td class='full_shade'></td><td>shady</td></tr>
+            </table>
+        </div='legend'>
+    </div>
+</section>
