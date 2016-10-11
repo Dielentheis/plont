@@ -6,20 +6,19 @@ app.config(function($stateProvider) {
     });
 });
 
-app.controller('SignupCtrl', function(SignupFactory, $log, $scope) {
-    $scope.createUser = SignupFactory.createUser;
-});
+app.controller('SignupCtrl', function(AuthService, $log, $scope, $state) {
 
-app.factory('SignupFactory', function($state, $log, AuthService) {
-    var returnObj = {};
+    $scope.error = null;
 
-    returnObj.createUser = function(userData) {
-        AuthService.signup(userData)
+    $scope.createUser = function(user) {
+        $scope.error = null;
+
+        AuthService.signup(user)
         .then(function() {
             $state.go('user-plots');
         })
-        .catch($log.error)
+        .catch(function(){
+            $scope.error = "User with that email already exists or zip code not found. Please try again.";
+        });
     };
-
-    return returnObj;
 });
