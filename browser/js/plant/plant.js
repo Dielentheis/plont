@@ -6,7 +6,7 @@ app.config(function($stateProvider) {
     });
 });
 
-app.factory('PlantFactory', function($http, $log) {
+app.factory('PlantFactory', function($http, $log, $state) {
 	var returnObj = {};
 
 	returnObj.fetchOne = function(id) {

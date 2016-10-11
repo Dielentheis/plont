@@ -3,6 +3,7 @@
 var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var Plant = db.model('plant'); // eslint-disable-line
+var User = db.model('user');
 
 // get all plants
 router.get('/', function(req, res, next) {
@@ -52,6 +53,15 @@ router.get('/:id', function(req, res, next) {
 // add plant(s) to user
 router.put('/:userId', function(req, res, next) {
 // get an array of plant objects, promise.all for association?
+	User.findById(req.params.userId)
+	.then(function(user) {
+		console.log("adding Plants:", req.body);
+		user.addPlants(req.body);
+	})
+	.then(function(data) {
+		console.log("what is this data", data);
+	})
+	.catch(next);
 })
 
 // get users plant(s)
