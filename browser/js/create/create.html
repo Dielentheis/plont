@@ -67,11 +67,11 @@
             <p ng-show="plantsDontFit">You have selected too many plants.</p>
         </div>
         <div class="row done">
-            <div class="col l6 offset-l6" ng-show="largePlants.length">
+            <div class="col l6 offset-l6">
                 <div class="col l6">
                 <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-sref="sunmap"> Done </button>
-                <p> The following plants require more space then your plot allows: </p>
-                <ul>
+                <p ng-show="largePlants.length"> The following plants require more space then your plot allows: </p>
+                <ul ng-show="largePlants.length">
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
                 </ul>
                 </div>

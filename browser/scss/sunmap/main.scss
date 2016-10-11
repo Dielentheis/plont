@@ -1,20 +1,18 @@
-// body {
-//   padding: 10px
-// }
-
 h1, h2 {
   text-align: center;
 }
 
 #board{
   margin: 0 auto;
+  display: table-inline;
 }
 
 #board td {
-  border: 1px solid #ddd;
-  width: 5%;
-  height: 5%;
+  border: 1px solid #e3e3e3;
+  padding: 30px 10px;
 }
+
+
 
 #board td:focus {
   outline: none;

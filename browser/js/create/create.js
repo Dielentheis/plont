@@ -74,8 +74,8 @@ app.factory('CreatePlotFactory', function () {
     var returnObj = {};
 
     returnObj.Cell = function () {
-        this.sun = 0;
-        this.sunniness = 'full_shade';
+        this.sun = 2;
+        this.sunniness = 'sun';
         this.taken = false;
     };
 
