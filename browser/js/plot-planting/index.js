@@ -3,43 +3,46 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
 
     function associatePlants(plot, plants) {
         var promises = [];
+        console.log("associate plants", plot);
         plants.forEach(function(plant) {
-            promises.push($http.put('/' + plot.id + '/plants/' + plant.id));
+            promises.push($http.put('/api/plots/' + plot.id + '/plants/' + plant.id));
         });
-        $q.all(promises)
-        .then(function() {
-            return
-        })
+        return $q.all(promises)
         .catch($log.error);
     }
 
     this.makesThenStoresThenRedirects = function(plot, plants) {
+        console.log('BEFORE everything', plot[0][0])
         return AuthService.getLoggedInUser()
         .then(function(user) {
-            plot = this.makePlot(plot, plants);
-            var importantDates = this.findImportantDates(user.springFrostDate, plants);
+            console.log("PLOT BEFORE PLANTING", plot[0][0]);
+            plot = makePlot(plot, plants);
+            console.log("PLOT BEFORE POST", plot[0][0]);
+            var importantDates = findImportantDates(user.springFrostDate, plants);
             return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates})
         })
         .then(function(savedPlot) {
-            associatePlants(savedPlot, plants)
+            associatePlants(savedPlot.data, plants)
             .then(function() {
-                $state.go('plot({id: savedPlot.id})')
+                $state.go('plot', {id: savedPlot.data.id});
             })
         })
         .catch($log.error);
     };
 
-    this.makePlot = function(plot, plants) {
+    function makePlot(plot, plants) {
         var colorKeys = {};
         var plotArea = plot.length * plot[0].length;
         var numPlants = plants.length;
         var approxPlantArea = plotArea / numPlants;
 
-        assignNumPlantsToPlant(approxPlantArea, plants);
+        plants = assignNumPlantsToPlant(approxPlantArea, plants);
+        console.log(plants);
         assignColorKeys(plants);
         plants.sort(orderByBiggest);
         plants.forEach(function(plant) {
             for (var i = 0; i < plant.numToPlant; i++) {
+                console.log(i, plant);
                 findSpaceAndPlant(plant);
             }
         });
@@ -77,6 +80,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                 for (var j = 0; j < rowLength; j++) { // column
                     if (!plot[i][j].taken) {
                         if (isEnoughSpaceAndSun(i, j, width, height, plant.sun)) {
+                            console.log("planting", plant.id, "at", i, j);
                             placePlant(i, j, width, height, plant);
                             return;
                         }
@@ -114,11 +118,11 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         function placePlant(row, col, plantWidth, plantHeight, plant) {
             for (var i = row; i < row + plantHeight; i++) {
                 for (var j = col; j < col + plantWidth; j++) {
+                    console.log("planting", plant.id, "cell", i, j);
                     plot[i][j].taken = true;
                     plot[i][j].plantId = plant.id;
                 }
             }
-            //plot[row][col].marker = plant.id;
         }
 
         function fillInExtraSpace() {
@@ -142,32 +146,36 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                 }
             }
         }
-    };
+    }
 
-    this.findImportantDates = function(frostDate, plants) {
-        // array of objects with event (string) and date (Date object) keys
+    function findImportantDates(frostDate, plants) {
         var importantDates = [];
 
-        plants.forEach(function(plant) {
-            var plantEvent = {};
-            plantEvent.event = "Plant the " + plant.name;
-            plantEvent.date = plant.springFrostDate;
-            if (plant.howFarBefore) {
-                plantEvent.date.setTime(plantEvent.date.getTime() - plant.howFarBefore * 86400000);
-            }
-            else if (plant.howFarAfter) {
-                plantEvent.date.setTime(plantEvent.date.getTime() + plant.howFarAfter * 86400000);
-            }
-            var harvestBeginEvent = {};
-            harvestBeginEvent.event = "Begin " + plant.name.toLowercase() + " harvest";
-            harvestBeginEvent.date = plantEvent.date;
-            harvestBeginEvent.date.setTime(harvestBeginEvent.date.getTime() + plant.firstHarvest * 86400000);
-            var harvestEndEvent = {};
-            harvestEndEvent.event = "End " + plant.name.toLowercase() + " harvest";
-            harvestEndEvent.date = harvestBeginEvent.date;
-            harvestEndEvent.date = harvestEndEvent.date.setTime(harvestEndEvent.date.getTime() + plant.harvestPeriod * 86400000);
-            importantDates.push(plantEvent, harvestBeginEvent, harvestEndEvent);
+        AuthService.getLoggedInUser()
+        .then(function(user) {
+            plants.forEach(function(plant) {
+                var plantEvent = {};
+                plantEvent.event = "Plant the " + plant.name;
+                plantEvent.date = new Date(user.springFrostDate);
+                console.log("plant", plantEvent);
+                if (plant.howFarBefore) {
+                    plantEvent.date.setTime(plantEvent.date.getTime() - plant.howFarBefore * 86400000);
+                }
+                else if (plant.howFarAfter) {
+                    plantEvent.date.setTime(plantEvent.date.getTime() + plant.howFarAfter * 86400000);
+                }
+                var harvestBeginEvent = {};
+                harvestBeginEvent.event = "Begin " + plant.name.toLowerCase() + " harvest";
+                harvestBeginEvent.date = plantEvent.date;
+                harvestBeginEvent.date.setTime(harvestBeginEvent.date.getTime() + plant.firstHarvest * 86400000);
+                var harvestEndEvent = {};
+                harvestEndEvent.event = "End " + plant.name.toLowerCase() + " harvest";
+                harvestEndEvent.date = harvestBeginEvent.date;
+                harvestEndEvent.date = harvestEndEvent.date.setTime(harvestEndEvent.date.getTime() + plant.harvestPeriod * 86400000);
+                importantDates.push(plantEvent, harvestBeginEvent, harvestEndEvent);
+            });
+            return importantDates;
         });
-        return importantDates;
-    };
+        // array of objects with event (string) and date (Date object) keys
+    }
 });

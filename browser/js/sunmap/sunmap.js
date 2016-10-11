@@ -6,7 +6,7 @@ app.config(function($stateProvider) {
     });
 });
 
-app.controller('SunController', function($scope, CreatePlotFactory) {
+app.controller('SunController', function($scope, CreatePlotFactory, PlotService) {
 
     const height = CreatePlotFactory.height,
         width = CreatePlotFactory.width,
@@ -23,7 +23,6 @@ app.controller('SunController', function($scope, CreatePlotFactory) {
     $scope.board = CreatePlotFactory.createPlot(halfFeetHeight, halfFeetWidth);
 
     $scope.sunToggle = function(sunniness) {
-        console.log("I toggled!!");
         switch (sunniness) {
             case 'sun':
                 this.cells.sunniness = 'partial_shade';
@@ -39,24 +38,36 @@ app.controller('SunController', function($scope, CreatePlotFactory) {
     };
 
     $scope.changesTheGridSizeBackFromHalfFeetToInches = function() {
-        const inchesBoard = [];
-        $scope.board.forEach((row, index) => {
-            inchesBoard.push([]);
-            row.forEach(cellObject => {
-                for (let i = 6; i > 0; --i) {
-                    inchesBoard[inchesBoard.length - 1].push(cellObject); // pushes cellObject into current Row
-                }
-            });
-            inchesBoard[index].slice(0, width);  // slice row to original length
-            if (inchesBoard.length < 12) {
-                for (let i = 5; i > 0; --i) {  // pushes 5 copies of the row
-                    inchesBoard.push([...inchesBoard[index]]);
+        const inchesBoard = mag($scope.board, 6);
+        // const inchesBoard = [];
+        // $scope.board.forEach((row, index) => {
+        //     inchesBoard.push([]);
+        //     row.forEach(cellObject => {
+        //         for (let i = 6; i > 0; --i) {
+        //             inchesBoard[inchesBoard.length - 1].push(cellObject); // pushes cellObject into current Row
+        //         }
+        //     });
+        //     inchesBoard[index].slice(0, width);  // slice row to original length
+        //     if (inchesBoard.length < 12) {
+        //         for (let i = 5; i > 0; --i) {  // pushes 5 copies of the row
+        //             inchesBoard.push([...inchesBoard[index]]);
+        //         }
+        //     }
+        // });
+        function mag(arr, scale) {
+            var res = [];
+            if(!arr.length)
+                return arr;
+            for (var i = 0; i < arr.length; i++) {
+                var temp = mag(arr[i], scale);
+                for (var k = 0; k < scale; k++) {
+                    res.push(temp.slice ? temp.slice(0) : temp);
                 }
             }
-        });
+            return res;
+        }
 
-        inchesBoard.length = height;
-        console.log("The Final Table: ", inchesBoard);
-        return inchesBoard;
+        console.log("inchesboard", inchesBoard[0][0]);
+        PlotService.makesThenStoresThenRedirects(inchesBoard, CreatePlotFactory.usersPlants);
     };
 });
