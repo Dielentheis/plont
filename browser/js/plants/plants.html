@@ -2,8 +2,8 @@
     <div class="container">
         <div class="col s5">
             <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
-                <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
-                    <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+                <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
+                    <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
                     ng-mouseleave="hover = ''" ng-class="hover">
                         <md-card-title-text>
                             <span class="md-headline">
@@ -11,8 +11,8 @@
                             </span>
 
                         </md-card-title-text>
-                            <img ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image">
-                            <img ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9">
+                            <img ui-sref="plant({id: plant.id})" ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image">
+                            <img ui-sref="plant({id: plant.id})" ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9">
                             <md-card-content>
                                 <p>{{plant.description | limitTo:160}}...</p>
                         </md-card-content>

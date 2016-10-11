@@ -34,6 +34,19 @@ router.post('/', function(req, res, next) {
 	.catch(next);
 });
 
+//get plot plants
+router.get('/:plotId/plants/', function(req, res, next) {
+	Plot.findAll()
+	.then(function(plots) {
+		return plots;
+	})
+	.then(function() {
+		res.sendStatus(200)
+	})
+	.catch(next);
+});
+
+
 // updating plot by adding a plant
 router.put('/:plotId/plants/:plantId', function(req, res, next) {
 	Plot.findById(req.params.plotId)

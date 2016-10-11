@@ -16,6 +16,7 @@
     "angular-aria": "^1.5.8",
     "angular-filter": "^0.5.11",
     "angular-material": "^1.1.1",
+    "angular-material-calendar": "^0.2.14",
     "angular-mocks": "^1.4.0",
     "angular-multiple-select": "^1.1.2",
     "angular-sanitize": "^1.5.8",
