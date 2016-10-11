@@ -406,7 +406,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Clubroot",
         pests: ["Cabbage Root Maggot"],
-        images: "/images/plants/radish.jpg"
+        image: "/images/plants/radish.jpg"
     },
     {
         name: "Celery",
@@ -427,7 +427,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Fusarium Wilt, Mosaic Virus",
         pests: ["Cutworms", "Aphids", "Whiteflies"],
-        images: "/images/plants/celery.jpg"
+        image: "/images/plants/celery.jpg"
     },
     {
         name: "Chives",
@@ -448,7 +448,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Bulb Rots, White Rot, Rust",
         pests: ["Onion fly"],
-        images: "/images/plants/chives.jpg"
+        image: "/images/plants/chives.jpg"
     },
     {
         name: "Cilantro",
@@ -469,7 +469,7 @@ var seedPlants = function() {
         feeding: "Fertilize once or twice during the growing season with nitrogen fertilizer. Apply ¼ cup of fertilizer per 25 feet of row. Be sure not to over-fertilizer the plants.",
         diseases: "Fungal wilt, Mildew",
         pests: ["Aphids"],
-        images: "/images/plants/cilantro.jpg"
+        image: "/images/plants/cilantro.jpg"
     },
     {
         name: "Mint",
@@ -490,7 +490,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Powdery mildew, Rust, Leaf spot",
         pests: [],
-        images: "/images/plants/mint.jpg"
+        image: "/images/plants/mint.jpg"
     },
     {
         name: "Tomatoes",
@@ -511,7 +511,7 @@ var seedPlants = function() {
         feeding: "Water seedlings with a high-phosphate fertilizer solution for best results.",
         diseases: "Learn the common tomato diseases in your area and try to select the most resistant varieties. For prevention, use young, healthy transplants, avoid overhead irrigation, rotate crops, and do not handle tobacco or smoke before handling plants. Fungicides can reduce certain diseases when properly selected and applied. Prevent blossom end rot by providing abundant soil calcium and an even supply of soil moisture.",
         pests: ["Flea Beetles", "Tomato hornworms"],
-        images: "/images/plants/tomato.jpg"
+        image: "/images/plants/tomato.jpg"
     },
     {
         name: "Parsley",
@@ -574,7 +574,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Many rusts, including white rust, downy mildew, powdery mildew",
         pests: [],
-        images: "/images/plants/tarragon.jpg"
+        image: "/images/plants/tarragon.jpg"
     },
     {
         name: "Dill",
@@ -595,7 +595,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Leaf spot and occasionally a few other types of fungal leaf and root diseases",
         pests: [],
-        images: "/images/plants/dill.jpg"
+        image: "/images/plants/dill.jpg"
     },
     {
         name: "Cauliflower",
@@ -616,7 +616,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "Clubroot, black rot",
         pests: ["cabbageworm", "aphids", "harlequin bugs"],
-        images: "/images/plants/cauliflower.jpg"
+        image: "/images/plants/cauliflower.jpg"
     },{
         name: "Beans",
         description: "Pole and bush beans (more commonly called green beans) are a tender vegetable and a great addition to any garden, great eaten fresh off the plant or incorporated into a recipe. Bush beans require less maintenance, so they are easier to grow.",
@@ -636,7 +636,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: "White Mold, mosaic viruses, bean blossoms will drop from the plant if the weather is too hot and too much nitrogen in the soil will prevent pods from setting.",
         pests: ["aphids", "Mexican bean beetles", "Japanese beetles"],
-        images: "/images/plants/bean.jpg"
+        image: "/images/plants/bean.jpg"
     }, {
         name: "Collard Greens",
         description: "Collard Greens are a hardy, cool-season green that are part of the cabbage family. They grow best in the spring and fall and can tolerate all fall frosts.",
@@ -656,7 +656,7 @@ var seedPlants = function() {
         feeding: null,
         diseases: null,
         pests: ["cabbageworms", "flea beetles", "aphids"],
-        images: "/images/plants/collardgreens.jpg"
+        image: "/images/plants/collardgreens.jpg"
     },{
         name: 'Rhubarb',
         description: 'Rhubarb is a perennial vegetable, though it is generally used as a fruit in desserts and jams. You only eat the stalks, which have a rich tart flavor. The leaves of this plant are poisonous, so be sure that they are not ingested. Rhubarb is easy to grow, but needs cool weather to thrive.',
