@@ -3,7 +3,7 @@ var db = require('../../../db/_db.js');
 var User = db.model('user');
 var cron = require('node-cron');
 
-var weatherApiKey = require('../../../../apis.js').weather;
+var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
 var simpleWeather = require("simple-weather")({
     apiKey: weatherApiKey,
     units: "imperial",
