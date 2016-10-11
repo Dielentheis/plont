@@ -1,14 +1,12 @@
 <section id="plant" ng-controller="PlantCtrl">
-
-
     <div class="md-padding" layout-align="center">
         <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
         ng-mouseleave="hover = ''" ng-class="hover">
             <md-card-content>
 
                 <md-card-title>
-                    <h4>Broccoli</h4>
-                    <button class="btn-flat" ng-hide="!user"><i class="material-icons">add_circle</i>Add to my plants</button><br><br>
+                    <h4>{{plant.name}}</h4>
+                    <button class="btn-flat" ng-hide="!user" ng-click="addPlant(plant.id)"><i class="material-icons">add_circle</i>Add to my plants</button><br><br>
                 </md-card-title>
 
                 <hr>
