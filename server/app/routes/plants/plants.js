@@ -49,4 +49,14 @@ router.get('/:id', function(req, res, next) {
 	.catch(next);
 });
 
+// add plant(s) to user
+router.post('/:userid', function(req, res, next) {
+
+})
+
+// get users plant(s)
+router.get('/:userid', function(req, res, next) {
+
+})
+
 module.exports = router;

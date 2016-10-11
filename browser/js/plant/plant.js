@@ -17,11 +17,18 @@ app.factory('PlantFactory', function($http, $log) {
         .catch($log.error);
 	};
 
-    returnObj.addToUser = function (plantId) {
-        //needs to be hooked up on backend
-        return $http.put('api/addplant')
+    returnObj.addToUser = function (userId, plants) {
+        return $http.put('api/plants/' + userId, plants)
         .then(function(plant) {
-            //let user know the plant has been added
+            $state.go('userPlants')
+        })
+        .catch($log.error);
+    }
+
+    returnObj.fetchUserPlants = function(userId) {
+        return $http.get('api/plants' + userId)
+        .then(function(plants) {
+            return plants.data
         })
         .catch($log.error);
     }

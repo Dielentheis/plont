@@ -8,18 +8,22 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('UserPlantController', function ($scope, $log, AuthService) {
+app.controller('UserPlantController', function ($scope, $log, AuthService, PlantFactory) {
     AuthService.getLoggedInUser()
     .then(function (user) {
         if (!user) {
             $scope.loggedIn = false;
-            $scope.user = {};
-            $scope.user.firstName = 'friend';
         } else {
             $scope.loggedIn = true;
             $scope.user = user;
             if (!user.firstName) $scope.user.firstName = 'friend';
         }
+    })
+    .catch($log.error);
+
+    PlantFactory.fetchUsersPlants($scope.user.id)
+    .then(function (plants) {
+        $scope.userPlants = plants;
     })
     .catch($log.error);
 
