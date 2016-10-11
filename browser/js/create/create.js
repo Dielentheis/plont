@@ -63,7 +63,12 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
 
     $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
-        PlantFactory.addToUser($scope.user.id, selectedPlants);
+        let plantIds = []
+        selectedPlants.forEach(function (obj) {
+            plantIds.push(obj.id);
+        })
+        console.log("plant data", plantIds);
+        PlantFactory.addToUser($scope.user.id, plantIds);
     };
 
     // below is not yet functioning:

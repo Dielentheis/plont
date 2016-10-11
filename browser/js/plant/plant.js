@@ -7,7 +7,7 @@ app.config(function($stateProvider) {
 });
 
 
-app.factory('PlantFactory', function($http, $log, $state) {
+app.factory('PlantFactory', function($http, $log) {
 	var returnObj = {};
 
     returnObj.fetchOne = function(id) {
@@ -20,16 +20,24 @@ app.factory('PlantFactory', function($http, $log, $state) {
 
     returnObj.addToUser = function (userId, plants) {
         return $http.put('api/plants/' + userId, plants)
-        .then(function(plant) {
-            $state.go('userPlants')
+        .then(function(data) {
+            return data.status;
         })
         .catch($log.error);
     }
 
     returnObj.fetchUserPlants = function(userId) {
-        return $http.get('api/plants' + userId)
+        return $http.get('api/plants/user/' + userId)
         .then(function(plants) {
             return plants.data
+        })
+        .catch($log.error);
+    }
+
+    returnObj.removePlantFromUser = function(userId, plantId) {
+        return $http.delete('api/plants/user/' + userId + '/plant/' + plantId)
+        .then(function (data) {
+            return data.status
         })
         .catch($log.error);
     }
@@ -37,7 +45,7 @@ app.factory('PlantFactory', function($http, $log, $state) {
 	return returnObj;
 });
 
-app.controller('PlantCtrl', function(PlantFactory, $scope, AuthServices, $stateParams, $log) {
+app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $stateParams, $log, $state) {
 
     AuthService.getLoggedInUser()
     .then(function (user) {
@@ -51,7 +59,16 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, AuthServices, $stateP
 	})
 	.catch($log.error);
 
-    $scope.addPlant = PlantFactory.addToUser();
+    $scope.addPlant = function (plantId) {
+        let plantArr = [];
+        plantArr.push(plantId)
+        PlantFactory.addToUser($scope.user.id, plantArr)
+        .then(function(status) {
+            if (status === 200) {
+                $state.go('userPlants')
+            }
+        })
+        .catch($log.error);
+    }
 
-    return returnObj;
 });

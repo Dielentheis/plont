@@ -5,8 +5,8 @@
             <md-card-content>
 
                 <md-card-title>
-                    <h4>Broccoli</h4>
-                    <button class="btn-flat" ng-hide="!user"><i class="material-icons" ng-click="addPlant(user.id, plant.id)">add_circle</i>Add to my plants</button><br><br>
+                    <h4>{{plant.name}}</h4>
+                    <button class="btn-flat" ng-hide="!user" ng-click="addPlant(plant.id)"><i class="material-icons">add_circle</i>Add to my plants</button><br><br>
                 </md-card-title>
 
                 <hr>

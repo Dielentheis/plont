@@ -8,7 +8,7 @@ app.config(function ($stateProvider) {
 
 });
 
-app.controller('UserPlantController', function ($scope, $log, AuthService, PlantFactory) {
+app.controller('UserPlantController', function ($scope, $log, $state,AuthService, PlantFactory) {
     AuthService.getLoggedInUser()
     .then(function (user) {
         if (!user) {
@@ -18,13 +18,23 @@ app.controller('UserPlantController', function ($scope, $log, AuthService, Plant
             $scope.user = user;
             if (!user.firstName) $scope.user.firstName = 'friend';
         }
+        PlantFactory.fetchUserPlants($scope.user.id)
+        .then(function (plants) {
+            $scope.userPlants = plants;
+        })
+        .catch($log.error);
     })
     .catch($log.error);
 
-    PlantFactory.fetchUsersPlants($scope.user.id)
-    .then(function (plants) {
-        $scope.userPlants = plants;
-    })
-    .catch($log.error);
+    $scope.removePlant = function (userId, plantId) {
+        PlantFactory.removePlantFromUser(userId, plantId)
+        .then(function (status) {
+            return PlantFactory.fetchUserPlants(userId);
+        })
+        .then(function (plants) {
+            $scope.userPlants = plants;
+        })
+        .catch($log.error);
+    }
 
 });

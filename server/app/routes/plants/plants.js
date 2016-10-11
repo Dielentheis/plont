@@ -52,21 +52,42 @@ router.get('/:id', function(req, res, next) {
 
 // add plant(s) to user
 router.put('/:userId', function(req, res, next) {
-// get an array of plant objects, promise.all for association?
 	User.findById(req.params.userId)
 	.then(function(user) {
-		console.log("adding Plants:", req.body);
-		user.addPlants(req.body);
+		return user.addPlants(req.body);
 	})
 	.then(function(data) {
-		console.log("what is this data", data);
+		if (data) {
+			res.sendStatus(200);
+		} else {
+			res.sendStatus(400);
+		}
 	})
 	.catch(next);
 })
 
 // get users plant(s)
-router.get('/:userId', function(req, res, next) {
-// grab all plants associated with user
+router.get('/user/:id', function(req, res, next) {
+	User.findById(req.params.id)
+	.then(function(user) {
+		return user.getPlants();
+	})
+	.then(function(data) {
+		res.send(data);
+	})
+	.catch(next);
+})
+
+// removes a plant from user
+router.delete('/user/:id/plant/:plantId', function(req, res, next) {
+	User.findById(req.params.id)
+	.then(function(user) {
+		return user.removePlant(req.params.plantId)
+	})
+	.then(function() {
+		res.sendStatus(200);
+	})
+	.catch(next);
 })
 
 module.exports = router;

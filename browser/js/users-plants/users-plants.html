@@ -4,12 +4,13 @@
     <div class="container">
         <div class="col s5">
             <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
-                <div flex-xs="100" layout-padding flex-gt-xs='50' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in userPlants" >
-                    <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+                <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in userPlants" >
+                    <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
                     ng-mouseleave="hover = ''" ng-class="hover">
                         <md-card-title-text>
                             <span class="md-headline">
                                 <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+                                <img src="/images/remove_circle.png" ng-click="removePlant(user.id, plant.id)">
                             </span>
 
                         </md-card-title-text>
