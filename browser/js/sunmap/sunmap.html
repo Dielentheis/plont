@@ -1,14 +1,14 @@
 <section id="plots">
     <div class="container">
         <div class="row">
-            <div class="col l6 offset-l3">
+            <div class="col s12">
                 <h1 class="title">Create Your Plot</h1>
             </div>
         </div>
         <div class="divider">
         </div>
         <div class="row">
-            <div class="col l6 offset-l3">
+            <div class="col s12">
                 <h2 class="size">How sunny is your plot?</h2>
             </div>
         </div>
@@ -20,8 +20,10 @@
             </table>
         </div>
         <div id='control_panel'>
-            <button id='clear_btn' class='btn btn-info'>Clear</button>
-            <button class='btn btn-info' ng-click="changesTheGridSizeBackFromHalfFeetToInches()"><a ui-sref='plantlayout'>Next</a></button>
+            <button id='clear_btn' class='waves-effect btn-flat'>Clear</button>
+            <a ui-sref='plantlayout'>
+                <button class='waves-effect btn-flat' ng-click="changesTheGridSizeBackFromHalfFeetToInches()">Next</button>
+            </a>
         </div>
         <div='legend'>
             <table>
