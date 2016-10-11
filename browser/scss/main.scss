@@ -97,6 +97,10 @@ md-card md-card-title {
   background-color: #e8f5e9;
 }
 
+input:-webkit-autofill {
+  background-color: #ffffff;
+}
+
 @import 'home/main';
 @import 'about/main';
 @import 'tutorial/main';

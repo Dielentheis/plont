@@ -7,23 +7,29 @@ app.config(function($stateProvider) {
 });
 
 app.factory('PlantFactory', function($http, $log) {
-	var returnObj = {};
+    var returnObj = {};
 
-	returnObj.fetchOne = function(id) {
-		return $http.get('/api/plants/' + id)
+    returnObj.fetchOne = function(id) {
+        return $http.get('/api/plants/' + id)
         .then(function(plant) {
             return plant.data;
         })
         .catch($log.error);
-	};
+    };
 
-	return returnObj;
+    return returnObj;
 });
 
-app.controller('PlantCtrl', function(PlantFactory, $scope, $stateParams, $log) {
-	PlantFactory.fetchOne($stateParams.id)
-	.then(function(plant) {
-		$scope.plant = plant;
-	})
-	.catch($log.error);
+app.controller('PlantCtrl', function(PlantFactory, $scope, $stateParams, $log, AuthService) {
+    PlantFactory.fetchOne($stateParams.id)
+    .then(function(plant) {
+        $scope.plant = plant;
+    })
+    .catch($log.error);
+
+    AuthService.getLoggedInUser()
+    .then(function (user) {
+        $scope.user = user;
+    })
+    .catch($log.error);
 });
