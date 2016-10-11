@@ -1,17 +1,20 @@
 <section id="plot">
-<div>
-	<ngc-table
-        data="data" center-column-widths="'15px'"
-        row-heights="'15px'"
-        left-column-widths="'15px'" right-column-widths="'15px'"
-        right-column-number="0" left-column-number="0"
-        footer-row-number="0" header-row-number="0">
-        <ngc-range top="0" right="data[0].length" left="0" bottom="data.length" style-fn="colorFill"></ngc-range>
-	</ngc-table>
-</div>
+    <div>
+        <table class="plot">
+        	<tr ng-repeat="row in plot">
+        		<td class="{{ cell.class }}" ng-repeat="cell in row track by $index">{{cell.plantId}}</td>
+        	</tr>
+        </table>
+        <br>
+    </div>
+    <div class="key-title">
+    	<p>Plot Key</p>
+    	<table class="key">
+    	<th>Color</th><th>Plant</th>
+    		<tr ng-repeat="(key, value) in keyObj">
+    			<td class="{{value}}"></td>
+    			<td>{{key}}</td>
+    		</tr>
+    	</table>
+    </div>
 </section>
-
-<!-- 
-<div>
-    <div ngc-table data="data"></div>
-</div> -->

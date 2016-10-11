@@ -1,4 +1,6 @@
 app.service('PlotService', function($http, AuthService, $log, $q, $state) {
+    var classes = ["class1", "class2", "class3", "class4", "class5", "class6", "class7", "class8", "class9", "class10"];
+
     function associatePlants(plot, plants) {
         var promises = [];
         plants.forEach(function(plant) {
@@ -28,11 +30,13 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
     };
 
     this.makePlot = function(plot, plants) {
+        var colorKeys = {};
         var plotArea = plot.length * plot[0].length;
         var numPlants = plants.length;
         var approxPlantArea = plotArea / numPlants;
 
         assignNumPlantsToPlant(approxPlantArea, plants);
+        assignColorKeys(plants);
         plants.sort(orderByBiggest);
         plants.forEach(function(plant) {
             for (var i = 0; i < plant.numToPlant; i++) {
@@ -40,8 +44,15 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
             }
         });
         fillInExtraSpace(plants);
+        addCellClass();
 
         return plot;
+
+        function assignColorKeys() {
+            for (var i = 0; i < plants.length; i++) {
+                colorKeys[plants[i].id] = classes[i];
+            }
+        }
 
         function orderByBiggest(a, b) {
             return (a.height * a.width) <= (b.height * b.width);
@@ -117,6 +128,17 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                     if (isEnoughSpaceAndSun(i, j, plant.width, plant.height, plant.sun)) {
                         placePlant(i, j, plant.width, plant.height, plant);
                     }
+                }
+            }
+        }
+
+        function addCellClass() {
+            for (var i = 0; i < plot.length; i++) {
+                for (var j = 0; j < plot[0].length; j++) {
+                    if (!plot[i][j].taken) {
+                        plot[i][j].class = "no-plant";
+                    }
+                    plot[i][j].class = colorKeys[plot[i][j].plantId];
                 }
             }
         }

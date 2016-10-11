@@ -60,18 +60,15 @@ module.exports = function (app, db) {
         return request(findLatAndLongUrl)
         .then(function(zipInfo) {
             zipInfo = JSON.parse(zipInfo);
-            console.log("\n\n\n\nzipinfo", zipInfo, "\n\n\n\n\n", zipInfo["lat"], zipInfo.lng);
             return request('http://farmsense-prod.apigee.net/v1/frostdates/stations/?lat=' + zipInfo["lat"] + '&lon=' + zipInfo["lng"])
         })
         .then(function(stations) {
-            console.log("\n\n\n\n\n stations", stations);
             stations = JSON.parse(stations);
             var stationId = stations[0].id;
             return request('http://farmsense-prod.apigee.net/v1/frostdates/probabilities/?station=' + stationId + '&season=1')
         })
         .then(function(tempObjs) {
             tempObjs = JSON.parse(tempObjs);
-            console.log("\n\n\n\n\n\n\n\n\n\n temoObjs", tempObjs);
             var springDate = tempObjs[1].prob_50;
             var month = parseInt(springDate.slice(0, 2));
             var day = parseInt(springDate.slice(-2));
@@ -93,7 +90,6 @@ module.exports = function (app, db) {
 
         userObj = findFrostDates(userObj, req.body.zip)
         .then(function(user) {
-            console.log("userobj before create\n\n\n\n\n\n\n\n", user);
             User.create(user)
             .then(function(newUser){
                 req.logIn(newUser, function (loginErr) {
