@@ -15,7 +15,7 @@
         <div>
             <table id='board'>
                 <tr ng-repeat="rows in board">
-                    <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'></td>
+                    <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'><div class="sqTable"></div></td>
                 </tr>
             </table>
         </div>
