@@ -8,6 +8,11 @@ html {
 
 body {
   background-image: url("../images/light_wool.png");
+  min-height: 100vh;
+}
+
+section {
+  padding-bottom: 5%;
 }
 
 @mixin clearfix {
@@ -30,7 +35,6 @@ h1, h2 {
     text-transform:uppercase;
 }
 
-
 hr {
   border: 0;
   border-top: 1px dotted #000000;
@@ -39,9 +43,14 @@ hr {
   overflow-x: scroll;
 }
 
+div.row.create {
+    margin-right: 5%;
+}
+
 .md-cancel-button {
   display: none;
 }
+
 // for post-presentation styling
 // .layout-fill {
 // }
@@ -55,7 +64,7 @@ md-dialog .md-dialog-content {
   max-width: 450px;
 }
 
-.layout-column>.flex {
+.layout-column > .flex {
     min-height: 70px;
 }
 
@@ -74,6 +83,19 @@ md-card md-card-title {
   }
 }
 
+.glyphicon.glyphicon-remove {
+  content:url("../images/remove_circle.png");
+  max-height: 12px;
+  margin-top: 2px;
+}
+
+#plots .btn-flat {
+  margin-left: 40px;
+}
+
+.btn-flat {
+  background-color: #e8f5e9;
+}
 
 @import 'home/main';
 @import 'about/main';
@@ -84,3 +106,4 @@ md-card md-card-title {
 @import 'create/main';
 @import 'plants/main';
 @import 'plant/main';
+@import 'sunmap/main';

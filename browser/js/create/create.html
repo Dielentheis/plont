@@ -16,7 +16,7 @@
                 </div>
             </div>
             <div class="row create">
-                <div class="col s4"
+                <div class="col s4">
                     <label class="label">Height:</label>
                         <select class="browser-default" ng-model="heightFeet">
                             <option value="" disabled selected>Height Feet</option>
@@ -43,7 +43,7 @@
                     </div>
             </div>
             <div class="row">
-                <div class="col s4 offset-s10">
+                <div class="col s4 offset-s9">
                     <a class="waves-effect btn-flat" type="submit" ng-click="createPlot(heightFeet, heightInches, widthFeet, widthInches)"> Done </a>
                 </div>
             </div>
@@ -52,7 +52,7 @@
     <div ng-show="switch">
         <div class="row">
             <div class="col l6 offset-l3">
-                <h2 class="title">Select Plants</h2>
+                <h2 class="title">Which plants do you want to grow?</h2>
             </div>
         </div>
 
@@ -64,12 +64,12 @@
                 <multiple-autocomplete ng-model="selectedPlants" after-select-item="afterSelectItem" after-remove-item="afterRemoveItem" object-property="name" suggestions-arr="optionsList">
                 </multiple-autocomplete>
             </div>
-            <p ng-show="plantsDontFit"> Your current plant selection exceeds the area of your plot. </p>
+            <p ng-show="plantsDontFit">You have selected too many plants.</p>
         </div>
         <div class="row done">
             <div class="col l6 offset-l6" ng-show="largePlants.length">
                 <div class="col l6">
-                <a class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-href="sunmap"> Done </a>
+                <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-sref="sunmap"> Done </button>
                 <p> The following plants require more space then your plot allows: </p>
                 <ul>
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>

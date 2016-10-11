@@ -19,10 +19,11 @@ div.row.create {
 
 .row.done {
     text-align: right;
+    margin-left: -55px;
 }
 
 #plot_name {
     width: 50%;
-    margin: 0 auto 0 auto;
     text-align: center;
+    min-width: 200px;
 }
