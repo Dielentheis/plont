@@ -67,7 +67,6 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         selectedPlants.forEach(function (obj) {
             plantIds.push(obj.id);
         })
-        console.log("plant data", plantIds);
         PlantFactory.addToUser($scope.user.id, plantIds);
     };
 
