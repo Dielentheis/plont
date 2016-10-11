@@ -50,13 +50,13 @@ router.get('/:id', function(req, res, next) {
 });
 
 // add plant(s) to user
-router.post('/:userid', function(req, res, next) {
-
+router.put('/:userId', function(req, res, next) {
+// get an array of plant objects, promise.all for association?
 })
 
 // get users plant(s)
-router.get('/:userid', function(req, res, next) {
-
+router.get('/:userId', function(req, res, next) {
+// grab all plants associated with user
 })
 
 module.exports = router;

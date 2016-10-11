@@ -36,7 +36,14 @@ app.factory('PlantFactory', function($http, $log) {
 	return returnObj;
 });
 
-app.controller('PlantCtrl', function(PlantFactory, $scope, $stateParams, $log) {
+app.controller('PlantCtrl', function(PlantFactory, $scope, AuthServices, $stateParams, $log) {
+
+    AuthService.getLoggedInUser()
+    .then(function (user) {
+        $scope.user = user
+    })
+    .catch($log.error);
+
 	PlantFactory.fetchOne($stateParams.id)
 	.then(function(plant) {
 		$scope.plant = plant;
