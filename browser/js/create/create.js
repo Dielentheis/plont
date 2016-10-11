@@ -106,11 +106,7 @@ app.factory('CreatePlotFactory', function () {
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
-<<<<<<< HEAD
-    }
-=======
     };
->>>>>>> master
 
     // returnObj.renderPlot = function (plotData) {
     //     //send plot data to backend
