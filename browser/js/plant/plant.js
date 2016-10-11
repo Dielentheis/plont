@@ -8,7 +8,7 @@ app.config(function($stateProvider) {
 
 
 app.factory('PlantFactory', function($http, $log) {
-	var returnObj = {};
+    var returnObj = {};
 
     returnObj.fetchOne = function(id) {
         return $http.get('/api/plants/' + id)
@@ -42,7 +42,7 @@ app.factory('PlantFactory', function($http, $log) {
         .catch($log.error);
     }
 
-	return returnObj;
+    return returnObj;
 });
 
 app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $stateParams, $log, $state) {
