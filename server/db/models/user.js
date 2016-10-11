@@ -43,6 +43,10 @@ module.exports = db.define('user', {
     springFrostDate: {
         type: Sequelize.DATE
     },
+    wishlist: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER),
+        defaultValue: []
+    },
     twitter_id: {
         type: Sequelize.STRING
     },

@@ -1,9 +1,5 @@
-.title {
-    text-align: center;
-}
-
-.size {
-    text-align: center;
+h1.title {
+    width:100%;
 }
 
 .by {
@@ -11,28 +7,23 @@
     text-align: center;
 }
 
-.toobig {
-    font-size: 20px;
+
+div.row.create {
+    display: flex;
+    justify-content: space-between;
 }
 
-.label {
-    font-size: 16px;
+.row.add {
+    margin-bottom: 0;
 }
 
-select {
-    display: inline-block;
-    padding: 5px;
-    margin: 0;
+.row.done {
+    text-align: right;
+    margin-left: -55px;
 }
 
-.height {
-    max-width: 30%;
-}
-
-.bydiv{
-    max-width: 20%;
-}
-
-.width {
-    max-width: 30%;
+#plot_name {
+    width: 50%;
+    text-align: center;
+    min-width: 200px;
 }

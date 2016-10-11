@@ -40,7 +40,7 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
             $scope.largePlants = largePlants.sort(sortByName);
         })
         .catch($log.error);
-    }
+    };
 
     $scope.totalPlantArea = 0;
 
@@ -55,24 +55,24 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         if ( hi === undefined) hi = 0;
         if ( wf === undefined) wf = 0;
         if ( wi === undefined) wi = 0;
-        CreatePlotFactory.createPlot(hf, hi, wf, wi);
+        CreatePlotFactory.setHeightAndWidth(hf, hi, wf, wi);
         $scope.area = (((+hf * 12) + (+hi)) * ((+wf * 12) + (+wi)));
         createPlantOptions();
         $scope.switch = true;
-    }
+    };
 
     $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
         PlantFactory.addToUser($scope.user.id, selectedPlants);
-    }
+    };
 
     // below is not yet functioning:
     $scope.afterSelectItem = function (item) {
         $scope.totalPlantArea += (item.height * item.width);
-    }
+    };
     $scope.afterRemoveItem = function(item) {
-        $scope.totalPlantArea += (item.height * item.width)
-    }
+        $scope.totalPlantArea += (item.height * item.width);
+    };
     $scope.plantsDontFit = ($scope.plantArea >= $scope.area);
 
 });
@@ -81,28 +81,36 @@ app.factory('CreatePlotFactory', function () {
     var returnObj = {};
 
     returnObj.Cell = function () {
-        this.sun = 0;
+        this.sun = 2;
+        this.sunniness = 'sun';
         this.taken = false;
     };
 
-    returnObj.createPlot = function (hf, hi, wf, wi){
-        let height = (+hf * 12) + (+hi);
-        let width = (+wf * 12) + (+wi);
-        let plot = [];
+    returnObj.setHeightAndWidth = function(hf, hi, wf, wi) {
+        returnObj.height = (+hf * 12) + (+hi);
+        returnObj.width = (+wf * 12) + (+wi);
+    }
+
+    returnObj.createPlot = function (height, width){
+        const plot = [];
         for (var i = 0; i < height; i++) {
-            let row = [];
+            const row = [];
             for (var j = 0; j < width; j++) {
-                let cell = new returnObj.Cell();
-                row.push(cell)
+                row.push(new returnObj.Cell());
             }
             plot.push(row);
         }
         returnObj.plot = plot;
-    }
+        return plot;
+    };
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
+<<<<<<< HEAD
     }
+=======
+    };
+>>>>>>> master
 
     // returnObj.renderPlot = function (plotData) {
     //     //send plot data to backend

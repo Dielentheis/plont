@@ -6,16 +6,17 @@ app.config(function($stateProvider) {
     });
 });
 
+
 app.factory('PlantFactory', function($http, $log, $state) {
 	var returnObj = {};
 
-	returnObj.fetchOne = function(id) {
-		return $http.get('/api/plants/' + id)
+    returnObj.fetchOne = function(id) {
+        return $http.get('/api/plants/' + id)
         .then(function(plant) {
             return plant.data;
         })
         .catch($log.error);
-	};
+    };
 
     returnObj.addToUser = function (userId, plants) {
         return $http.put('api/plants/' + userId, plants)
@@ -51,4 +52,6 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, AuthServices, $stateP
 	.catch($log.error);
 
     $scope.addPlant = PlantFactory.addToUser();
+
+    return returnObj;
 });

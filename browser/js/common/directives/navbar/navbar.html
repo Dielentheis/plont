@@ -1,11 +1,13 @@
 <nav>
     <div class="navbar">
         <div class="nav-wrapper">
-        <a class="brand-logo">Plont</a>
+        <a class="brand-logo" ui-sref="home">Plont</a>
             <ul id="nav-fixed" class="right hide-on-med-and-down">
                 <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                     <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
                 </li>
+                <li ng-show="user"><a ui-sref="create">New Plot</a></li>
+                <li ng-show="user"><a ui-sref="calendar">Harvest Calendar</a></li>
                 <li ng-show="!user"><a ui-sref="login">Login</a></li>
                 <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
 

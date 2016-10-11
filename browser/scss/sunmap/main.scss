@@ -1,0 +1,36 @@
+h1, h2 {
+  text-align: center;
+}
+
+#board{
+  margin: 0 auto;
+  display: table-inline;
+}
+
+#board td {
+  border: 1px solid #e3e3e3;
+  padding: 30px 10px;
+}
+
+
+
+#board td:focus {
+  outline: none;
+}
+
+td.sun {
+  background-color: #ffbb5a;
+}
+
+td.partial_shade {
+  background-color: #b1c27b;
+}
+
+td.full_shade {
+  background-color: #94a7a1;
+}
+
+#control_panel {
+  margin: 10px auto;
+  text-align: center;
+}
