@@ -77,9 +77,10 @@
         <div class="row">
             <div class="col s6 offset-l3">
                 <p ng-show="largePlants.length"><strong>The following plants are too large to flourish in your plot:</strong></p>
-                <ul ng-show="largePlants.length" class="fly">
+                <ul ng-show="largePlants.length" class="collapsible-header">
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
                 </ul>
+
             </div>
         </div>
     </div>
