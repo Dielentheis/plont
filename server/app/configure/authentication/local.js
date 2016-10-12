@@ -1,7 +1,7 @@
 'use strict';
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var zipApiKey = require('../../../../apis.js').zip;
+var zipApiKey = process.env.ZIP_API || require('../../../../apis.js').zip;
 var http = require('http');
 var request = require('request-promise');
 

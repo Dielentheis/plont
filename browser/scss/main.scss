@@ -3,11 +3,11 @@
 }
 
 html {
-  background-image: url("../images/light_wool.png");
+  background-image: url("/images/light_wool.png");
 }
 
 body {
-  background-image: url("../images/light_wool.png");
+  background-image: url("/images/light_wool.png");
   min-height: 100vh;
 }
 
@@ -84,7 +84,7 @@ md-card md-card-title {
 }
 
 .glyphicon.glyphicon-remove {
-  content:url("../images/remove_circle.png");
+  content:url("/images/remove_circle.png");
   max-height: 12px;
   margin-top: 2px;
 }
@@ -112,3 +112,4 @@ input:-webkit-autofill {
 @import 'plant/main';
 @import 'plotview/main';
 @import 'sunmap/main';
+@import 'users-plants/main';
