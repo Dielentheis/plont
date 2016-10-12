@@ -107,7 +107,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
                     }
                 }
             }
-            if (sunPreferenceMatch / plantArea >= .5) {
+            if (sunPreferenceMatch / plantArea >= 0.5) {
                 return true;
             }
             else {
