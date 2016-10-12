@@ -1,9 +1,9 @@
 <section id="plot">
-<h1> ur plot </h1>
+<h1> {{plotName}} </h1>
     <div>
         <table class="plot">
         	<tr ng-repeat="row in plot">
-        		<td class="{{ cell.class }}" ng-repeat="cell in row track by $index">{{cell.plantId}}</td>
+        		<td class="{{ cell.class }}" ng-repeat="cell in row track by $index"></td>
         	</tr>
         </table>
         <br>

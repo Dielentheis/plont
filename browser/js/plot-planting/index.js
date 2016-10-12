@@ -1,4 +1,4 @@
-app.service('PlotService', function($http, AuthService, $log, $q, $state) {
+app.service('PlotService', function($http, AuthService, $log, $q, $state, CreatePlotFactory) {
     var classes = ["class1", "class2", "class3", "class4", "class5", "class6", "class7", "class8", "class9", "class10"];
 
     function associatePlants(plot, plants) {
@@ -25,7 +25,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         .then(function(dates) {
             console.log("DATES", dates);
             var importantDates = dates;
-            return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates, userId: userForId.id})
+            return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates, userId: userForId.id, name: CreatePlotFactory.plotName})
         })
         .then(function(savedPlot) {
             console.log("savedplot", savedPlot);
@@ -54,6 +54,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         });
         fillInExtraSpace(plants);
         addCellClass();
+        //idToPlantName();
 
         return plot;
 
@@ -62,6 +63,10 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                 colorKeys[plants[i].id] = classes[i];
             }
         }
+
+        // function idToPlantName() {
+        //     for (var key in colorKeys)
+        // }
 
         function orderByBiggest(a, b) {
             return (a.height * a.width) <= (b.height * b.width);
@@ -180,12 +185,12 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                 importantDates.push(plantEvent);
                 var harvestBeginEvent = {};
                 harvestBeginEvent.event = "Begin " + plant.name.toLowerCase() + " harvest";
-                harvestBeginEvent.date = plantEvent.date;
+                harvestBeginEvent.date = _.clone(plantEvent.date);
                 harvestBeginEvent.date.setTime(harvestBeginEvent.date.getTime() + plant.firstHarvest * 86400000);
                 importantDates.push(harvestBeginEvent);
                 var harvestEndEvent = {};
                 harvestEndEvent.event = "End " + plant.name.toLowerCase() + " harvest";
-                harvestEndEvent.date = harvestBeginEvent.date;
+                harvestEndEvent.date = _.clone(harvestBeginEvent.date);
                 harvestEndEvent.date = harvestEndEvent.date.setTime(harvestEndEvent.date.getTime() + plant.harvestPeriod * 86400000);
                 importantDates.push(harvestEndEvent);
             });
