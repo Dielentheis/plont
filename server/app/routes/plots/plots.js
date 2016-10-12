@@ -34,6 +34,15 @@ router.post('/', function(req, res, next) {
 	.catch(next);
 });
 
+// get plot by userid
+router.get('/users/:id', function(req, res, next) {
+	Plot.findAll({where: {userId: req.params.id}})
+	.then(function(plot) {
+		res.send(plot);
+	})
+	.catch(next);
+});
+
 //get plot plants
 router.get('/:plotId/plants/', function(req, res, next) {
 	Plot.findAll()
