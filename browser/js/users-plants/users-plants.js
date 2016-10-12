@@ -35,6 +35,6 @@ app.controller('UserPlantController', function ($scope, $log, $state,AuthService
             $scope.userPlants = plants;
         })
         .catch($log.error);
-    }
+    };
 
 });
