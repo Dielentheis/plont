@@ -17,12 +17,12 @@ app.factory('CalendarFactory', function($http, AuthService){
             $http.get('/api/plots/'+ userId)
             .then(function(userPlots){
                 return userPlots;
-            });
-        });
+            })
+        })
     };
     // for each array of plants, pass into setDayContent
     return CalendarFactory;
-});
+})
 
 app.controller('CalendarCtrl', function($scope, $filter, $http,CalendarFactory, $log, MaterialCalendarData, $q, $timeout) {
 
