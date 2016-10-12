@@ -1,15 +1,15 @@
 <section id="plots">
     <div class="container">
         <div ng-show="!switch">
-            <div class="row">
-                <div class="col s12">
+            <div class="row bottom_spacing">
+                <div class="col s12 bottom_spacing-large">
                     <h1 class="title">Create Your Plot</h1>
                 </div>
                 <div ng-show="!switch" class="col l11 offset-l3">
                     <input placeholder="Plot Name" id="plot_name" type="text" ng-model="name">
                 </div>
             </div>
-            <div class="divider"></div>
+            <div class="divider bottom_spacing"></div>
             <div class="row">
                 <div class="col l6 offset-l3">
                     <h2 class="size">Plot Size?</h2>
@@ -50,21 +50,21 @@
         </div>
     </div>
     <div ng-show="switch">
-        <div class="row">
+        <div class="row bottom_spacing">
             <div class="col l6 offset-l3">
                 <h2 class="title">Which plants do you want to grow?</h2>
+                <div class="divider"></div>
             </div>
         </div>
-
         <div class="row add">
-            <label class="col l6 offset-l3"> Add Plants: </label>
+            <label class="col l6 offset-l3"><h4>Add Plants:</h4></label>
         </div>
         <div class="row">
             <div class="input-field col l6 offset-l3">
                 <multiple-autocomplete ng-model="selectedPlants" after-select-item="afterSelectItem" after-remove-item="afterRemoveItem" object-property="name" suggestions-arr="optionsList">
                 </multiple-autocomplete>
             </div>
-            <p ng-show="plantsDontFit">You have selected too many plants.</p>
+            <p ng-show="plantsDontFit">You have selected too many plants!</p>
         </div>
         <div class="row" id="done">
             <div class="col l6 offset-l6">
@@ -77,7 +77,7 @@
         <div class="row">
             <div class="col s6 offset-l3">
                 <p ng-show="largePlants.length"><strong>The following plants are too large to flourish in your plot:</strong></p>
-                <ul ng-show="largePlants.length" class="collapsible-header">
+                <ul ng-show="largePlants.length" id= "scroll_list">
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
                 </ul>
 

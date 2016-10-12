@@ -17,6 +17,14 @@ div.row.create {
     margin-bottom: 0;
 }
 
+.bottom_spacing {
+    margin-bottom: 80px;
+}
+
+.bottom_spacing-large {
+    margin-bottom: 80px;
+}
+
 #done {
     text-align: right;
     margin-left: -55px;
@@ -26,4 +34,9 @@ div.row.create {
     width: 50%;
     text-align: center;
     min-width: 200px;
+}
+
+#scroll_list {
+    height: 200px;
+    overflow-y:scroll;
 }
