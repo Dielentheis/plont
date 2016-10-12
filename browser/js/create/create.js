@@ -50,7 +50,8 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
     $scope.inches = [ 12, 18, 24, 30, 36, 42, 48, 54];
 
     $scope.createPlot = function (hi, wi, name) {
-        if (!hi || !wi) throw new Error('Height and Width are required');
+        hi = parseInt(hi, 10);
+        wi = parseInt(wi, 10);
         CreatePlotFactory.setHeightAndWidth(hi, wi);
         CreatePlotFactory.setPlotName(name);
         $scope.area = (+hi * +wi);
@@ -59,16 +60,6 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
     };
 
     $scope.createPlantList = function (selectedPlants) {
-        if (selectedPlants.length > 10){
-            $scope.message = 'Please select ten or fewer plants.';
-            $scope.error = true;
-            throw new Error('Maximum plant count allowed is 10');
-        }
-        if (selectedPlants.length < 1) {
-            $scope.message = 'Please select at least one plant.';
-            $scope.error = true;
-            throw new Error('At least one plant must be selected');
-        }
         CreatePlotFactory.userPlantList(selectedPlants);
         const plantIds = [];
         selectedPlants.forEach(function (obj) {
