@@ -7,7 +7,6 @@ h2 {
     margin: 0 auto;
     display: table-inline;
     padding: 0;
-    width: 80%;
 }
 
 #board td {
@@ -31,15 +30,28 @@ td.full_shade {
     background-color: #94a7a1;
 }
 
-#control_panel {
-    margin: 10px auto;
-    text-align: center;
+#legend {
+    padding-left: 50px;
 }
 
 .sqTable {
-    border: 1px solid red;
+    border: 0px;
     width: 100%;
     padding-top: 100%;
     box-sizing: border-box;
     position: relative;
+}
+
+.doyouevenlift {
+    display: flex;
+}
+
+.flexthetable {
+    flex-basis: 100%;
+}
+
+#control_panel {
+    padding-top: 50px;
+    margin: 10px auto;
+    text-align: center;
 }
