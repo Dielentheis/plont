@@ -7,14 +7,19 @@ app.config(function($stateProvider) {
 });
 
 app.controller('PlotCtrl', function($scope, PlotFactory, $log) {
+	var plot = [];
 	PlotFactory.fetchPlot()
-	.then(function(plot) {
-
+	.then(function(plotty) {
+		plot = plotty;
+		return PlotFactory.getPlotPlants(plot)
+	})
+	.then(function(plants) {
+		console.log("PLANTS? in ctrl", plants);
 		$scope.plotName = plot.name;
 		$scope.plot = plot.layout;
 		$scope.data = PlotFactory.buildPlotTable(plot.layout);
-		$scope.keyObj = PlotFactory.makeKey(plot.layout);
-		console.log("keyarr", $scope.keyObj);
+		$scope.keyObj = PlotFactory.makeKey(plot.layout, plants);
+
 	})
 	.catch($log.error);
 });
@@ -23,8 +28,18 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 	var returnObj = {};
 	var idNames = {};
 
-	function idsToNames() {
-		CreatePlotFactory.usersPlants.forEach(function(plant) {
+	returnObj.getPlotPlants = function(plot) {
+		return $http.get('/api/plots/' + plot.id + '/plants')
+		.then(function(plants) {
+			console.log("did we get plants", plants);
+			return plants.data;
+		})
+		.catch($log.error);
+	}
+
+	function idsToNames(plants) {
+		console.log("!!!", plants);
+		plants.forEach(function(plant) {
 			idNames[plant.id] = plant.name;
 		});
 	}
@@ -37,8 +52,8 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 		.catch($log.error);
 	};
 
-	returnObj.makeKey = function(plot) {
-		idsToNames();
+	returnObj.makeKey = function(plot, plants) {
+		idsToNames(plants);
 		var keys = {};
 		for (var i = 0; i < plot.length; i++) {
 			for (var j = 0; j < plot[0].length; j++) {
@@ -66,4 +81,4 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 	};
 
 	return returnObj;
-});
+})

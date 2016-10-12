@@ -10,28 +10,22 @@ app.factory('CalendarFactory', function($http, AuthService){
     var CalendarFactory = {};
 
     // get user
-    CalendarFactory.getImportantDates = function() {
-        AuthService.getLoggedInUser()
-        .then(function(user){
-            var userId = user.id;
-            $http.get('/api/plots/'+ userId)
-            .then(function(userPlots){
-                return userPlots;
-            })
-        })
+    CalendarFactory.getImportantDates = function(userId) {
+        return $http.get('/api/plots/users/'+ userId)
+        .then(function(userPlots){
+            return userPlots.data;
+        });
     };
-    // for each array of plants, pass into setDayContent
     return CalendarFactory;
-})
+});
 
-app.controller('CalendarCtrl', function($scope, $filter, $http,CalendarFactory, $log, MaterialCalendarData, $q, $timeout) {
+app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory, $log, $q, $timeout, AuthService, MaterialCalendarData) {
 
     $scope.selectedDate = new Date();
     $scope.weekStartsOn = 0;
     $scope.dayFormat = "d";
     $scope.tooltips = true;
     $scope.disableFutureDates = false;
-
 
     $scope.setDirection = function(direction) {
         $scope.direction = direction;
@@ -51,28 +45,30 @@ app.controller('CalendarCtrl', function($scope, $filter, $http,CalendarFactory, 
     };
 
     $scope.tooltips = true;
+    $scope.importantDates = [];
 
-    var loadContentAsync = true;
-
-    $log.info("setDayContent.async", loadContentAsync);
-
-    var importantDates = [{event: 'Happy', date: new Date().toISOString()}];
-
-    $scope.setDayContent = function(date) {
-        var key = [date.toISOString()];
-        var data = (importantDates[key] || [{
-            event: ""
-        }])[0].event;
-        if (loadContentAsync) {
-            var deferred = $q.defer();
-            $timeout(function() {
-                deferred.resolve(data);
+    AuthService.getLoggedInUser()
+    .then(function(user){
+        CalendarFactory.getImportantDates(user.id)
+            .then(function(userPlots){
+                userPlots.forEach(function(eventObj){
+                    $scope.importantDates.push(eventObj.important_dates);
+                    $scope.setDates($scope.importantDates);
             });
-            return deferred.promise;
-        }
-        return data;
-    };
+        });
+    });
 
-    $scope.setDayContent(new Date());
+    $scope.setDates = function(dates) {
+
+        var dateArr = dates[0];
+
+        for (let i=0; i<6; i++) {
+
+            let formattedDate = new Date($scope.importantDates[0][i].date);
+            let formattedText = "<p>" + $scope.importantDates[0][i].event + "</p>"
+
+            MaterialCalendarData.setDayContent(formattedDate, formattedText);
+        }
+    };
 
 });
