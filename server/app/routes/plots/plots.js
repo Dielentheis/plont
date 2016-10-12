@@ -4,6 +4,7 @@ var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var Plot = db.model('plot');
 var PlotPlants = db.model('plot_plants');
+var Plant = db.model('plant');
 
 // get all plots
 router.get('/', function(req, res, next) {
@@ -36,12 +37,12 @@ router.post('/', function(req, res, next) {
 
 //get plot plants
 router.get('/:plotId/plants/', function(req, res, next) {
-	Plot.findAll()
-	.then(function(plots) {
-		return plots;
+	Plot.findById(req.params.plotId)
+	.then(function(plot) {
+		return plot.getPlants();
 	})
-	.then(function() {
-		res.sendStatus(200)
+	.then(function(plants) {
+		res.send(plants);
 	})
 	.catch(next);
 });
