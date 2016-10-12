@@ -5,9 +5,9 @@
                 <h2 class="size">How sunny is your plot?</h2>
             </div>
         </div>
-        <div class='doyouevenlift'>
-            <div class='flexthetable'>
-                <table id='board'>
+        <div id="sunTable" class="row">
+            <div class="col s8 offset-s2">
+                <table id="board">
                     <tr ng-repeat="rows in board">
                         <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'>
                             <div class='sqTable'></div>
@@ -15,7 +15,7 @@
                     </tr>
                 </table>
             </div>
-            <div id='legend'>
+            <div id='legend' class="col s2">
                 <table>
                     <tr>
                         <td class='sun'>
@@ -39,9 +39,10 @@
                 </div='legend'>
             </div>
         </div>
-        <div id='control_panel'>
-            <!-- <button id='clear_btn' class='waves-effect btn-flat'>Clear</button> -->
-            <a ui-sref='plantlayout'>
-                <button class='waves-effect btn-flat' ng-click="changesTheGridSizeBackFromHalfFeetToInches()">Next</button>
+        <div id='control_panel' class="row">
+            <div "col 2 offset-8">
+                <!-- <button id='clear_btn' class='waves-effect btn-flat'>Clear</button> -->
+                <button class="waves-effect btn-flat" type="submit" ng-click="changesTheGridSizeBackFromHalfFeetToInches()"><a ui-sref='plantlayout'>Next</a></button>
+            </div>
         </div>
 </section>
