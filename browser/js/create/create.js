@@ -50,6 +50,8 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
     $scope.inches = [ 12, 18, 24, 30, 36, 42, 48, 54];
 
     $scope.createPlot = function (hi, wi, name) {
+        hi = parseInt(hi, 10);
+        wi = parseInt(wi, 10);
         if (!hi || !wi) throw new Error('Height and Width are required');
         CreatePlotFactory.setHeightAndWidth(hi, wi);
         CreatePlotFactory.setPlotName(name);
