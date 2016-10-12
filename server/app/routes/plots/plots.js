@@ -23,7 +23,7 @@ router.get('/:id', function(req, res, next) {
 	.catch(next);
 });
 
-// creates a plot associated with a specific user (aliased as Gardener) -- pass in
+// creates a plot associated with a specific user -- pass in
 // userId as part of req.body!!
 router.post('/', function(req, res, next) {
 	Plot.create(req.body)

@@ -22,6 +22,11 @@ module.exports = db.define('plot', {
             max: 240,
             min: 12,
         }
+    },
+    layout: {
+        type: Sequelize.JSON
+    },
+    important_dates: {
+        type: Sequelize.ARRAY(Sequelize.JSON)
     }
 });
-
