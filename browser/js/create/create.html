@@ -37,10 +37,7 @@
             <div class="row done">
                 <div class="col s5 offset-s9">
                     <div class="col l6">
-                        <div ng-hide="(heightInches && widthInches)">
-                            <span> Please select a height and width </span>
-                        </div>
-                        <a class="waves-effect btn-flat" type="submit" ng-click="createPlot(heightInches, widthInches, name)"> Done </a>
+                        <a class="waves-effect btn-flat" type="submit" ng-show="(heightInches && widthInches)" ng-click="createPlot(heightInches, widthInches, name)"> Done </a>
                 </div>
             </div>
         </div>
