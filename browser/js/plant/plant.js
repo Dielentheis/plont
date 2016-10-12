@@ -24,23 +24,23 @@ app.factory('PlantFactory', function($http, $log) {
             return data.status;
         })
         .catch($log.error);
-    }
+    };
 
     returnObj.fetchUserPlants = function(userId) {
         return $http.get('api/plants/user/' + userId)
         .then(function(plants) {
-            return plants.data
+            return plants.data;
         })
         .catch($log.error);
-    }
+    };
 
     returnObj.removePlantFromUser = function(userId, plantId) {
         return $http.delete('api/plants/user/' + userId + '/plant/' + plantId)
         .then(function (data) {
-            return data.status
+            return data.status;
         })
         .catch($log.error);
-    }
+    };
 
     return returnObj;
 });
@@ -49,7 +49,7 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $statePa
 
     AuthService.getLoggedInUser()
     .then(function (user) {
-        $scope.user = user
+        $scope.user = user;
     })
     .catch($log.error);
 
@@ -60,15 +60,15 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $statePa
 	.catch($log.error);
 
     $scope.addPlant = function (plantId) {
-        let plantArr = [];
-        plantArr.push(plantId)
+        const plantArr = [];
+        plantArr.push(plantId);
         PlantFactory.addToUser($scope.user.id, plantArr)
         .then(function(status) {
             if (status === 200) {
-                $state.go('userPlants')
+                $state.go('userPlants');
             }
         })
         .catch($log.error);
-    }
+    };
 
 });

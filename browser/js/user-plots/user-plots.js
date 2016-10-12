@@ -23,7 +23,7 @@ app.factory('UserPlotsFactory', function($http, $log) {
     return returnObj;
 });
 
-app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, AuthService) {
+app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state, AuthService) {
     AuthService.getLoggedInUser()
     .then(function(user) {
         $scope.user = user;
@@ -35,4 +35,8 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, AuthSer
         .catch($log.error);
     })
     .catch($log.error);
+
+    $scope.toPlot = function(plotId) {
+        $state.go('plot', {id: plotId});
+    }
 });

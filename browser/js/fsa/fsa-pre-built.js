@@ -34,7 +34,7 @@
         return {
             responseError: function (response) {
                 $rootScope.$broadcast(statusDict[response.status], response);
-                return $q.reject(response)
+                return $q.reject(response);
             }
         };
     });
