@@ -13,4 +13,4 @@ Plont's top-of-the-line garden optimization algorithm will help you harvest your
 ![pick plants](/../screenshots/browser/images/screenshots/pickplants.png?raw=true "Tell us what plants you want to grow")
 
 ###Where does sunlight hit your plot?
-![sunlight distribution](/../screenshots/browser/images/screenshots/pickplants.png?raw=true "Where does sunlight hit your plot?")
+![sunlight distribution](/../screenshots/browser/images/screenshots/sunmap.png?raw=true "Where does sunlight hit your plot?")
