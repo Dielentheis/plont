@@ -2,35 +2,47 @@
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h1 class="title">Create Your Plot</h1>
-            </div>
-        </div>
-        <div class="divider">
-        </div>
-        <div class="row">
-            <div class="col s12">
                 <h2 class="size">How sunny is your plot?</h2>
             </div>
         </div>
-        <div>
-            <table id='board'>
-                <tr ng-repeat="rows in board">
-                    <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'></td>
-                </tr>
-            </table>
+        <div class='doyouevenlift'>
+            <div class='flexthetable'>
+                <table id='board'>
+                    <tr ng-repeat="rows in board">
+                        <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'>
+                            <div class='sqTable'></div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id='legend'>
+                <table>
+                    <tr>
+                        <td class='sun'>
+                            <div class='sqTable'></div>
+                        </td>
+                        <td>sunny</td>
+                    </tr>
+                    <tr>
+                        <td class='partial_shade'>
+                            <div class='sqTable'></div>
+                        </td>
+                        <td>semi-shady</td>
+                    </tr>
+                    <tr>
+                        <td class='full_shade'>
+                            <div class='sqTable'></div>
+                        </td>
+                        <td>shady</td>
+                    </tr>
+                </table>
+                </div='legend'>
+            </div>
         </div>
         <div id='control_panel'>
-            <button id='clear_btn' class='waves-effect btn-flat'>Clear</button>
+            <!-- <button id='clear_btn' class='waves-effect btn-flat'>Clear</button> -->
             <a ui-sref='plantlayout'>
                 <button class='waves-effect btn-flat' ng-click="changesTheGridSizeBackFromHalfFeetToInches()">Next</button>
             </a>
         </div>
-        <div='legend'>
-            <table>
-                <tr><td class='sun'></td><td>sunny</td></tr>
-                <tr><td class='partial_shade'></td><td>semi-shady</td></tr>
-                <tr><td class='full_shade'></td><td>shady</td></tr>
-            </table>
-        </div='legend'>
-    </div>
 </section>
