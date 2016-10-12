@@ -6,7 +6,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFactory, PlantFactory, AuthService) {
+app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFactory, PlantFactory, AuthService, $state) {
 
     AuthService.getLoggedInUser()
     .then(function (user) {
@@ -45,39 +45,38 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
     $scope.totalPlantArea = 0;
 
     $scope.switch = false;
+    $scope.error = false;
 
-    $scope.feet = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+    $scope.inches = [ 12, 18, 24, 30, 36, 42, 48, 54];
 
-    $scope.inches = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
-
-    $scope.createPlot = function (hf, hi, wf, wi) {
-        if ( hf === undefined) hf = 0;
-        if ( hi === undefined) hi = 0;
-        if ( wf === undefined) wf = 0;
-        if ( wi === undefined) wi = 0;
-        CreatePlotFactory.setHeightAndWidth(hf, hi, wf, wi);
-        $scope.area = (((+hf * 12) + (+hi)) * ((+wf * 12) + (+wi)));
+    $scope.createPlot = function (hi, wi, name) {
+        if (!hi || !wi) throw new Error('Height and Width are required');
+        CreatePlotFactory.setHeightAndWidth(hi, wi);
+        CreatePlotFactory.setPlotName(name);
+        $scope.area = (+hi * +wi);
         createPlantOptions();
         $scope.switch = true;
     };
 
     $scope.createPlantList = function (selectedPlants) {
+        if (selectedPlants.length > 10){
+            $scope.message = 'Please select ten or fewer plants.';
+            $scope.error = true;
+            throw new Error('Maximum plant count allowed is 10');
+        }
+        if (selectedPlants.length < 1) {
+            $scope.message = 'Please select at least one plant.'
+            $scope.error = true;
+            throw new Error('At least one plant must be selected');
+        }
         CreatePlotFactory.userPlantList(selectedPlants);
         let plantIds = []
         selectedPlants.forEach(function (obj) {
             plantIds.push(obj.id);
         })
         PlantFactory.addToUser($scope.user.id, plantIds);
+        $state.go('sunmap');
     };
-
-    // below is not yet functioning:
-    $scope.afterSelectItem = function (item) {
-        $scope.totalPlantArea += (item.height * item.width);
-    };
-    $scope.afterRemoveItem = function(item) {
-        $scope.totalPlantArea += (item.height * item.width);
-    };
-    $scope.plantsDontFit = ($scope.plantArea >= $scope.area);
 
 });
 
@@ -90,9 +89,9 @@ app.factory('CreatePlotFactory', function () {
         this.taken = false;
     };
 
-    returnObj.setHeightAndWidth = function(hf, hi, wf, wi) {
-        returnObj.height = (+hf * 12) + (+hi);
-        returnObj.width = (+wf * 12) + (+wi);
+    returnObj.setHeightAndWidth = function(hi, wi) {
+        returnObj.height = +hi;
+        returnObj.width = +wi;
     }
 
     returnObj.createPlot = function (height, width){
@@ -112,12 +111,10 @@ app.factory('CreatePlotFactory', function () {
         returnObj.usersPlants = usersPlants;
     };
 
-    // returnObj.renderPlot = function (plotData) {
-    //     //send plot data to backend
-    //     //plot data will be 2 params
-    //     //1 array of objects {sun: 0/1/2, taken:false} (returnObj.plot);
-    //     //2 array of plants, full plant object (returnObj.usersPlants);
-    // }
+    returnObj.setPlotName = function (plotName) {
+        if (!plotName) plotName = 'Unnamed Plot';
+        returnObj.plotName = plotName;
+    };
 
     return returnObj;
 });

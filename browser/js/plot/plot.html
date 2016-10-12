@@ -1,0 +1,21 @@
+<section id="plot">
+<h1> ur plot </h1>
+    <div>
+        <table class="plot">
+        	<tr ng-repeat="row in plot">
+        		<td class="{{ cell.class }}" ng-repeat="cell in row track by $index">{{cell.plantId}}</td>
+        	</tr>
+        </table>
+        <br>
+    </div>
+    <div class="key-title">
+    	<p>Plot Key</p>
+    	<table class="key">
+    	<th>Color</th><th>Plant</th>
+    		<tr ng-repeat="(key, value) in keyObj">
+    			<td class="{{value}}"></td>
+    			<td>{{key}}</td>
+    		</tr>
+    	</table>
+    </div>
+</section>
