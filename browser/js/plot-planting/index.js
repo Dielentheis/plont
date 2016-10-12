@@ -1,9 +1,8 @@
-app.service('PlotService', function($http, AuthService, $log, $q, $state) {
+app.service('PlotService', function($http, AuthService, $log, $q, $state, CreatePlotFactory) {
     var classes = ["class1", "class2", "class3", "class4", "class5", "class6", "class7", "class8", "class9", "class10"];
 
     function associatePlants(plot, plants) {
         var promises = [];
-        // console.log("associate plants", plot);
         plants.forEach(function(plant) {
             promises.push($http.put('/api/plots/' + plot.id + '/plants/' + plant.id));
         });
@@ -13,19 +12,16 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
 
     this.makesThenStoresThenRedirects = function(plot, plants) {
         var userForId = {};
-        // console.log('BEFORE everything', plot[0][0])
         AuthService.getLoggedInUser()
         .then(function(user) {
-            // console.log("PLOT BEFORE PLANTING", plot[0][0]);
             plot = makePlot(plot, plants);
-            // console.log("PLOT BEFORE POST", plot[0][0]);
             userForId = user;
             return findImportantDates(user.springFrostDate, plants)
         })
         .then(function(dates) {
             console.log("DATES", dates);
             var importantDates = dates;
-            return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates, userId: userForId.id})
+            return $http.post('/api/plots/', {height: plot.length, width: plot[0].length, layout: plot, important_dates: importantDates, userId: userForId.id, name: CreatePlotFactory.plotName})
         })
         .then(function(savedPlot) {
             console.log("savedplot", savedPlot);
@@ -44,7 +40,6 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         var approxPlantArea = plotArea / numPlants;
 
         plants = assignNumPlantsToPlant(approxPlantArea, plants);
-        // console.log(plants);
         assignColorKeys(plants);
         plants.sort(orderByBiggest);
         plants.forEach(function(plant) {
@@ -77,7 +72,6 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         }
 
         function findSpaceAndPlant(plant) {
-            // console.log("finding space for", plant);
             var plotHeight = plot.length;
             var rowLength = plot[0].length;
             var width = plant.width;
@@ -85,10 +79,8 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
 
             for (var i = 0; i < plotHeight; i++) { // row
                 for (var j = 0; j < rowLength; j++) { // column
-                    // console.log("checking if ", i, j, "is taken = ", plot[i][j].taken)
                     if (!plot[i][j].taken) {
                         if (isEnoughSpaceAndSun(i, j, plant)) {
-                            // console.log("planting", plant.id, "at corner", i, j);
                             placePlant(i, j, plant);
                             return;
                         }
@@ -124,17 +116,13 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         }
 
         function placePlant(row, col, plant) {
-            // console.log("before params", row, col, plant);
-            // console.log('BEFORE', _.cloneDeep(plot));
+
             for (var i = row; i < row + plant.height; i++) {
                 for (var j = col; j < col + plant.width; j++) {
-                    // console.log("planting", plant.id, "cell", i, j);
                     plot[i][j].taken = true;
                     plot[i][j].plantId = plant.id;
                 }
-                // console.log(_.cloneDeep(plot[i]));
             }
-            // console.log('AFTER', _.cloneDeep(plot));
         }
 
         function fillInExtraSpace() {
@@ -166,11 +154,9 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
         return AuthService.getLoggedInUser()
         .then(function(user) {
             plants.forEach(function(plant) {
-                console.log("arr each plant", importantDates);
                 var plantEvent = {};
                 plantEvent.event = "Plant the " + plant.name;
                 plantEvent.date = new Date(user.springFrostDate);
-                // console.log("plant", plantEvent);
                 if (plant.howFarBefore) {
                     plantEvent.date.setTime(plantEvent.date.getTime() - plant.howFarBefore * 86400000);
                 }
@@ -180,16 +166,15 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state) {
                 importantDates.push(plantEvent);
                 var harvestBeginEvent = {};
                 harvestBeginEvent.event = "Begin " + plant.name.toLowerCase() + " harvest";
-                harvestBeginEvent.date = plantEvent.date;
+                harvestBeginEvent.date = _.clone(plantEvent.date);
                 harvestBeginEvent.date.setTime(harvestBeginEvent.date.getTime() + plant.firstHarvest * 86400000);
                 importantDates.push(harvestBeginEvent);
                 var harvestEndEvent = {};
                 harvestEndEvent.event = "End " + plant.name.toLowerCase() + " harvest";
-                harvestEndEvent.date = harvestBeginEvent.date;
+                harvestEndEvent.date = _.clone(harvestBeginEvent.date);
                 harvestEndEvent.date = harvestEndEvent.date.setTime(harvestEndEvent.date.getTime() + plant.harvestPeriod * 86400000);
                 importantDates.push(harvestEndEvent);
             });
-            console.log("out of forEach", importantDates);
             return importantDates;
         });
     }
