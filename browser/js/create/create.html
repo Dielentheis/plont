@@ -1,15 +1,15 @@
 <section id="plots">
     <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h1 class="title">Create Your Plot</h1>
-            </div>
-            <div ng-show="!switch" class="col l11 offset-l3">
-                <input placeholder="Plot Name" id="plot_name" type="text" ng-model="name">
-            </div>
-        </div>
-        <div class="divider"></div>
         <div ng-show="!switch">
+            <div class="row">
+                <div class="col s12">
+                    <h1 class="title">Create Your Plot</h1>
+                </div>
+                <div ng-show="!switch" class="col l11 offset-l3">
+                    <input placeholder="Plot Name" id="plot_name" type="text" ng-model="name">
+                </div>
+            </div>
+            <div class="divider"></div>
             <div class="row">
                 <div class="col l6 offset-l3">
                     <h2 class="size">Plot Size?</h2>
@@ -28,7 +28,7 @@
                         </select>
                     </div>
                     <div class="col s2 offset-4">
-                        <p class="by"> X </p>
+                        <p class="by">X</p>
                     </div>
                     <div class="col s4 offset-8">
                         <label class="label">Width:</label>
@@ -66,17 +66,21 @@
             </div>
             <p ng-show="plantsDontFit">You have selected too many plants.</p>
         </div>
-        <div class="row done">
+        <div class="row" id="done">
             <div class="col l6 offset-l6">
                 <div class="col l6">
-                <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-sref="sunmap"> Done </button>
-                <p ng-show="largePlants.length"> The following plants require more space then your plot allows: </p>
-                <ul ng-show="largePlants.length">
-                    <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
-                </ul>
+                    <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-sref="sunmap"> Done </button>
                 </div>
             </div>
         </div>
+        </div>
+        <div class="row">
+            <div class="col s6 offset-l3">
+                <p ng-show="largePlants.length"><strong>The following plants are too large to flourish in your plot:</strong></p>
+                <ul ng-show="largePlants.length" class="fly">
+                    <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
+                </ul>
+            </div>
         </div>
     </div>
 </section>
