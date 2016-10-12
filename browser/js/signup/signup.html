@@ -1,6 +1,10 @@
 <section id='signup-form'>
     <h1>Sign Up</h1>
     <div>
+        <alert type="danger" ng-show="error">
+            {{ error }}
+            <br>
+        </alert>
         <form name="myForm">
             <div class="form-group">
                 <label>First Name:</label>

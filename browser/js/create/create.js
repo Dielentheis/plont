@@ -6,7 +6,13 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFactory) {
+app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFactory, PlantFactory, AuthService) {
+
+    AuthService.getLoggedInUser()
+    .then(function (user) {
+        $scope.user = user
+    })
+    .catch($log.error);
 
     var sortByName = function (a, b) {
         if (a.name < b.name) {
@@ -57,6 +63,11 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
 
     $scope.createPlantList = function (selectedPlants) {
         CreatePlotFactory.userPlantList(selectedPlants);
+        let plantIds = []
+        selectedPlants.forEach(function (obj) {
+            plantIds.push(obj.id);
+        })
+        PlantFactory.addToUser($scope.user.id, plantIds);
     };
 
     // below is not yet functioning:
