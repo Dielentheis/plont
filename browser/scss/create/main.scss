@@ -7,18 +7,16 @@ h1.title {
     text-align: center;
 }
 
-
-div.row.create {
-    display: flex;
-    justify-content: space-between;
-}
-
 .row.add {
     margin-bottom: 0;
 }
 
+.bottom_spacing-small {
+    margin-bottom: 30px;
+}
+
 .bottom_spacing {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 
 .bottom_spacing-large {
@@ -39,4 +37,11 @@ div.row.create {
 #scroll_list {
     height: 200px;
     overflow-y:scroll;
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
 }
