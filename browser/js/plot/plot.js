@@ -35,7 +35,7 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 			return plot.data;
 		})
 		.catch($log.error);
-	}
+	};
 
 	returnObj.makeKey = function(plot) {
 		idsToNames();
@@ -50,7 +50,7 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 			}
 		}
 		return keys;
-	}
+	};
 
 	returnObj.buildPlotTable = function(plot) {
 		console.log("buily plot table", plot);
@@ -63,7 +63,7 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 			data.push(row);
 		}
 		return data;
-	}
+	};
 
 	return returnObj;
 });

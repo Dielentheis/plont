@@ -51,7 +51,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                             scope.showAlert = true;
                         } else if (weather.dry>5) {
                             if (scope.weather !== []) {
-                            scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there. "
+                            scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there. ";
                             }
                             scope.showAlert = true;
                         }
@@ -68,7 +68,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                     .ariaLabel('Alert Dialog for Weather')
                     .targetEvent(ev)
                     .clickOutsideToClose(true)
-                    .ok('Thanks!')
+                    .ok('Thanks!');
                 $mdDialog.show(confirm).then(function() {
                   scope.status = 'Confirmed.';
                 });
