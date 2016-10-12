@@ -65,15 +65,10 @@
         <div class="row" id="done">
             <div class="col l6 offset-l6">
                 <div class="col l6">
-                    <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)" ui-sref="sunmap"> Done </button>
                 <div ng-show="error">
                     <span>{{ message }}</span>
                 </div>
                 <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)"> Done </button>
-                <p ng-show="largePlants.length"> The following plants require more space then your plot allows: </p>
-                <ul ng-show="largePlants.length">
-                    <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
-                </ul>
                 </div>
             </div>
         </div>
@@ -81,7 +76,7 @@
         <div class="row">
             <div class="col s6 offset-l3">
                 <p ng-show="largePlants.length"><strong>The following plants are too large to flourish in your plot:</strong></p>
-                <ul ng-show="largePlants.length" id= "scroll_list">
+                <ul ng-show="largePlants.length" id="scroll_list">
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
                 </ul>
 
