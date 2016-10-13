@@ -26,7 +26,6 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
     }
 
     $scope.removePlot = function(plotId, plotName) {
-        console.log("click logged");
         UserPlotsFactory.remove(plotId)
         .then(function() {
             tellUserDeleted(plotName);
@@ -35,7 +34,6 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
     }
 
     function tellUserDeleted(name) {
-        console.log("supposed to tell");
         var confirm = $mdDialog.confirm()
             .title('Plot Deleted')
             .htmlContent('\'' + name + '\' was successfully deleted!')
@@ -45,12 +43,10 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
             
         $mdDialog.show(confirm)
         .then(function() {
-            console.log("gonna get");
             return UserPlotsFactory.fetchUserPlots($scope.user.id)
         })
         .then(function(plots) {
             $scope.plots = plots;
-            console.log("shoulda refreshed");
         })
         .catch($log.error);
     }
