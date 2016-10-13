@@ -56,7 +56,8 @@ app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory,
                     $scope.setDates($scope.importantDates);
             });
         });
-    });
+    })
+    .catch($log.error);
 
     $scope.setDates = function(dates) {
 

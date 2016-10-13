@@ -9,6 +9,7 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('UserPlantController', function ($scope, $log, $state,AuthService, PlantFactory) {
+    $scope.user = {};
     AuthService.getLoggedInUser()
     .then(function (user) {
         if (!user) {
@@ -18,11 +19,10 @@ app.controller('UserPlantController', function ($scope, $log, $state,AuthService
             $scope.user = user;
             if (!user.firstName) $scope.user.firstName = 'friend';
         }
-        PlantFactory.fetchUserPlants($scope.user.id)
-        .then(function (plants) {
-            $scope.userPlants = plants;
-        })
-        .catch($log.error);
+        return PlantFactory.fetchUserPlants($scope.user.id)
+    })
+    .then(function (plants) {
+        $scope.userPlants = plants;
     })
     .catch($log.error);
 
