@@ -10,7 +10,7 @@ h2 {
 }
 
 #board td {
-    border: 1px solid #e3e3e3;
+    border: 1px solid $borders;
     padding: 0;
 }
 
@@ -19,15 +19,15 @@ h2 {
 }
 
 td.sun {
-    background-color: #ffbb5a;
+    background-color: $sunmapSun;
 }
 
 td.partial_shade {
-    background-color: #b1c27b;
+    background-color: $sunmapPartialShade;
 }
 
 td.full_shade {
-    background-color: #94a7a1;
+    background-color: $sunmapFullShade;
 }
 
 #sunTable {

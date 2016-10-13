@@ -3,7 +3,7 @@
 		table.plot {
 			max-width: 60%;
 			margin: 50px auto;
-			border: 1px solid #666666;
+			border: 1px solid $borders;
 		}
 
 		td {
@@ -18,17 +18,17 @@
 			text-align: center;
 			font-family: "Roboto";
 			font-weight: 400;
-			border-right: 1px solid #666666;
-			border-bottom: 1px solid #666666;
+			border-right: 1px solid $borders;
+			border-bottom: 1px solid $borders;
 			text-transform: uppercase;
 		}
 
 		table.key {
 			max-width: 20%;
 			margin: 0 auto;
-			border: 1px solid #666666;
+			border: 1px solid $borders;
 			td {
-				border: 1px solid #666666;
+				border: 1px solid $borders;
 				width: 6%;
 			}
 		}
@@ -45,37 +45,37 @@
 
 
 	.class1 {
-		background-color: #7c9fb0;
+		background-color: $gridColor0;
 	}
 	.class2 {
-		background-color: #e4bf80;
+		background-color: $gridColor1;
 	}
 	.class3 {
-		background-color: #c94a53;
+		background-color: $gridColor2;
 	}
 	.class4 {
-		background-color: #9abf88;
+		background-color: $gridColor3;
 	}
 	.class5 {
-		background-color: #993767;
+		background-color: $gridColor4;
 	}
 	.class6 {
-		background-color: #9163b6;
+		background-color: $gridColor5;
 	}
 	.class7 {
-		background-color: #51574a;
+		background-color: $gridColor6;
 	}
 	.class8 {
-		background-color: #e2975d;
+		background-color: $gridColor7;
 	}
 	.class9 {
-		background-color: #5698c4;
+		background-color: $gridColor8;
 	}
 	.class10 {
-		background-color: #e279a3;
+		background-color: $gridColor9;
 	}
 	.no-plant {
-		background-color: #65387d;
+		background-color: $themeWhite;
 	}
 
 

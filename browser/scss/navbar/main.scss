@@ -1,18 +1,17 @@
 nav {
-    background-color: rgba(165, 214, 167, 0.3);
+    background-color: $header;
     box-shadow: none;
     ul a {
-        color: #000000;
+        color: $themeWhite;
     }
     .brand-logo {
         padding-left: 20px;
-        color: #000000;
+        color: $themeWhite;
         font-weight: 300;
-        font-style: italic;
         text-transform:uppercase;
     }
     .material-icons {
-        color: #b71c1c;
+        color: $linesFocused;
     }
     li:focus {
         outline:0 !important;
