@@ -3,11 +3,11 @@ var db = require('../../../db/_db.js');
 var User = db.model('user');
 var cron = require('node-cron');
 var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
-var twilioSID = process.env.TWILIO_API || require('../../../../apis.js').twilioSID;
-var twilioAuth = process.env.TWILIO_AUTH || require('../../../../apis.js').twilioAuthToken;
+var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').twilioSID;
+var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').twilioAuthToken;
 
 
-var client = require('twilio')(twilioSID, twilioAuth);
+var client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
 var simpleWeather = require("simple-weather")({
