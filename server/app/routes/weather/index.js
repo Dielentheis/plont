@@ -12,7 +12,6 @@ var simpleWeather = require("simple-weather")({
 
 // cron schedule to check the weather in each users location each day at 5:30AM
 var scheduler = cron.schedule('30 5 * * *', function(){
-  console.log('running a task once a day at 5:30AM');
   findWeather();
 });
 
@@ -20,7 +19,6 @@ var scheduler = cron.schedule('30 5 * * *', function(){
 // count hot days / rainy days in a row
 // if greater than a decided upon number >> alert && reset count
 var findWeather = function() {
-    console.log('hereeee')
     User.findAll({where: {
         zip: {$ne: null}}
     })
@@ -29,7 +27,6 @@ var findWeather = function() {
             simpleWeather["v2.5"].current.byZipcode(user.zip)
             .then(function(response) {
                 user.update({weather: [response.weather[0].main, response.main.temp]});
-                console.log(response)
                 if (response.rain) {
                     user.increment('wet');
                     user.update({dry: 0});
