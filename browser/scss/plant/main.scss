@@ -1,0 +1,16 @@
+.single-plant {
+    overflow:hidden;
+}
+
+.card-content {
+    max-height: 320px;
+    overflow: scroll;
+}
+
+.card.horizontal .card-image img {
+    max-height: 320px;
+}
+
+.btn-flat.my-plants {
+    float: right;
+}

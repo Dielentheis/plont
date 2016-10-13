@@ -51,7 +51,8 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                             scope.showAlert = true;
                         } else if (weather.dry>5) {
                             if (scope.weather !== []) {
-                            scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there. ";
+                                scope.weatherAlert = "You may want to get outside and water your plants! It is dry out there. ";
+                                scope.weather = "The forecast for today is " + Math.floor(weather.weather[1]) + " degrees and " + weather.weather[0].toLowerCase()+ ".";
                             }
                             scope.showAlert = true;
                         }

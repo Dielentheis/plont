@@ -31,7 +31,7 @@ td.full_shade {
 }
 
 #sunTable {
-    height: 500px;
+    height: 80%;
 }
 
 #legend {
@@ -40,7 +40,7 @@ td.full_shade {
 
 .sqTable {
     border: 0px;
-    width: 100%;
+    width: 50%;
     padding-top: 100%;
     box-sizing: border-box;
     position: relative;
@@ -48,10 +48,6 @@ td.full_shade {
 
 .doyouevenlift {
     display: flex;
-}
-
-.flexthetable {
-    flex-basis: 100%;
 }
 
 #control_panel {

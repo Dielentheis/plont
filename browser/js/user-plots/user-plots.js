@@ -24,15 +24,14 @@ app.factory('UserPlotsFactory', function($http, $log) {
 });
 
 app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state, AuthService) {
+    $scope.user = {};
     AuthService.getLoggedInUser()
     .then(function(user) {
         $scope.user = user;
-
-        UserPlotsFactory.fetchUserPlots($scope.user.id)
-        .then(function(plots) {
-            $scope.plots = plots;
-        })
-        .catch($log.error);
+        return UserPlotsFactory.fetchUserPlots($scope.user.id)
+    })
+    .then(function(plots) {
+        $scope.plots = plots;
     })
     .catch($log.error);
 
