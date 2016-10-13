@@ -79,7 +79,19 @@ router.delete('/:plotId/plants/:plantId', function(req, res, next) {
 		}
 	})
 	.then(function() {
-		res.sendStatus(200)
+		res.sendStatus(200);
+	})
+	.catch(next);
+});
+
+router.delete('/:id', function(req, res, next) {
+	Plot.destroy({
+		where: {
+			id: req.params.id
+		}
+	})
+	.then(function() {
+		res.send(200);
 	})
 	.catch(next);
 });

@@ -12,7 +12,7 @@
     <div class="row">
         <div class="plot">
             <div ng-repeat="plot in plots">
-                <h1><a ng-click="toPlot(plot.id)">{{plot.name}}</a></h1>
+                <h1><a ng-click="toPlot(plot.id)">{{plot.name}}</a><a ng-click="removePlot(plot.id, plot.name)"><i class="material-icons">clear</i></a></h1>
             </div>
         </div>
     </div>
