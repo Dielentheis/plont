@@ -3,22 +3,13 @@
 		table.plot {
 			max-width: 60%;
 			margin: 50px auto;
-			border: 2px solid #666666;
-		}
-
-		table.key {
-			max-width: 20%;
-			margin: 0 auto;
 			border: 1px solid #666666;
-			td {
-				border: 1px solid #666666;
-			}
 		}
 
 		td {
 			text-align: center;
-			width: 10px;
 			height: 10px;
+			width: 10px;
 			text-transform: uppercase;
 			font-weight: 300;
 		}
@@ -30,6 +21,16 @@
 			border-right: 1px solid #666666;
 			border-bottom: 1px solid #666666;
 			text-transform: uppercase;
+		}
+
+		table.key {
+			max-width: 20%;
+			margin: 0 auto;
+			border: 1px solid #666666;
+			td {
+				border: 1px solid #666666;
+				width: 6%;
+			}
 		}
 
 	.key-title {
