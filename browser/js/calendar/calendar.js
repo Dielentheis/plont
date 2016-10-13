@@ -60,15 +60,17 @@ app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory,
 
     $scope.setDates = function(dates) {
 
-        var dateArr = dates[0];
+        dates.forEach(function(dateArr){
+            for (var i=0; i<dateArr.length; i++) {
 
-        for (let i=0; i<6; i++) {
+                var formattedDate = new Date(dateArr[i].date);
+                var formattedText = "<p>" + dateArr[i].event + "</p>";
 
-            let formattedDate = new Date($scope.importantDates[0][i].date);
-            let formattedText = "<p>" + $scope.importantDates[0][i].event + "</p>"
+                MaterialCalendarData.setDayContent(formattedDate, formattedText);
 
-            MaterialCalendarData.setDayContent(formattedDate, formattedText);
-        }
+            }
+
+        });
     };
 
 });
