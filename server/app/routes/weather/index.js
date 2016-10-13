@@ -12,7 +12,7 @@ var simpleWeather = require("simple-weather")({
 
 // cron schedule to check the weather in each users location each day at 5:30AM
 var scheduler = cron.schedule('30 5 * * *', function(){
-  console.log('running a task once a day at 5AM');
+  console.log('running a task once a day at 5:30AM');
   findWeather();
 });
 

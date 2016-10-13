@@ -1,5 +1,5 @@
-<section id="plant" ng-controller="PlantCtrl">
-    <div class="md-padding" layout-align="center">
+<body class="single-plant" ng-controller="PlantCtrl">
+<!--     <div class="md-padding" layout-align="center">
         <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
         ng-mouseleave="hover = ''" ng-class="hover">
             <md-card-content>
@@ -35,5 +35,50 @@
                 </div>
             </md-card-content>
         </md-card>
+    </div> -->
+    <div class="row">
+    <div class="col s10 offset-s1">
+        <h2 class="header">{{plant.name}}</h2>
+        <div class="card horizontal">
+          <div class="card-image">
+            <img src="{{plant.image}}">
+          </div>
+          <div class="card-stacked">
+            <div class="card-content">
+                <p><strong>ABOUT THIS PLANT</strong></p>
+                <p>{{plant.description}}</p><br/>
+                <p>{{plant.notes}}</p>
+                <br/>
+
+                <p><strong>PERENNIAL</strong></p>
+                <p ng-if="plant.isPerennial">This plant is perennial.</p>
+                <p ng-if="!plant.isPerennial">This plant is not perennial.</p>
+                <br/>
+
+                <p><strong>WATERING AND FEEDING</strong></p>
+                <p ng-hide="if (plant.watering==='n/a')">{{plant.watering}}</p>
+                <p>{{plant.feeding}}</p>
+                <br/>
+
+                <div class="diseases" ng-hide="plant.diseases === null">
+                    <p><strong>DISEASES</strong></p>
+                    <p>{{plant.diseases}}</p>
+                </div>
+                <br/>
+
+                <div class="pests" ng-hide="plant.pests.length === 0">
+                    <p><strong>PESTS</strong></p>
+                    <p ng-repeat="pest in plant.pests">{{pest}}</p>
+                </div>
+            </div>
+            <div class="card-action" ng-hide="!user">
+              <button class="waves-effect btn-flat my-plants" ng-hide="!user" ng-click="addPlant(plant.id)"><i class="material-icons">add_circle   </i>   Add to my plants</button>
+            </div>
+          </div>
+        </div>
     </div>
-</section>
+    </div>
+</body>
+
+
+
