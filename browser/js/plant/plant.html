@@ -1,41 +1,4 @@
 <body class="single-plant" ng-controller="PlantCtrl">
-<!--     <div class="md-padding" layout-align="center">
-        <md-card flex='100' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
-        ng-mouseleave="hover = ''" ng-class="hover">
-            <md-card-content>
-
-                <md-card-title>
-                    <h4>{{plant.name}}</h4>
-                    <button class="btn-flat" ng-hide="!user" ng-click="addPlant(plant.id)"><i class="material-icons">add_circle</i>Add to my plants</button><br><br>
-                </md-card-title>
-
-                <hr>
-                <h5>About this plant</h5>
-
-                <p>{{plant.description}}</p>
-                <p>{{plant.notes}}</p>
-
-                <h5>Perennial</h5>
-                <p ng-if="plant.isPerennial">This plant is perennial.</p>
-                <p ng-if="!plant.isPerennial">This plant is not perennial.</p>
-
-                <h5>Watering and Feeding</h5>
-                <p ng-hide="if (plant.watering==='n/a')">{{plant.watering}}</p>
-
-                <p>{{plant.feeding}}</p>
-
-                <div class="diseases" ng-hide="plant.diseases == []">
-                    <h5>Diseases</h5>
-                    <p>{{plant.diseases}}</p>
-                </div>
-
-                <div class="pests" ng-hide="plant.pests == []">
-                    <h5>Plant pests</h5>
-                    <p>{{pests}}</p>
-                </div>
-            </md-card-content>
-        </md-card>
-    </div> -->
     <div class="row">
     <div class="col s10 offset-s1">
         <h2 class="header">{{plant.name}}</h2>
