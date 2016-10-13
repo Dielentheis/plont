@@ -1,11 +1,9 @@
 app.config(function ($stateProvider) {
-
     $stateProvider.state('userPlants', {
         url: '/user-plants',
         controller: 'UserPlantController',
         templateUrl: 'js/users-plants/users-plants.html'
     });
-
 });
 
 app.controller('UserPlantController', function ($scope, $log, $state,AuthService, PlantFactory) {
@@ -36,5 +34,4 @@ app.controller('UserPlantController', function ($scope, $log, $state,AuthService
         })
         .catch($log.error);
     };
-
 });
