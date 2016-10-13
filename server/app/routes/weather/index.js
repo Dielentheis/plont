@@ -2,8 +2,14 @@ var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var User = db.model('user');
 var cron = require('node-cron');
-
 var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
+var twilioSID = process.env.TWILIO_API || require('../../../../apis.js').twilioSID;
+var twilioAuth = process.env.TWILIO_AUTH || require('../../../../apis.js').twilioAuthToken;
+
+
+var client = require('twilio')(twilioSID, twilioAuth);
+
+
 var simpleWeather = require("simple-weather")({
     apiKey: weatherApiKey,
     units: "imperial",
@@ -11,8 +17,13 @@ var simpleWeather = require("simple-weather")({
 });
 
 // cron schedule to check the weather in each users location each day at 5:30AM
-var scheduler = cron.schedule('30 5 * * *', function(){
+cron.schedule('*/2 * * * *', function(){
   findWeather();
+});
+
+// cron schedule to send text if user needs to water / not water each day at 10AM
+cron.schedule('*/1 * * * *', function(){
+  textUser();
 });
 
 // get weather for all users
@@ -42,6 +53,43 @@ var findWeather = function() {
         });
     });
 };
+
+
+var textUser = function() {
+    var weatherAlert, weather;
+    User.findAll({where: {
+        zip: {$ne: null},
+        phoneNumber: {$ne: null}}
+    })
+    .then(function(users){
+        users.forEach(function(user) {
+            if(user.wet > 5){
+                weatherAlert = "You might want to skip out on watering your plants over the next few days. Nature is taking care of it! ";
+                weather = "The forecast for today is " + Math.floor(user.weather[1]) + " degrees and " + user.weather[0].toLowerCase()+ ".";
+            } else if (user.dry>5) {
+                weatherAlert = "You may want to get outside and water your plants! It is dry out there. ";
+                weather = "The forecast for today is " + Math.floor(user.weather[1]) + " degrees and " + user.weather[0].toLowerCase()+ ".";
+            }
+            client.sendMessage({
+
+                to: user.phoneNumber, // Any number Twilio can deliver to
+                from: '+12027590518', // A number you bought from Twilio and can use for outbound communication
+                body: weatherAlert + weather // body of the SMS message
+
+            }, function(err, responseData) { //this function is executed when a response is received from Twilio
+
+                if (!err) { // "err" is an error received during the request, if any
+
+                    console.log(responseData.from); // outputs "+14506667788"
+                    console.log(responseData.body); // outputs "word to your mother."
+
+                }
+            });
+        });
+    });
+};
+
+
 
 // starts with api/weather
 router.get('/:id', function(req, res, next){
