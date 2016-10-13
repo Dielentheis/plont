@@ -20,7 +20,6 @@ app.factory('CalendarFactory', function($http, AuthService){
 });
 
 app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory, $log, $q, $timeout, AuthService, MaterialCalendarData) {
-
     $scope.selectedDate = new Date();
     $scope.weekStartsOn = 0;
     $scope.dayFormat = "d";
@@ -56,7 +55,8 @@ app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory,
                     $scope.setDates($scope.importantDates);
             });
         });
-    });
+    })
+    .catch($log.error);
 
     $scope.setDates = function(dates) {
 
@@ -70,5 +70,4 @@ app.controller('CalendarCtrl', function($scope, $filter, $http, CalendarFactory,
             MaterialCalendarData.setDayContent(formattedDate, formattedText);
         }
     };
-
 });

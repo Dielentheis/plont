@@ -14,7 +14,6 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log) {
 		return PlotFactory.getPlotPlants(plot)
 	})
 	.then(function(plants) {
-		console.log("PLANTS? in ctrl", plants);
 		$scope.plotName = plot.name;
 		$scope.plot = plot.layout;
 		$scope.data = PlotFactory.buildPlotTable(plot.layout);
@@ -24,21 +23,19 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log) {
 	.catch($log.error);
 });
 
-app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory) {
+app.factory('PlotFactory', function($http, $stateParams, $log) {
 	var returnObj = {};
 	var idNames = {};
 
 	returnObj.getPlotPlants = function(plot) {
 		return $http.get('/api/plots/' + plot.id + '/plants')
 		.then(function(plants) {
-			console.log("did we get plants", plants);
 			return plants.data;
 		})
 		.catch($log.error);
 	}
 
 	function idsToNames(plants) {
-		console.log("!!!", plants);
 		plants.forEach(function(plant) {
 			idNames[plant.id] = plant.name;
 		});
@@ -68,7 +65,6 @@ app.factory('PlotFactory', function($http, $stateParams, $log, CreatePlotFactory
 	};
 
 	returnObj.buildPlotTable = function(plot) {
-		console.log("buily plot table", plot);
 		var data = [];
 		for (var i = 0; i < plot.length; i++) {
 			var row = [];

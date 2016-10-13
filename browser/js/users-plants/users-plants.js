@@ -1,14 +1,13 @@
 app.config(function ($stateProvider) {
-
     $stateProvider.state('userPlants', {
         url: '/user-plants',
         controller: 'UserPlantController',
         templateUrl: 'js/users-plants/users-plants.html'
     });
-
 });
 
 app.controller('UserPlantController', function ($scope, $log, $state,AuthService, PlantFactory) {
+    $scope.user = {};
     AuthService.getLoggedInUser()
     .then(function (user) {
         if (!user) {
@@ -18,11 +17,10 @@ app.controller('UserPlantController', function ($scope, $log, $state,AuthService
             $scope.user = user;
             if (!user.firstName) $scope.user.firstName = 'friend';
         }
-        PlantFactory.fetchUserPlants($scope.user.id)
-        .then(function (plants) {
-            $scope.userPlants = plants;
-        })
-        .catch($log.error);
+        return PlantFactory.fetchUserPlants($scope.user.id)
+    })
+    .then(function (plants) {
+        $scope.userPlants = plants;
     })
     .catch($log.error);
 
@@ -36,5 +34,4 @@ app.controller('UserPlantController', function ($scope, $log, $state,AuthService
         })
         .catch($log.error);
     };
-
 });

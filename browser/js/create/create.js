@@ -7,7 +7,6 @@ app.config(function ($stateProvider) {
 });
 
 app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFactory, PlantFactory, AuthService, $state) {
-
     AuthService.getLoggedInUser()
     .then(function (user) {
         $scope.user = user;
@@ -68,7 +67,6 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
         PlantFactory.addToUser($scope.user.id, plantIds);
         $state.go('sunmap');
     };
-
 });
 
 app.factory('CreatePlotFactory', function () {
