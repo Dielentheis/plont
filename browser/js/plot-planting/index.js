@@ -40,17 +40,13 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
         var approxPlantArea = plotArea / numPlants;
 
         plants = assignNumPlantsToPlant(approxPlantArea, plants);
-        console.log("assigned nums", plants, approxPlantArea);
         assignColorKeys(plants);
         plants.sort(orderByBiggest);
         plants.forEach(function(plant) {
             for (var i = 0; i < plant.numToPlant; i++) {
-                console.log("planting", i, plant.name);
-                console.log("plot");
                 findSpaceAndPlant(plant);
             }
         });
-        console.log("gonna call fillIn");
         fillInExtraSpace(plants);
         addCellClass();
 
@@ -78,8 +74,6 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
         function findSpaceAndPlant(plant) {
             var plotHeight = plot.length;
             var rowLength = plot[0].length;
-            var width = plant.width;
-            var height = plant.height;
 
             for (var i = 0; i < plotHeight; i++) { // row
                 for (var j = 0; j < rowLength; j++) { // column
@@ -105,7 +99,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
                         return false;
                     }
                     else {
-                        if (plant.sun == plot[i][j].sun) {
+                        if (plant.sun === plot[i][j].sun) {
                             sunPreferenceMatch++;
                         }
                     }
@@ -120,7 +114,6 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
         }
 
         function placePlant(row, col, plant) {
-            console.log("placing", plant.name, "at corner", row, col);
             for (var i = row; i < row + plant.height; i++) {
                 for (var j = col; j < col + plant.width; j++) {
                     plot[i][j].taken = true;
@@ -130,14 +123,10 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
         }
 
         function fillInExtraSpace(plants) {
-            console.log("supopsed to fill in")
             var plant = plants[plants.length - 1];
-            console.log("plant", plant);
             for (var i = 0; i < plot.length; i++) {
                 for (var j = 0; j < plot[0].length; j++) {
-                    console.log("checking if space and sun");
                     if (isEnoughSpaceAndSun(i, j, plant)) {
-                        console.log("planing");
                         placePlant(i, j, plant);
                     }
                 }
@@ -184,6 +173,7 @@ app.service('PlotService', function($http, AuthService, $log, $q, $state, Create
                 importantDates.push(harvestEndEvent);
             });
             return importantDates;
-        });
+        })
+        .catch($log.error);
     }
 });

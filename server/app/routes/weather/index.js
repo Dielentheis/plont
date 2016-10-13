@@ -52,7 +52,8 @@ router.get('/:id', function(req, res, next){
             dry: user.dry,
             weather: user.weather
         });
-    });
+    })
+    .catch(next);
 });
 
 module.exports = router;
