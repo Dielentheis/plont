@@ -9,7 +9,7 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state, AuthService, $mdDialog, $window) {
+app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state, AuthService, $mdDialog) {
     $scope.user = {};
     AuthService.getLoggedInUser()
     .then(function(user) {

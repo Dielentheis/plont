@@ -62,6 +62,8 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
 app.factory('CreatePlotFactory', function () {
     var returnObj = {};
 
+    returnObj.justCreated = false;
+
     returnObj.Cell = function () {
         this.sun = 2;
         this.sunniness = 'sun';
@@ -88,6 +90,7 @@ app.factory('CreatePlotFactory', function () {
 
     returnObj.userPlantList = function (usersPlants) {
         returnObj.usersPlants = usersPlants;
+        returnObj.justCreated = true;
     };
 
     returnObj.setPlotName = function (plotName) {
