@@ -2,12 +2,12 @@ var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var User = db.model('user');
 var cron = require('node-cron');
-var twilio = require('twilio')();
+var twilio = require('twilio');
 var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
-var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').TWILIO_ACCOUNT_SID;
-var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').TWILIO_AUTH_TOKEN;
+var accountSid = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').TWILIO_ACCOUNT_SID;
+var authToken = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').TWILIO_AUTH_TOKEN;
 
-var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+var client = new twilio.RestClient(accountSid, authToken);
 
 var simpleWeather = require("simple-weather")({
     apiKey: weatherApiKey,
