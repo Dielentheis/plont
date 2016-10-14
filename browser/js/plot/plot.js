@@ -20,7 +20,6 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
 		$scope.plantInfoArr = PlotFactory.makeKey(plot.layout, plants);
 
 		var compare = PlotFactory.numPlants;
-		console.log("comparing", plants.length, compare.length);
 		if (plants.length !== compare.length && CreatePlotFactory.justCreated) {
 			var insincereApology = $mdDialog.confirm()
             .title('Sorry!')
@@ -29,7 +28,11 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
             .clickOutsideToClose(true)
             .ok('OK');
 
-            $mdDialog.show(insincereApology);
+            $mdDialog.show(insincereApology)
+            .then(function() {
+            	CreatePlotFactory.justCreated = false;
+        	})
+			.catch($log.error);
 		}
 	})
 	.catch($log.error);
