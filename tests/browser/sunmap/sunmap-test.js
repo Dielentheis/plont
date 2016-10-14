@@ -1,6 +1,6 @@
 describe('Sun Controller', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var $scope, SunController;
     beforeEach(inject(function($controller){

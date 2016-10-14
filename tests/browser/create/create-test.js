@@ -1,6 +1,6 @@
 describe('Create Plot Factory', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var CreatePlotFactory;
     beforeEach(inject(function(_CreatePlotFactory_) {

@@ -1,6 +1,6 @@
 describe('User Plant Controller', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var $scope, UserPlantController, PlantFactory;
     beforeEach(inject(function($controller){
