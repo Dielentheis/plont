@@ -1,20 +1,26 @@
 <container class="container">
     <div class="row">
         <div class="col s6 offset-s3">
-            <h2 class="hello"> Welcome, {{ user.firstName }} </h2>
+            <h2 ng-show="loggedIn" class="hello"> Welcome, {{ user.firstName }} </h2>
+            <h2 ng-show="!loggedIn">Welcome</h2>
+            <p ng-show="!loggedIn" class="description">Plont helps you grow your dream garden. Input your plot size and desired plants, Plont will generate an optimized plot layout. Plont will help you upkeep your garden with alerts and a custom harvest calendar.</p>
             <hr noshade>
-            <div class="welcome">
-               <div ng-show="loggedIn">
-                    <a class="waves-effect btn-flat" ui-sref="user-plots">View My Plots</a>
-                    <a class="waves-effect btn-flat" ui-sref="create">Create a New Plot</a>
-                </div>
-                <div ng-show="!loggedIn">
-                    <p>
-                    <a class="waves-effect btn-flat" ui-sref="signup">Sign up</a>
-                    or
-                    <a class="waves-effect btn-flat" ui-sref="login">log in</a>
-                    to create or view plots
-                    </p>
+            <div class="row">
+                <div class="col s12">
+                   <div class="welcome" ng-show="loggedIn">
+                        <a class="waves-effect btn-flat" ui-sref="user-plots">View My Plots</a>
+                        <a class="waves-effect btn-flat" ui-sref="create">Create a New Plot</a>
+                    </div>
+                    <div class = "sign-up">
+                        <div ng-show="!loggedIn">
+                            <p>
+                            <a class="waves-effect btn-flat" ui-sref="signup">Sign up</a>
+                            &nbsp;or&nbsp;
+                            <a class="waves-effect btn-flat" ui-sref="login">log in</a>
+                            &nbsp;to create or view plots
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -2,9 +2,23 @@ h2.hello{
     padding-top: 30px;
 }
 
-.welcome {
-    padding-top: 30px;
-    margin: auto;
+div .col.s12 .welcome {
+    margin-left: 30px;
+}
+
+.description {
     display: flex;
     justify-content: space-around;
+    text-align: center;
+ }
+
+.sign-in {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
 }
+
+.row .col.s12 {
+    text-align: center;
+}
+
