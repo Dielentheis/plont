@@ -47,4 +47,32 @@ describe('User Plots Factory', function () {
             $httpBackend.flush();
         });
     });
+
+    describe('remove', function () {
+
+        var plotId;
+        var responseData;
+
+        beforeEach(function () {
+            plotId = 1;
+            responseData = 202;
+
+            $httpBackend
+                .expectDELETE('/api/plots/' + plotId)
+                .respond(responseData);
+            $httpBackend
+                .expectGET('js/home/home.html')
+                .respond(200);
+        });
+
+        afterEach(function () {
+            $httpBackend.verifyNoOutstandingExpectation();
+            $httpBackend.verifyNoOutstandingRequest();
+        });
+
+        it('makes a delete request with a plotId', function () {
+            UserPlotsFactory.remove(1);
+            $httpBackend.flush();
+        });
+    });
 });

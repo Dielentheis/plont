@@ -11,10 +11,11 @@ describe('User Plant Controller', function () {
 
     describe('removePlant', function() {
 
-        var userId, plantId, userPlantDb;
-        beforeEach(function () {
+        var userId, plantId, userPlantDb, deferred;
+        beforeEach(inject(function ($q) {
             userId = 1;
             plantId = 1;
+            deferred = $q.defer();
             userPlantDb = {1: [{id: 1, name: 'Basil'}, {id: 2, name: 'Carrot'}], 2: [{id: 1, name: 'Basil'}]}
             PlantFactory.removePlantFromUser = function (uId, pId) {
                 var usersPlants = userPlantDb[uId];
@@ -24,17 +25,25 @@ describe('User Plant Controller', function () {
                     }
                 })
                 userPlantDb[uId] = usersPlants;
+                deferred.resolve();
+                return deferred.promise;
             };
             PlantFactory.fetchUserPlants = function (uId) {
                 var userPlants = userPlantDb[uId];
-                return userPlants;
+                deferred.resolve(userPlants);
+                return deferred.promise;
             };
-        });
+        }));
 
-//need to fake a promise from ^ Plant factory functions
         it('removes a plant from the users plant database', function () {
             $scope.removePlant(1, 1);
             expect(userPlantDb[1].length).to.be.equal(1);
         });
+
+        it('only removes the given plant from the given user', function () {
+            $scope.removePlant(1, 1);
+            expect(userPlantDb[1].length).to.be.equal(1);
+            expect(userPlantDb[2][0].id).to.be.equal(1);
+        })
     });
 });

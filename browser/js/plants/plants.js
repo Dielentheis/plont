@@ -17,6 +17,16 @@ app.factory('PlantsFactory', function($http, $log) {
 		.catch($log.error);
 	};
 
+    returnObj.sortByName = function (one, two) {
+        if (one.name < two.name) {
+            return -1;
+        }
+        if (one.name > two.name) {
+            return 1;
+        }
+        return 0;
+    };
+
 	return returnObj;
 });
 

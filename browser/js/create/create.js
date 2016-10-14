@@ -13,16 +13,6 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
     })
     .catch($log.error);
 
-    var sortByName = function (a, b) {
-        if (a.name < b.name) {
-            return -1;
-        }
-        if (a.name > b.name) {
-            return 1;
-        }
-        return 0;
-    };
-
     var createPlantOptions = function () {
         PlantsFactory.fetchAll()
         .then(function (plants) {
@@ -35,8 +25,8 @@ app.controller('CreateCtrl', function ($scope, $log, CreatePlotFactory, PlantsFa
                     return true;
                 }
             });
-            $scope.optionsList = fitPlants.sort(sortByName);
-            $scope.largePlants = largePlants.sort(sortByName);
+            $scope.optionsList = fitPlants.sort(PlantsFactory.sortByName);
+            $scope.largePlants = largePlants.sort(PlantsFactory.sortByName);
         })
         .catch($log.error);
     };

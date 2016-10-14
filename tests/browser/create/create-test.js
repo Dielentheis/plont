@@ -14,6 +14,7 @@ describe('Create Plot Factory', function () {
     describe('Cell function', function () {
         it('creates Cell objects', function () {
             var cell = new CreatePlotFactory.Cell();
+            expect(cell).to.be.an('object');
             expect( cell.sun ).to.be.equal(2);
             expect( cell.sunniness ).to.be.equal('sun');
             expect( cell.taken ).to.be.equal(false);
@@ -24,6 +25,7 @@ describe('Create Plot Factory', function () {
         it('creates plot data instances', function () {
             var plot = CreatePlotFactory.createPlot(2, 2);
             expect( plot.length ).to.be.equal(2);
+            expect( plot[0].length ).to.be.equal(2);
         });
         it('includes new Cell objects', function () {
             var plot = CreatePlotFactory.createPlot(2, 2);
@@ -66,10 +68,11 @@ describe('Create Controller', function () {
     var $scope, CreateCtrl;
     beforeEach(inject(function($controller){
         $scope = {};
+        PlantsFactory = {};
         CreateCtrl = $controller('CreateCtrl', {$scope: $scope});
     }));
 
-    describe('$scope.createPlot', function () {
+    describe('createPlot', function () {
         it('sets $scope.area', function () {
             $scope.area = null;
             $scope.createPlot(2, 2, 'Plot');
@@ -81,4 +84,6 @@ describe('Create Controller', function () {
             expect($scope.switch).to.be.equal(true);
         })
     })
+
+
 })
