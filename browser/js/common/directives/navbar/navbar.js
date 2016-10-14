@@ -70,10 +70,11 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                     .targetEvent(ev)
                     .clickOutsideToClose(true)
                     .ok('Thanks!');
+                    
                 $mdDialog.show(confirm).then(function() {
-                  scope.status = 'Confirmed.';
+                    scope.status = 'Confirmed.';
                 });
-              };
+            };
 
             setUser();
             toggleAlert();
