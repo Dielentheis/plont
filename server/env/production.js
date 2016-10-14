@@ -9,8 +9,6 @@
 module.exports = {
     DATABASE_URI: process.env.DATABASE_URL,
     SESSION_SECRET: process.env.SESSION_SECRET,
-    TWILIO_ACCOUNT_SID: process.env.TWILIO_ACCOUNT_SID,
-    TWILIO_AUTH_TOKEN: process.env.TWILIO_AUTH_TOKEN,
     TWITTER: {
         consumerKey: process.env.TWITTER_CONSUMER_KEY,
         consumerSecret: process.env.TWITTER_CONSUMER_SECRET,

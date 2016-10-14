@@ -9,7 +9,6 @@ var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || require('../../../../ap
 
 var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
-
 var simpleWeather = require("simple-weather")({
     apiKey: weatherApiKey,
     units: "imperial",
