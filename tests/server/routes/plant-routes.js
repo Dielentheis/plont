@@ -53,6 +53,7 @@ describe('api/plants', function() {
             .get('/api/plants')
             .expect(200)
             .end(function (err, res) {
+                console.log('this is all the plants', res.body);
               if (err) return done(err);
               expect(res.body).to.be.instanceof(Array);
               done();

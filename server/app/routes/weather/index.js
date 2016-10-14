@@ -19,7 +19,7 @@ cron.schedule('* 8 * * *', function(){
 });
 
 // cron schedule to send text if user needs to water / not water each day at 10:30AM
-cron.schedule('30 10 * * *', function(){
+cron.schedule('* 10 * * *', function(){
   textUser();
 });
 
@@ -83,6 +83,7 @@ var textUser = function() {
                     console.log(responseData.body); // outputs "word to your mother."
 
                 }
+                else console.log(err);
             });
         });
     });
