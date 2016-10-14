@@ -14,3 +14,14 @@
 button:focus {
     background-color: #66bb6a;
 }
+
+.col.s6.form-group.left {
+    padding-left: 0;
+    padding-right: 10px;
+}
+
+.col.s6.form-group.right {
+    padding-left: 10px;
+    padding-right: 0;
+}
+

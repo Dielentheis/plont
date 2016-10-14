@@ -23,6 +23,9 @@ module.exports = db.define('user', {
     zip: {
         type: Sequelize.STRING(5)
     },
+    phoneNumber: {
+        type: Sequelize.STRING
+    },
     dry: {
         type: Sequelize.INTEGER,
         defaultValue: 0
