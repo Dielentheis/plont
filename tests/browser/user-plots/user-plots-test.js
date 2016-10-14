@@ -1,6 +1,6 @@
 describe('User Plots Factory', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var UserPlotsFactory, $httpBackend;
     beforeEach(inject(function(_UserPlotsFactory_, _$httpBackend_) {

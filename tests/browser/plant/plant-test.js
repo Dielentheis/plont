@@ -1,6 +1,6 @@
 describe('Plant Factory', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var PlantFactory, $httpBackend;
     beforeEach(inject(function(_PlantFactory_, _$httpBackend_) {

@@ -1,6 +1,6 @@
 describe('Nav Factory', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var NavFactory, $httpBackend;
     beforeEach(inject(function(_NavFactory_, _$httpBackend_) {
