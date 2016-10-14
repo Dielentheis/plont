@@ -86,7 +86,8 @@ module.exports = function (app, db) {
             lastName: req.body.lastName,
             email: req.body.email,
             password: req.body.password,
-            zip: req.body.zip
+            zip: req.body.zip,
+            phoneNumber: req.body.phoneNumber
         }
 
         userObj = findFrostDates(userObj, req.body.zip)
