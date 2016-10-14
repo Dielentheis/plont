@@ -26,8 +26,11 @@ describe('Members Route', function () {
 
 		it('should get a 401 response', function (done) {
 			guestAgent.get('/api/users/secret-stash')
-				.expect(401)
-				.end(done);
+				.end(function (err, response) {
+					if (err) return done(err);
+					expect(401);
+					done();
+			});
 		});
 
 	});
@@ -38,7 +41,8 @@ describe('Members Route', function () {
 
 		var userInfo = {
 			email: 'joe@gmail.com',
-			password: 'shoopdawoop'
+			password: 'shoopdawoop',
+			zip: "11238"
 		};
 
 		beforeEach('Create a user', function () {
@@ -51,10 +55,11 @@ describe('Members Route', function () {
 		});
 
 		it('should get with 200 response and with an array as the body', function (done) {
-			loggedInAgent.get('/api/users/secret-stash').expect(200).end(function (err, response) {
-				if (err) return done(err);
-				expect(response.body).to.be.an('array');
-				done();
+			loggedInAgent.get('/api/users/secret-stash')
+				.expect(200).end(function (err, response) {
+					if (err) return done(err);
+					expect(response.body).to.be.an('array');
+					done();
 			});
 		});
 
