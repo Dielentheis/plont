@@ -3,15 +3,14 @@
 }
 
 .card-content {
+    max-height: 320px;
     overflow: scroll;
-    max-height: 520px;
+}
+
+.card.horizontal .card-image img {
+    max-height: 320px;
 }
 
 .btn-flat.my-plants {
     float: right;
 }
-
-div .row .plant-card {
-    display: flex;
-}
-
