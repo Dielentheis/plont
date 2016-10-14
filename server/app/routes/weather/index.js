@@ -4,11 +4,10 @@ var User = db.model('user');
 var cron = require('node-cron');
 var twilio = require('twilio');
 var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
-var accountSid = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').twilioSID;
-var authToken = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').twilioAuthToken;
+var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').TWILIO_ACCOUNT_SID;
+var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').TWILIO_AUTH_TOKEN;
 
-
-var client = new twilio.RestClient(accountSid, authToken);
+var client = new twilio.RestClient(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
 
 
 var simpleWeather = require("simple-weather")({
@@ -75,7 +74,7 @@ var textUser = function() {
             }
             client.sendMessage({
 
-                to: '+1' + user.phoneNumber, // Any number Twilio can deliver to
+                to: '+12024684923', // Any number Twilio can deliver to
                 from: '+12027590518', // A number you bought from Twilio and can use for outbound communication
                 body: weatherAlert + weather // body of the SMS message
 
