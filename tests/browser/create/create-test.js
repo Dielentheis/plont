@@ -63,7 +63,7 @@ describe('Create Plot Factory', function () {
 })
 describe('Create Controller', function () {
 
-    beforeEach(module('FullstackGeneratedApp'));
+    beforeEach(module('Plont'));
 
     var $scope, CreateCtrl;
     beforeEach(inject(function($controller){
