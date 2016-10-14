@@ -2,12 +2,13 @@ var router = require('express').Router(); // eslint-disable-line
 var db = require('../../../db/_db.js');
 var User = db.model('user');
 var cron = require('node-cron');
+var twilio = require('twilio');
 var weatherApiKey = process.env.WEATHER_API || require('../../../../apis.js').weather;
-var TWILIO_ACCOUNT_SID = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').twilioSID;
-var TWILIO_AUTH_TOKEN = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').twilioAuthToken;
+var accountSid = process.env.TWILIO_ACCOUNT_SID || require('../../../../apis.js').twilioSID;
+var authToken = process.env.TWILIO_AUTH_TOKEN || require('../../../../apis.js').twilioAuthToken;
 
 
-var client = require('twilio')(TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN);
+var client = new twilio.RestClient(accountSid, authToken);
 
 
 var simpleWeather = require("simple-weather")({
@@ -16,13 +17,13 @@ var simpleWeather = require("simple-weather")({
     debug: process.env.NODE_ENV === 'development'
 });
 
-// cron schedule to check the weather in each users location each day at 5:30AM
-cron.schedule('*/2 * * * *', function(){
+// cron schedule to check the weather in each users location each day at 8AM
+cron.schedule('* 8 * * *', function(){
   findWeather();
 });
 
-// cron schedule to send text if user needs to water / not water each day at 10AM
-cron.schedule('*/1 * * * *', function(){
+// cron schedule to send text if user needs to water / not water each day at 10:30AM
+cron.schedule('30 10 * * *', function(){
   textUser();
 });
 
@@ -59,7 +60,9 @@ var textUser = function() {
     var weatherAlert, weather;
     User.findAll({where: {
         zip: {$ne: null},
-        phoneNumber: {$ne: null}}
+        phoneNumber: {$ne: null},
+        weather: {$ne: null},
+        }
     })
     .then(function(users){
         users.forEach(function(user) {
@@ -72,7 +75,7 @@ var textUser = function() {
             }
             client.sendMessage({
 
-                to: user.phoneNumber, // Any number Twilio can deliver to
+                to: '+1' + user.phoneNumber, // Any number Twilio can deliver to
                 from: '+12027590518', // A number you bought from Twilio and can use for outbound communication
                 body: weatherAlert + weather // body of the SMS message
 
