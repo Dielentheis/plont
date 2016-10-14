@@ -5,10 +5,12 @@ $buttons: #f2bfb5;
 $themeBlack: #121113;
 $themeWhite: #fff;
 
+$selected: $buttons;
+$hovered: $themeWhite;
 
-$linesUnfocused: #edebe6;
-$linesFocused: #b55451;
 $borders: #cfdad5;
+$linesUnfocused: $borders;
+$linesFocused: #b55451;
 
 $sunmapSun: #ffb75e;
 $sunmapPartialShade: #688573;
@@ -24,3 +26,5 @@ $gridColor6: #55595b;
 $gridColor7: #dfad41;
 $gridColor8: #fbd0a2;
 $gridColor9: #9fa8a1;
+
+$link-color: color($buttons) !default;

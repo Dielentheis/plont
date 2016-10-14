@@ -1,16 +1,8 @@
 @import 'colors';
+@import 'utils.scss';
 
 * {
   box-sizing: border-box;
-}
-
-html {
-  background-image: url("/images/light_wool.png");
-}
-
-body {
-  background-image: url("/images/light_wool.png");
-  min-height: 100vh;
 }
 
 section {
