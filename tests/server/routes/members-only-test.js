@@ -38,7 +38,8 @@ describe('Members Route', function () {
 
 		var userInfo = {
 			email: 'joe@gmail.com',
-			password: 'shoopdawoop'
+			password: 'shoopdawoop',
+			zip: "11238"
 		};
 
 		beforeEach('Create a user', function () {
