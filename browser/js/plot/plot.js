@@ -6,7 +6,7 @@ app.config(function($stateProvider) {
     });
 });
 
-app.controller('PlotCtrl', function($scope, PlotFactory, $log) {
+app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory, $mdDialog) {
 	var plot = [];
 	PlotFactory.fetchPlot()
 	.then(function(plotty) {
@@ -19,6 +19,18 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log) {
 		$scope.data = PlotFactory.buildPlotTable(plot.layout);
 		$scope.plantInfoArr = PlotFactory.makeKey(plot.layout, plants);
 
+		var compare = PlotFactory.numPlants;
+		console.log("comparing", plants.length, compare.length);
+		if (plants.length !== compare.length && CreatePlotFactory.justCreated) {
+			var insincereApology = $mdDialog.confirm()
+            .title('Sorry!')
+            .htmlContent('One or more of your plants was not able to be planted, either because your plot\'s amount of sun doesn\'t support it or because the plant would have crowded out one or more other type(s) of plants.')
+            .ariaLabel('Could not plant 1+ plant(s)')
+            .clickOutsideToClose(true)
+            .ok('OK');
+
+            $mdDialog.show(insincereApology);
+		}
 	})
 	.catch($log.error);
 });
@@ -86,6 +98,7 @@ app.factory('PlotFactory', function($http, $stateParams, $log) {
 				}
 			}
 		}
+		returnObj.numPlants = arr.length;
 		return arr;
 	};
 
