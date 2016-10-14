@@ -31,6 +31,7 @@ describe('User Plant Controller', function () {
             };
         });
 
+//need to fake a promise from ^ Plant factory functions
         it('removes a plant from the users plant database', function () {
             $scope.removePlant(1, 1);
             expect(userPlantDb[1].length).to.be.equal(1);
