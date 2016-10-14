@@ -4,15 +4,15 @@
 }
 
 .btn, .btn-large {
-    background-color: #388e3c;
+    background-color: $buttons;
 }
 
 .btn:hover, .btn-large:hover {
-    background-color: #43a047;
+    background-color: $buttons;
 }
 
 button:focus {
-    background-color: #66bb6a;
+    background-color: $buttons;
 }
 
 .col.s6.form-group.left {

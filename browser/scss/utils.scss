@@ -1,0 +1,18 @@
+.bottom_spacing-small {
+    margin-bottom: 30px;
+}
+.bottom_spacing {
+    margin-bottom: 50px;
+}
+.bottom_spacing-large {
+    margin-bottom: 80px;
+}
+
+
+.inputColor {
+    border-bottom: 1px solid $linesUnfocused !important;
+}
+.inputColor:focus {
+    border-bottom: 1px solid $linesFocused !important;
+    box-shadow: none !important;
+}

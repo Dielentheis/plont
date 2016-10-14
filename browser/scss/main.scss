@@ -1,14 +1,8 @@
+@import 'colors';
+@import 'utils.scss';
+
 * {
   box-sizing: border-box;
-}
-
-html {
-  background-image: url("/images/light_wool.png");
-}
-
-body {
-  background-image: url("/images/light_wool.png");
-  min-height: 100vh;
 }
 
 section {
@@ -37,7 +31,7 @@ h1, h2 {
 
 hr {
   border: 0;
-  border-top: 1px dotted #000000;
+  border-top: 1px dotted $themeBlack;
   margin-top: 0px;
   margin-bottom: 16px;
   overflow-x: scroll;
@@ -94,11 +88,11 @@ md-card md-card-title {
 }
 
 .btn-flat {
-  background-color: #e8f5e9;
+  background-color: $buttons;
 }
 
 input:-webkit-autofill {
-  background-color: #ffffff;
+  background-color: $themeWhite;
 }
 
 @import 'home/main';
