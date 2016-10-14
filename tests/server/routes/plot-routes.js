@@ -68,7 +68,6 @@ describe('api/plots', function() {
             .get('/api/plots')
             .expect(200)
             .end(function (err, res) {
-                console.log('this is all the plots', res.body);
                 if (err) return done(err);
                 expect(res.body).to.be.instanceof(Array);
                 done();
