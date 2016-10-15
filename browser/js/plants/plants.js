@@ -33,7 +33,7 @@ app.factory('PlantsFactory', function($http, $log) {
 app.controller('PlantsCtrl', function($scope, PlantsFactory, $log) {
 	PlantsFactory.fetchAll()
 	.then(function(plants) {
-		$scope.plants = plants.sort();
+		$scope.plants = plants.sort(PlantsFactory.sortByName);
 	})
 	.catch($log.error);
 

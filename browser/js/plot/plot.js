@@ -20,7 +20,7 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
         $scope.plantInfoArr = PlotFactory.makeKey(plot.layout, plants);
 
         var compare = PlotFactory.numPlants;
-        if (plants.length !== compare.length && CreatePlotFactory.justCreated) {
+        if (plants.length !== compare && CreatePlotFactory.justCreated) {
             var insincereApology = $mdDialog.confirm()
             .title('Sorry!')
             .htmlContent('One or more of your plants was not able to be planted, either because your plot\'s amount of sun doesn\'t support it or because the plant would have crowded out one or more other type(s) of plants.')
