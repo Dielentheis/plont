@@ -1,42 +1,55 @@
-<section id='signup-form'>
-    <h1>Sign Up</h1>
-    <div>
-        <alert type="danger" ng-show="error">
-            {{ error }}
-            <br>
-        </alert>
-        <form name="myForm">
-            <div class="form-group">
-                <label>First Name:</label>
-                <input type="text" class="inputColor form-control" ng-model="user.firstName" required/>
-            </div>
-            <div class="form-group">
-                <label>Last Name:</label>
-                <input type="text" class="inputColor form-control" ng-model="user.lastName" required/>
-            </div>
-            <div class="form-group">
-                <label>Your Email:</label>
-                <input type="email" class="inputColor form-control" ng-model="user.email" required/>
-            </div>
-            <div class="form-group">
-                <label>Your Password:</label>
-                <input type="password" class="inputColor form-control" ng-model="user.password" required/>
-            </div>
-
+<div class="container">
+    <div class="row">
+        <div class="col s8 offset-s2">
             <div class="row">
-                <div class="col s6 form-group left">
-                    <label>Your zip code (for planting purposes):</label>
-                    <input type="text" class="inputColor form-control" ng-model="user.zip" required/>
-                </div>
-                <div class="col s6 form-group right">
-                    <label>Your phone number (optional for weather alerts):</label>
-                    <input type="text" class="inputColor form-control" ng-model="user.phoneNumber" required/>
+                <h1>Sign Up</h1>
+            </div>
+            <div class="row">
+                <alert type="danger" ng-show="error">
+                    {{ error }}
+                    <br>
+                </alert>
+            </div>
+                <form name="myForm">
+                    <div class="row form-group">
+                        <div class="col s12">
+                            <label class="align_left">First Name:</label>
+                            <input type="text" class="inputColor form-control" ng-model="user.firstName" required />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col s12">
+                            <label class="align_left">Last Name:</label>
+                            <input type="text" class="inputColor form-control" ng-model="user.lastName" required />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col s12">
+                            <label class="align_left">E-mail:</label>
+                            <input type="email" class="inputColor form-control" ng-model="user.email" required />
+                        </div>
+                    </div>
+                    <div class="row form-group">
+                        <div class="col s12">
+                            <label class="align_left">Password:</label>
+                            <input type="password" class="inputColor form-control" ng-model="user.password" required />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s6 form-group">
+                            <label>Zip Code (for harvest times):</label>
+                            <input type="text" class="inputColor form-control" ng-model="user.zip" required>
+                        </div>
+                        <div class="col s6 form-group">
+                            <label>Phone Number (optional; for weather alerts):</label>
+                            <input type="text" class="inputColor form-control" ng-model="user.phoneNumber" />
+                        </div>
+                    </div>
+                </form>
+                <div class="col s2 offset-s10 form-group" ng-show="myForm.$valid">
+                    <button type="button" class="btn-flat" ng-click="createUser(user)">Submit</button>
                 </div>
             </div>
-
-            <div class="form-group">
-                <button type="button" class="btn-flat" ng-disabled="myForm.$invalid" ng-click="createUser(user)">Submit</button>
-            </div>
-        </form>
+        </div>
     </div>
-</section>
+</div>
