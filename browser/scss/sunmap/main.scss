@@ -30,17 +30,13 @@ td.full_shade {
     background-color: $sunmapFullShade;
 }
 
-#sunTable {
-    height: 80%;
-}
-
 #legend {
     padding-left: 50px;
 }
 
 .sqTable {
     border: 0px;
-    width: 50%;
+    width: 100%;
     padding-top: 100%;
     box-sizing: border-box;
     position: relative;
@@ -51,6 +47,5 @@ td.full_shade {
 }
 
 #control_panel {
-    padding-top: 50px;
     text-align: right;
 }

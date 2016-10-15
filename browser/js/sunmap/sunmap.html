@@ -5,14 +5,16 @@
                 <h2 class="size">How sunny is your plot?</h2>
             </div>
         </div>
-        <div id="sunTable" class="row">
+        <div class="row">
             <div class="col s6 offset-s3">
                 <table id="board">
-                    <tr ng-repeat="rows in board">
-                        <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'>
-                            <div class='sqTable'></div>
-                        </td>
-                    </tr>
+                    <tbody>
+                        <tr ng-repeat="rows in board">
+                            <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'>
+                                <div class='sqTable'></div>
+                            </td>
+                        </tr>
+                    </tbody>
                 </table>
             </div>
             <div id='legend' class="col s2">
