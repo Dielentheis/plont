@@ -23,7 +23,6 @@ section {
 }
 
 h1, h2 {
-    margin-top: 10px;
     text-align: center;
     font-weight: 100;
     text-transform:uppercase;
@@ -32,13 +31,11 @@ h1, h2 {
 hr {
   border: 0;
   border-top: 1px dotted $themeBlack;
-  margin-top: 0px;
-  margin-bottom: 16px;
   overflow-x: scroll;
 }
 
 div.row.create {
-    margin-right: 5%;
+    margin-right: 5vw;
 }
 
 .md-cancel-button {
@@ -84,7 +81,7 @@ md-card md-card-title {
 }
 
 #plots.btn-flat {
-  margin-left: 45%;
+  margin-left: 45vw;
 }
 
 .btn-flat {
