@@ -4,18 +4,17 @@
 }
 
 .card-stacked {
-    overflow: scroll;
     max-height: 60vh;
-}
-.card-action {
-	margin-bottom: 7vh;
-}
-
-.btn-flat.btn-my_plants {
-    float: right;
+	overflow: scroll;
 }
 
 .material-icons {
 	position: relative;
-	top: -1px;
+	top: -0.5px;
+}
+
+#move_righter {
+	position: relative;
+	right: -2.5vw;
+	padding: 0;
 }

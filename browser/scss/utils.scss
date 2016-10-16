@@ -26,14 +26,17 @@
 }
 
 // ADDS SPACE UNDERNEATH DIVS
+.bottom_spacing-xsmall {
+    margin-bottom: 1vh !important;
+}
 .bottom_spacing-small {
-    margin-bottom: 3vh;
+    margin-bottom: 3vh !important;
 }
 .bottom_spacing {
-    margin-bottom: 5vh;
+    margin-bottom: 5vh !important;
 }
 .bottom_spacing-large {
-    margin-bottom: 7vh;
+    margin-bottom: 7vh !important;
 }
 
 // ADDS SPACE TO SIDES OF BUTTONS
@@ -48,4 +51,9 @@
 .inputColor:focus {
     border-bottom: 1px solid $linesFocused !important;
     box-shadow: none !important;
+}
+
+// CHANGE FONT COLORS
+.font_color-white {
+	color: $themeWhite;
 }
