@@ -8,8 +8,12 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
 
             scope.items = [
                 { label: 'Home', state: 'home' },
+                { label: 'New Plot', state: 'create', auth: true },
+                { label: 'My Plots', state: 'user-plots', auth: true },
                 { label: 'All Plants', state: 'plants' },
-                { label: 'My Plots', state: 'user-plots', auth: true }
+                { label: 'My Plants', state: 'userPlants', auth: true},
+                { label: 'Login', state: 'login' },
+                { label: 'Signup', state: 'signup' }
             ];
 
             scope.user = null;
@@ -70,7 +74,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                     .targetEvent(ev)
                     .clickOutsideToClose(true)
                     .ok('Thanks!');
-                    
+
                 $mdDialog.show(confirm).then(function() {
                     scope.status = 'Confirmed.';
                 });
