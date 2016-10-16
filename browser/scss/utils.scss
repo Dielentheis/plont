@@ -1,37 +1,42 @@
-.bottom_spacing-small {
-    margin-bottom: 30px;
-}
-.bottom_spacing {
-    margin-bottom: 50px;
-}
-.bottom_spacing-large {
-    margin-bottom: 80px;
+// ADDS FLEX-BOX
+.container {
+	display: flex;
 }
 
+// ALIGNS BLOCK ELEMENTS
+.float_align-left {
+	float: left;
+}
+
+// ALIGNS TEXT ELEMENTS
+.text_align-left {
+	text-align: left;
+}
+.text_align-center {
+    text-align: center;
+}
+
+// ADDS SPACE UNDERNEATH DIVS
+.bottom_spacing-small {
+    margin-bottom: 3vh;
+}
+.bottom_spacing {
+    margin-bottom: 5vh;
+}
+.bottom_spacing-large {
+    margin-bottom: 7vh;
+}
+
+// ADDS SPACE TO SIDES OF BUTTONS
+.btn_space-sides {
+	margin: 0 0.5vw;
+}
+
+// CHANGES INPUT FORM LINE COLORS
 .inputColor {
     border-bottom: 1px solid $linesUnfocused !important;
 }
 .inputColor:focus {
     border-bottom: 1px solid $linesFocused !important;
     box-shadow: none !important;
-}
-
-.container {
-	display: flex;
-}
-
-
-.float_align-left {
-	float: left;
-}
-.text_align-left {
-	text-align: left;
-}
-
-.text_align-center {
-    text-align: center;
-}
-
-.btn_space-sides {
-	margin: 0 0.5vw;
 }
