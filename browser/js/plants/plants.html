@@ -1,5 +1,19 @@
 <div class="row" ng-controller="PlantsCtrl" ng-cloak>
     <div class="col s8 offset-s2">
+
+        <div class="row">
+            <div class="col s12">
+                <h1>All Plants</h1>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col s12">
+                <div class="divider bottom_spacing-xsmall"></div>
+            </div>
+        </div>
+
+
         <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
             <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
                 <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
@@ -21,5 +35,7 @@
                 </md-card>
             </div>
         </md-content>
+
+
     </div>
 </div>
