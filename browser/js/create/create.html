@@ -1,83 +1,106 @@
 <section id="plots">
-    <div class="container">
-        <div ng-show="!switch">
-            <div class="bottom_spacing-small"></div>
-            <div class="row">
-                <div class="col s12 bottom_spacing">
-                    <h1 class="title">Create Your Plot</h1>
-                </div>
-                <div ng-show="!switch" class="col l11 offset-l3 bottom_spacing-small">
-                    <input placeholder="Plot Name" id="plot_name" class="inputColor" type="text" ng-model="name">
-                </div>
+    <div ng-show="!switch">
+
+        <div class="row bottom_spacing-medium">
+            <div class="col s12">
+                <h1 class="title">Create Your Plot</h1>
             </div>
-            <div class="divider bottom_spacing"></div>
-            <div class="row">
-                <div class="col l6 offset-l3">
-                    <h2 class="size bottom_spacing">Plot Size?</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s2 offset-s2">
-                    <label class="label"><h4>Height:</h4></label>
-                    <select class="browser-default" ng-model="heightInches">
-                        <option value="" disabled selected>0 inches</option>
-                        <option ng-repeat="inch in inches">{{ inch }} inches</option>
-                    </select>
-                </div>
-                <div class="col s4">
-                    <p class="by">X</p>
-                </div>
-                <div class="col s2 offset-s1">
-                    <label class="label"><h4>Width:</h4></label>
-                    <select class="browser-default" ng-model="widthInches">
-                        <option value="" disabled selected>0 inches</option>
-                        <option ng-repeat="inch in inches">{{ inch }} inches</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row done">
-                <div class="col s1 offset-s8">
-                    <a class="waves-effect btn-flat" type="submit" ng-show="(heightInches && widthInches)" ng-click="createPlot(heightInches, widthInches, name)"> Done </a>
+        </div>
+        <div class="row bottom_spacing-medium">
+            <div class="col s12">
+                <div ng-show="!switch"">
+                    <center>
+                        <input placeholder="Plot Name" id="plot_name" class="inputColor " type="text" ng-model="name">
+                    </center>
                 </div>
             </div>
         </div>
-    </div>
-    <div ng-show="switch">
-        <div class="row bottom_spacing">
-            <div class="col l6 offset-l3">
-                <h2 class="title">Which plants do you want to grow?</h2>
-                <div class="divider"></div>
+
+        <div class="row  bottom_spacing-xlarge">
+            <div class="col s12">
+                <hr>
             </div>
         </div>
-        <div class="row add">
-            <label class="col l6 offset-l3"><h4>Add Plants:</h4></label>
+
+        <div class="row bottom_spacing-medium">
+            <div class="col s6 offset-s3">
+                <h2 class="size">Plot Size?</h2>
+            </div>
         </div>
+
         <div class="row">
-            <div class="input-field col l6 offset-l3">
-                <multiple-autocomplete ng-model="selectedPlants" object-property="name" suggestions-arr="optionsList">
-                </multiple-autocomplete>
+            <div class="col s2 offset-s2">
+                <label class="label"><h4>Height:</h4></label>
+                <select class="browser-default" ng-model="heightInches">
+                    <option value="" disabled selected>0 inches</option>
+                    <option ng-repeat="inch in inches">{{ inch }} inches</option>
+                </select>
+            </div>
+            <div class="col s4 text_align-center">
+                <h4>X</h4>
+            </div>
+            <div class="col s2 offset-s1 pad_left-xsmall">
+                <label class="label"><h4>Width:</h4></label>
+                <select class="browser-default" ng-model="widthInches">
+                    <option value="" disabled selected>0 inches</option>
+                    <option ng-repeat="inch in inches">{{ inch }} inches</option>
+                </select>
             </div>
         </div>
-        <div class="row" id="done">
-            <div class="col l6 offset-l6">
-                <div class="col l6">
+
+        <div class="row text_align-right">
+            <div class="col s2 offset-s8">
+                <button type="submit" class="waves-effect btn-flat float_align-right" ng-show="heightInches && widthInches" ng-click="createPlot(heightInches, widthInches, name)">Done</button>
+            </div>
+        </div>
+
+    </div>
+
+    <div ng-show="switch">
+
+        <div class="row">
+            <div class="col s12">
+                <h2 class="title">Which plants do you want to grow?</h2>
+            </div>
+        </div>
+
+        <div class="row bottom_spacing-medium">
+            <div class="col s12">
+                <hr>
+            </div>
+        </div>
+
+        <div class="row add">
+            <div class="col s8 offset-s2">
+                <label><h4>Add Plants:</h4></label>
+            </div>
+        </div>
+
+        <div class="row bottom_spacing-small">
+            <div class="col s8 offset-s2 input-field">
+                <multiple-autocomplete ng-model="selectedPlants" object-property="name" suggestions-arr="optionsList"></multiple-autocomplete>
+            </div>
+        </div>
+
+        <div class="row bottom_spacing-medium text_align-right">
+            <div class="col s4 offset-s6">
                 <div ng-show="selectedPlants.length > 0 && selectedPlants.length <= 10">
-                <button class="waves-effect btn-flat" type="submit" ng-click="createPlantList(selectedPlants)"> Done </button>
+                    <button type="submit" class="waves-effect btn-flat" ng-click="createPlantList(selectedPlants)"> Done </buttontyp>
                 </div>
                 <div ng-show="selectedPlants.length > 10">
                     You have selected too many plants!
                 </div>
             </div>
         </div>
-        </div>
+
         <div class="row">
-            <div class="col s3 offset-s3">
+            <div class="col s3 offset-s2">
                 <p ng-show="largePlants.length"><strong>The following plants are too large to flourish in your plot:</strong></p>
                 <ul ng-show="largePlants.length" id="scroll_list">
                     <li ng-repeat="plant in largePlants">{{ plant.name }}</li>
                 </ul>
-
             </div>
         </div>
+
     </div>
 </section>

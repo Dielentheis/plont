@@ -1,47 +1,70 @@
-<body class="single-plant" ng-controller="PlantCtrl">
-    <h2>{{plant.name}}</h2>
+<div class="single-plant" ng-controller="PlantCtrl">
+
     <div class="row">
-    <div class="col s10 offset-l1">
-        <div class="card horizontal">
-          <div class="card-image">
-            <img src="{{plant.image}}">
-          </div>
-          <div class="card-stacked">
-            <div class="card-content">
-                <p><strong>ABOUT THIS PLANT</strong></p>
-                <p>{{plant.description}}</p><br/>
-                <p>{{plant.notes}}</p>
-                <br/>
-
-                <p><strong>PERENNIAL</strong></p>
-                <p ng-if="plant.isPerennial">This plant is perennial.</p>
-                <p ng-if="!plant.isPerennial">This plant is not perennial.</p>
-                <br/>
-
-                <p><strong>WATERING AND FEEDING</strong></p>
-                <p ng-hide="if (plant.watering==='n/a')">{{plant.watering}}</p>
-                <p>{{plant.feeding}}</p>
-                <br/>
-
-                <div class="diseases" ng-hide="plant.diseases === null">
-                    <p><strong>DISEASES</strong></p>
-                    <p>{{plant.diseases}}</p>
-                </div>
-                <br/>
-
-                <div class="pests" ng-hide="plant.pests.length === 0">
-                    <p><strong>PESTS</strong></p>
-                    <p ng-repeat="pest in plant.pests">{{pest}}</p>
-                </div>
-            </div>
-            <div class="card-action" ng-hide="!user">
-              <button class="waves-effect btn-flat my-plants" ng-hide="!user" ng-click="addPlant(plant.id)"><i class="material-icons">add_circle   </i>   Add to my plants</button>
-            </div>
-          </div>
+        <div class="col s12">
+            <h2>{{ plant.name }}</h2>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col s12 card horizontal sticky-action">
+
+            <div class="card-image">
+                <img ng-src="{{ plant.image }}">
+            </div>
+
+            <div class="card-stacked">
+                <div class="card-content">
+
+                    <div class="bottom_spacing-small">
+                        <p class="bottom_spacing-xsmall"><strong>ABOUT {{ plant.name.toUpperCase() }}</strong></p>
+                        <p class="bottom_spacing-xsmall">{{ plant.description }}</p>
+                        <p>{{ plant.notes }}</p>
+                    </div>
+
+                    <div class="bottom_spacing-small">
+                        <p><strong>PERENNIAL</strong></p>
+                        <p ng-if="plant.isPerennial">This plant is perennial.</p>
+                        <p ng-if="!plant.isPerennial">This plant is not perennial.</p>
+                    </div>
+
+                    <div class="bottom_spacing-small">
+                        <p>
+                            <strong>
+                                <span ng-hide="!plant.watering">WATERING</span>
+                                <span ng-show="plant.watering && plant.feeding"> AND </span>
+                                <span ng-hide="!plant.feeding">FEEDING</span>
+                            </strong>
+                        </p>
+                        <p >{{ plant.watering }}</p>
+                        <p>{{ plant.feeding }}</p>
+                    </div>
+
+                    <div ng-hide="!plant.diseases" class="bottom_spacing-small">
+                        <p><strong>DISEASES & TREATMENT</strong></p>
+                        <p>{{ plant.diseases }}</p>
+                    </div>
+
+                    <div ng-hide="!plant.pests.length" class="bottom_spacing-small">
+                        <p><strong>PESTS</strong></p>
+                        <p ng-repeat="pest in plant.pests">{{ pest.slice(0,1).toUpperCase() + pest.slice(1) }}</p>
+                    </div>
+
+                    <div class="card-action bottom_spacing-small" ng-hide="!user">
+                        <a class="waves-effect btn-flat float_align-right" id="move_righter" ng-click="addPlant(plant.id)">
+                            <div class="row font_color-white">
+                                <div class="col s2">
+                                    <i class="material-icons">add_circle</i>
+                                </div>
+                                <div class="col s10 offset-2">
+                                    add to My Plants
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</body>
 
-
-
+</div>

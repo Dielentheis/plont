@@ -40,7 +40,7 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
             .ariaLabel('Plot deletion confirmation')
             .clickOutsideToClose(true)
             .ok('OK');
-            
+
         $mdDialog.show(confirm)
         .then(function() {
             return UserPlotsFactory.fetchUserPlots($scope.user.id)

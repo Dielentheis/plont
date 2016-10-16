@@ -1,18 +1,70 @@
-.bottom_spacing-small {
-    margin-bottom: 30px;
+// ADDS FLEX-BOX
+.container {
+	display: flex;
 }
-.bottom_spacing {
-    margin-bottom: 50px;
+
+// ALIGNS BLOCK ELEMENTS
+.float_align-left {
+	float: left;
+}
+.float_align-center {
+	margin: 0 auto;
+}
+.float_align-right {
+	float: right;
+}
+
+// ALIGNS TEXT ELEMENTS
+.text_align-left {
+	text-align: left;
+}
+.text_align-center {
+    text-align: center;
+}
+.text_align-right {
+	text-align: right;
+}
+
+// ADDS SPACE UNDERNEATH DIVS
+.bottom_spacing-xsmall {
+    margin-bottom: 1vh !important;
+}
+.bottom_spacing-small {
+    margin-bottom: 3vh !important;
+}
+.bottom_spacing-medium {
+    margin-bottom: 5vh !important;
 }
 .bottom_spacing-large {
-    margin-bottom: 80px;
+    margin-bottom: 7vh !important;
+}
+.bottom_spacing-xlarge {
+    margin-bottom: 10vh !important;
 }
 
+// ADDS MARGIN SPACE TO SIDES OF DIVS
+.margin_sides-xsmall {
+	margin: 0 0.5vw !important;
+}
 
+// ADDS PAD SPACE TO SIDES OF DIVS
+.pad_left-xsmall {
+	padding-left: 0 1vw !important;
+}
+.pad_left-small {
+	padding-left: 3vw !important;
+}
+
+// CHANGES INPUT FORM LINE COLORS
 .inputColor {
     border-bottom: 1px solid $linesUnfocused !important;
 }
 .inputColor:focus {
     border-bottom: 1px solid $linesFocused !important;
     box-shadow: none !important;
+}
+
+// CHANGE FONT COLORS
+.font_color-white {
+	color: $themeWhite;
 }
