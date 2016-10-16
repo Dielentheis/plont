@@ -1,5 +1,5 @@
 <section id="plot">
-<h1> {{plotName}} </h1>
+<h1> {{ plotName }} </h1>
     <div>
         <table class="plot">
         	<tr ng-repeat="row in plot">
@@ -13,9 +13,9 @@
     	<table class="key">
     	<th>Color</th><th>Plant</th><th>Number to Plant</th>
     		<tr ng-repeat="infoObj in plantInfoArr">
-    			<td class="{{infoObj.class}}"></td>
-    			<td>{{infoObj.name}}</td>
-                <td>{{infoObj.numToPlant}}</td>
+    			<td class="{{ infoObj.class }}"></td>
+    			<td>{{ infoObj.name }}</td>
+                <td>{{ infoObj.numToPlant }}</td>
     		</tr>
     	</table>
     </div>
