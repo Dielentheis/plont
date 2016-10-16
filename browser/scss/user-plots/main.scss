@@ -1,12 +1,15 @@
 #user-plots {
+	color: $themeBlack;
+
 	.material-icons {
 		font-size: 40px;
-		color: #3a443b;
 	}
+
 	a {
-		color: #536856;
+		color: $themeBlack;
 	}
+
 	a:hover {
-		color: #d5f2d8;
+		color: $selected;
 	}
 }

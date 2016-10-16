@@ -32,16 +32,27 @@
 .bottom_spacing-small {
     margin-bottom: 3vh !important;
 }
-.bottom_spacing {
+.bottom_spacing-medium {
     margin-bottom: 5vh !important;
 }
 .bottom_spacing-large {
     margin-bottom: 7vh !important;
 }
+.bottom_spacing-xlarge {
+    margin-bottom: 10vh !important;
+}
 
-// ADDS SPACE TO SIDES OF BUTTONS
-.btn_space-sides {
-	margin: 0 0.5vw;
+// ADDS MARGIN SPACE TO SIDES OF DIVS
+.margin_sides-xsmall {
+	margin: 0 0.5vw !important;
+}
+
+// ADDS PAD SPACE TO SIDES OF DIVS
+.pad_left-xsmall {
+	padding-left: 0 1vw !important;
+}
+.pad_left-small {
+	padding-left: 3vw !important;
 }
 
 // CHANGES INPUT FORM LINE COLORS

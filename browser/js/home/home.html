@@ -17,16 +17,18 @@
                 </div>
             </div>
         </div>
-        <div class="divider bottom_spacing"></div>
+
+        <div class="divider bottom_spacing-medium"></div>
+
         <div class="row">
             <div class="col s12" ng-show="loggedIn">
-                <a class="waves-effect btn-flat btn_space-sides" ui-sref="user-plots">View My Plots</a>
-                <a class="waves-effect btn-flat btn_space-sides" ui-sref="create">Create New Plot</a>
+                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="user-plots">View My Plots</a>
+                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="create">Create New Plot</a>
             </div>
             <div class="col s12 sign-up" ng-show="!loggedIn">
-                <a class="waves-effect btn-flat btn_space-sides" ui-sref="signup">Sign up</a>
+                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="signup">Sign up</a>
                 or
-                <a class="waves-effect btn-flat btn_space-sides" ui-sref="login">log in</a>
+                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="login">log in</a>
                 to create or view plots
             </div>
         </div>
