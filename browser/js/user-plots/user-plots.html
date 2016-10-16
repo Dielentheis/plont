@@ -1,38 +1,34 @@
 <section id="user-plots">
+
     <div class="row">
-        <div class="col s8 offset-s2">
-
-            <div class="row">
-                <div class="col s12">
-                	<div class="plot-header">
-                        <h1>{{user.firstName}}'s plots</h1>
-                    </div>
-                </div>
+        <div class="col s12">
+        	<div class="plot-header">
+                <h1>{{user.firstName}}'s plots</h1>
             </div>
-
-            <div class="row bottom_spacing-medium">
-                <div class="col s12">
-                    <hr>
-                </div>
-            </div>
-
-            <div class="row bottom_spacing-xsmall">
-                <div class="col s12 plot">
-                    <div class="plot" ng-repeat="plot in plots">
-                        <h1>
-                            <a ng-click="toPlot(plot.id)">{{plot.name}}</a>
-                            <a ng-click="removePlot(plot.id, plot.name)"><i class="material-icons">clear</i></a>
-                        </h1>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col s12 text_align-center">
-                    <a class="waves-effect btn-flat" ui-sref="create">Create a New Plot</a>
-                </div>
-            </div>
-
         </div>
     </div>
+
+    <div class="row bottom_spacing-medium">
+        <div class="col s12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row bottom_spacing-xsmall">
+        <div class="col s12 plot">
+            <div class="plot" ng-repeat="plot in plots">
+                <h1>
+                    <a ng-click="toPlot(plot.id)">{{plot.name}}</a>
+                    <a ng-click="removePlot(plot.id, plot.name)"><i class="material-icons">clear</i></a>
+                </h1>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12 text_align-center">
+            <a class="waves-effect btn-flat" ui-sref="create">Create a New Plot</a>
+        </div>
+    </div>
+
 </section>

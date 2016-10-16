@@ -1,55 +1,68 @@
-<div class="container">
-    <div class="row">
-        <div class="col s8 offset-s2">
-            <div class="row">
+<div class="row">
+    <div class="col s8 offset-s2">
+
+        <div class="row">
+            <div class="col s12">
                 <h1>Sign Up</h1>
             </div>
-            <div class="row">
-                <alert type="danger" ng-show="error">
+        </div>
+
+        <div class="row bottom_spacing-small" ng-show="error">
+            <div class="col s12">
+                <alert type="danger">
                     {{ error }}
-                    <br>
                 </alert>
             </div>
-                <form name="myForm">
-                    <div class="row form-group">
-                        <div class="col s12">
-                            <label class="float_align-left">First Name:</label>
-                            <input type="text" class="inputColor form-control" ng-model="user.firstName" required />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col s12">
-                            <label class="float_align-left">Last Name:</label>
-                            <input type="text" class="inputColor form-control" ng-model="user.lastName" required />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col s12">
-                            <label class="float_align-left">E-mail:</label>
-                            <input type="email" class="inputColor form-control" ng-model="user.email" required />
-                        </div>
-                    </div>
-                    <div class="row form-group">
-                        <div class="col s12">
-                            <label class="float_align-left">Password:</label>
-                            <input type="password" class="inputColor form-control" ng-model="user.password" required />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s6 form-group">
-                            <label>Zip Code (for harvest times):</label>
-                            <input type="text" class="inputColor form-control" ng-model="user.zip" required>
-                        </div>
-                        <div class="col s6 form-group">
-                            <label>Phone Number (optional; for weather alerts):</label>
-                            <input type="text" class="inputColor form-control" ng-model="user.phoneNumber" />
-                        </div>
-                    </div>
-                </form>
-                <div class="col s2 offset-s10 form-group" ng-show="myForm.$valid">
-                    <button type="button" class="btn-flat" ng-click="createUser(user)">Submit</button>
+        </div>
+
+        <form name="myForm">
+
+            <div class="row form-group">
+                <div class="col s12">
+                    <label class="float_align-left">First Name:</label>
+                    <input type="text" class="inputColor form-control" ng-model="user.firstName" required />
                 </div>
             </div>
+
+            <div class="row form-group">
+                <div class="col s12">
+                    <label class="float_align-left">Last Name:</label>
+                    <input type="text" class="inputColor form-control" ng-model="user.lastName" required />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col s12">
+                    <label class="float_align-left">E-mail:</label>
+                    <input type="email" class="inputColor form-control" ng-model="user.email" required />
+                </div>
+            </div>
+
+            <div class="row form-group">
+                <div class="col s12">
+                    <label class="float_align-left">Password:</label>
+                    <input type="password" class="inputColor form-control" ng-model="user.password" required />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col s6 form-group">
+                    <label>Zip Code (for harvest times):</label>
+                    <input type="text" class="inputColor form-control" ng-model="user.zip" required>
+                </div>
+                <div class="col s6 form-group">
+                    <label>Phone Number (optional; for weather alerts):</label>
+                    <input type="text" class="inputColor form-control" ng-model="user.phoneNumber" />
+                </div>
+            </div>
+
+        </form>
+
+        <div class="row">
+            <div class="col s12 text_align-right  form-group" ng-show="myForm.$valid">
+                <button type="button" class="btn-flat" ng-click="createUser(user)">Submit</button>
+            </div>
         </div>
+
     </div>
 </div>

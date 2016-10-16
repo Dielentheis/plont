@@ -1,42 +1,39 @@
-<div class="row text_align-center">
-    <div class="col s8 offset-s2">
-
-        <div class="row" ng-show="loggedIn">
-            <div class="col s12">
-                <h2> Welcome, {{ user.firstName }} </h2>
-            </div>
+<div class="text_align-center">
+    <div class="row" ng-show="loggedIn">
+        <div class="col s12">
+            <h2> Welcome, {{ user.firstName }} </h2>
         </div>
+    </div>
 
-        <div ng-show="!loggedIn">
-            <div class="row">
-                <div class="col s12">
-                    <h2>Welcome</h2>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col s8 offset-s2">
-                    <p>Plont helps you grow your dream garden. Input your plot size and desired plants to generate an optimized plot layout. Plont will help you upkeep your garden with alerts and a custom harvest calendar.</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="row bottom_spacing-medium">
-            <div class="col s12">
-                <hr>
-            </div>
-        </div>
-
+    <div ng-show="!loggedIn">
         <div class="row">
-            <div class="col s12" ng-show="loggedIn">
-                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="user-plots">View My Plots</a>
-                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="create">Create New Plot</a>
+            <div class="col s12">
+                <h2>Welcome</h2>
             </div>
-            <div class="col s12" ng-show="!loggedIn">
-                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="signup">Sign up</a>
-                or
-                <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="login">log in</a>
-                to create or view plots
+        </div>
+        <div class="row">
+            <div class="col s8 offset-s2">
+                <p>Plont helps you grow your dream garden. Input your plot size and desired plants to generate an optimized plot layout. Plont will help you upkeep your garden with alerts and a custom harvest calendar.</p>
             </div>
+        </div>
+    </div>
+
+    <div class="row bottom_spacing-medium">
+        <div class="col s12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12" ng-show="loggedIn">
+            <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="user-plots">View My Plots</a>
+            <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="create">Create New Plot</a>
+        </div>
+        <div class="col s12" ng-show="!loggedIn">
+            <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="signup">Sign up</a>
+            or
+            <a class="waves-effect btn-flat margin_sides-xsmall" ui-sref="login">log in</a>
+            to create or view plots
         </div>
     </div>
 </div>
