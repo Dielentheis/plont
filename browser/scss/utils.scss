@@ -7,6 +7,12 @@
 .float_align-left {
 	float: left;
 }
+.float_align-center {
+	margin: 0 auto;
+}
+.float_align-right {
+	float: right;
+}
 
 // ALIGNS TEXT ELEMENTS
 .text_align-left {
@@ -14,6 +20,9 @@
 }
 .text_align-center {
     text-align: center;
+}
+.text_align-right {
+	text-align: right;
 }
 
 // ADDS SPACE UNDERNEATH DIVS
