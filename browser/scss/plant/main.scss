@@ -1,11 +1,14 @@
 .single-plant {
-    overflow:hidden;
-    max-height: 80vh;
+    overflow: hidden;
+    max-height: 70vh;
 }
 
-.card-content {
+.card-stacked {
     overflow: scroll;
     max-height: 60vh;
+}
+.card-action {
+	margin-bottom: 7vh;
 }
 
 .btn-flat {

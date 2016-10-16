@@ -48,7 +48,7 @@
                                 <br />
                                 <div ng-hide="!plant.diseases">
                                     <p>
-                                        <strong>DISEASES</strong>
+                                        <strong>DISEASES & TREATMENT</strong>
                                     </p>
                                     <p>
                                         {{ plant.diseases }}
@@ -60,7 +60,7 @@
                                         <strong>PESTS</strong>
                                     </p>
                                     <p ng-repeat="pest in plant.pests">
-                                        {{ pest.toUpperCase() }}
+                                        {{ pest.slice(0,1).toUpperCase() + pest.slice(1) }}
                                     </p>
                                     <br />
                                 </div>
