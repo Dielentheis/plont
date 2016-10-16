@@ -6,16 +6,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
 
-            scope.items = [
-                { label: 'Home', state: 'home' },
-                { label: 'New Plot', state: 'create', auth: true },
-                { label: 'My Plots', state: 'user-plots', auth: true },
-                { label: 'All Plants', state: 'plants' },
-                { label: 'My Plants', state: 'userPlants', auth: true},
-                { label: 'Login', state: 'login' },
-                { label: 'Signup', state: 'signup' }
-            ];
-
             scope.user = null;
 
             scope.isLoggedIn = function () {
