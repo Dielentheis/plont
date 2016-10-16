@@ -1,22 +1,22 @@
 <div class="row" ng-controller="PlantsCtrl" ng-cloak>
     <div class="col s8 offset-s2">
-            <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
-                <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
-                    <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
-                    ng-mouseleave="hover = ''" ng-class="hover">
-                        <md-card-title-text>
-                            <span class="md-headline">
-                                <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
-                            </span>
+        <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
+            <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in plants" >
+                <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
+                ng-mouseleave="hover = ''" ng-class="hover">
+                    <md-card-title-text>
+                        <span class="md-headline">
+                            <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
+                        </span>
 
-                        </md-card-title-text>
-                            <img ui-sref="plant({id: plant.id})" ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image">
-                            <img ui-sref="plant({id: plant.id})" ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9">
-                            <md-card-content>
-                                <p>{{plant.description | limitTo:160}}...</p>
-                        </md-card-content>
-                    </md-card>
-                </div>
-            </md-content>
+                    </md-card-title-text>
+                        <img ui-sref="plant({id: plant.id})" ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image">
+                        <img ui-sref="plant({id: plant.id})" ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9">
+                        <md-card-content>
+                            <p>{{plant.description | limitTo:160}}...</p>
+                    </md-card-content>
+                </md-card>
+            </div>
+        </md-content>
     </div>
 </div>
