@@ -54,7 +54,7 @@ div.row.create {
   flex-direction: column;
 }
 
-md-dialog .md-dialog-content {
+md-dialog.md-dialog-content {
   max-width: 450px;
 }
 
@@ -83,7 +83,7 @@ md-card md-card-title {
   margin-top: 2px;
 }
 
-#plots .btn-flat {
+#plots.btn-flat {
   margin-left: 45%;
 }
 

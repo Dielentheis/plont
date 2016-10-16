@@ -6,10 +6,6 @@
     background-color: $buttons;
 }
 
-button:focus {
+.btn:focus {
     background-color: $buttons;
-}
-
-.align_left {
-	float: left;
 }

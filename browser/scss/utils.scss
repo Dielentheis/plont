@@ -20,6 +20,18 @@
 	display: flex;
 }
 
+
+.float_align-left {
+	float: left;
+}
 .text_align-left {
 	text-align: left;
+}
+
+.text_align-center {
+    text-align: center;
+}
+
+.btn_space-sides {
+	margin: 0 0.5vw;
 }
