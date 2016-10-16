@@ -1,17 +1,18 @@
 .single-plant {
     overflow:hidden;
+    max-height: 80vh;
 }
 
 .card-content {
     overflow: scroll;
-    max-height: 520px;
+    max-height: 60vh;
 }
 
-.btn-flat.my-plants {
+.btn-flat {
     float: right;
 }
 
-div .row .plant-card {
-    display: flex;
+.material-icons {
+	position: relative;
+	top: -1px;
 }
-

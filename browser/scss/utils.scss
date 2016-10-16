@@ -15,3 +15,11 @@
     border-bottom: 1px solid $linesFocused !important;
     box-shadow: none !important;
 }
+
+.container {
+	display: flex;
+}
+
+.text_align-left {
+	text-align: left;
+}
