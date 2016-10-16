@@ -23,7 +23,7 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
         if (plants.length !== compare && CreatePlotFactory.justCreated) {
             var insincereApology = $mdDialog.confirm()
             .title('Sorry!')
-            .htmlContent('One or more of your plants was not able to be planted either because it wouldn\'t get enough sun or because the it would have crowded out one or more plants.')
+            .htmlContent('One or more of your plants was not able to be planted either because it wouldn\'t get the right amount of sun or because the it would have crowded out one or more plants.')
             .ariaLabel('Could not plant 1+ plant(s)')
             .clickOutsideToClose(true)
             .ok('OK');
