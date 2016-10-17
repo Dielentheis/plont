@@ -14,7 +14,7 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
     AuthService.getLoggedInUser()
     .then(function(user) {
         $scope.user = user;
-        return UserPlotsFactory.fetchUserPlots($scope.user.id)
+        return UserPlotsFactory.fetchUserPlots($scope.user.id);
     })
     .then(function(plots) {
         $scope.plots = plots;
@@ -23,7 +23,7 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
 
     $scope.toPlot = function(plotId) {
         $state.go('plot', {id: plotId});
-    }
+    };
 
     $scope.removePlot = function(plotId, plotName) {
         UserPlotsFactory.remove(plotId)
@@ -31,7 +31,7 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
             tellUserDeleted(plotName);
         })
         .catch($log.error);
-    }
+    };
 
     function tellUserDeleted(name) {
         var confirm = $mdDialog.confirm()
@@ -40,10 +40,10 @@ app.controller('UserPlotsCtrl', function(UserPlotsFactory, $scope, $log, $state,
             .ariaLabel('Plot deletion confirmation')
             .clickOutsideToClose(true)
             .ok('OK');
-            
+
         $mdDialog.show(confirm)
         .then(function() {
-            return UserPlotsFactory.fetchUserPlots($scope.user.id)
+            return UserPlotsFactory.fetchUserPlots($scope.user.id);
         })
         .then(function(plots) {
             $scope.plots = plots;
@@ -69,7 +69,7 @@ app.factory('UserPlotsFactory', function($http, $log) {
             return deletedPlot.data;
         })
         .catch($log.error);
-    }
+    };
 
     return returnObj;
 });

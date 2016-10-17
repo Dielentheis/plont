@@ -1,21 +1,31 @@
 nav {
+
+    padding: 0 0.5vw;
     background-color: $header;
     box-shadow: none;
+
     ul a {
         color: $themeWhite;
     }
+
     .brand-logo {
         padding-left: 20px;
         color: $themeWhite;
         font-weight: 300;
         text-transform:uppercase;
     }
+
     .material-icons {
-        color: $linesFocused;
+        color: $themeWhite;
+        position: relative;
+        right: 0.5vw;
+        padding: 0;
     }
+
     li:focus {
-        outline:0 !important;
+        outline: 0 !important;
     }
+
 }
 
 

@@ -54,7 +54,7 @@ var findWeather = function() {
 
 var textUser = function() {
     var weatherAlert, weather;
-    User.findAll({where: {
+    User.findAll({ where: {
         zip: {$ne: null},
         phoneNumber: {$ne: null},
         weather: {$ne: null},
@@ -65,7 +65,7 @@ var textUser = function() {
             if(user.wet > 5){
                 weatherAlert = "You might want to skip out on watering your plants over the next few days. Nature is taking care of it! ";
                 weather = "The forecast for today is " + Math.floor(user.weather[1]) + " degrees and " + user.weather[0].toLowerCase()+ ".";
-            } else if (user.dry>5) {
+            } else if (user.dry > 5) {
                 weatherAlert = "You may want to get outside and water your plants! It is dry out there. ";
                 weather = "The forecast for today is " + Math.floor(user.weather[1]) + " degrees and " + user.weather[0].toLowerCase()+ ".";
             }

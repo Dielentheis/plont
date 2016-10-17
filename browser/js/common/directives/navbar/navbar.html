@@ -1,21 +1,74 @@
-<nav>
-    <div class="navbar">
+<!-- PLOT DROPDOWN MENU -->
+<ul id="dropdown-plot_links" class="dropdown-content">
+    <li><a ui-sref="create">New Plot</a></li>
+    <li><a ui-sref="user-plots">My Plots</a></li>
+</ul>
+<!-- PLANT DROPDOWN MENU -->
+<ul id="dropdown-plant_links" class="dropdown-content">
+    <li><a ui-sref="plants">All Plants</a></li>
+    <li><a ui-sref="userPlants">My Plants</a></li>
+</ul>
+
+<div class="navbar-fixed">
+    <nav>
         <div class="nav-wrapper">
-        <a class="brand-logo" ui-sref="home">Plont</a>
-            <ul id="nav-fixed" class="right hide-on-med-and-down">
-                <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
-                    <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
-                </li>
-                <li ng-show="user"><a ui-sref="userPlants">My Plants</a></li>
-                <li ng-show="user"><a ui-sref="create">New Plot</a></li>
-                <li ng-show="user"><a ui-sref="calendar">Harvest Calendar</a></li>
-                <li ng-show="!user"><a ui-sref="login">Login</a></li>
-                <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+            <a class="brand-logo" ui-sref="home">Plont</a>
+            <div class="float_align-right"><a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons pad_left-small">menu</i></a></div>
 
-                <li ng-show="showAlert && user"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
+            <!-- DESKTOP MENU -->
+            <ul class="right hide-on-med-and-down">
+                <!-- HOME -->
+                <li><a ui-sref="home">Home</a></li>
+                <!-- =USER MENU OPTIONS -->
+                <span ng-show="user">
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown-plot_links">Plot<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-button" href="#!" data-activates="dropdown-plant_links">Plant<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li ng-show="showAlert"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
+                </span>
+                <!-- NON-USER MENU OPTIONS -->
+                <span ng-show="!user">
+                    <li><a ui-sref="plants">All Plants</a></li>
+                    <li ng-show="!user"><a ui-sref="login">Login</a></li>
+                    <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+                </span>
+                <!-- LOG OUT -->
+                <li ng-show="user" ng-click="logout()"><a>Logout</a></li>
 
-                <li ng-hide="!user" ng-click="logout()"><a>Logout</a></li>
+            </ul>
+
+            <!-- MOBILE MENU -->
+            <ul class="side-nav text_align-right" id="mobile-menu">
+                <!-- HOME -->
+                <li><a ui-sref="home">Home</a></li>
+                <!-- =USER MENU OPTIONS -->
+                <span ng-show="user">
+                    <li><a ui-sref="create">New Plot</a></li>
+                    <li><a ui-sref="user-plots">My Plots</a></li>
+                    <li><a ui-sref="plants">All Plants</a></li>
+                    <li><a ui-sref="userPlants">My Plants</a></li>
+                    <li ng-show="showAlert"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
+                </span>
+                <!-- NON-USER MENU OPTIONS -->
+                <span ng-show="!user">
+                    <li><a ui-sref="plants">All Plants</a></li>
+                    <li ng-show="!user"><a ui-sref="login">Login</a></li>
+                    <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+                </span>
+                <!-- LOG OUT -->
+                <li ng-show="user" ng-click="logout()"><a>Logout</a></li>
             </ul>
         </div>
-    </div>
-</nav>
+    </nav>
+</div>
+
+<script>
+$(document).ready(function() {
+    $(".button-collapse").sideNav({
+        menuWidth: 100, // Default is 240
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
+    });
+
+    $(".dropdown-button").dropdown();
+});
+</script>

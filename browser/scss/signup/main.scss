@@ -1,8 +1,3 @@
-#signup-form {
-  width: 60%;
-  margin: 0 auto;
-}
-
 .btn, .btn-large {
     background-color: $buttons;
 }
@@ -11,17 +6,6 @@
     background-color: $buttons;
 }
 
-button:focus {
+.btn:focus {
     background-color: $buttons;
 }
-
-.col.s6.form-group.left {
-    padding-left: 0;
-    padding-right: 10px;
-}
-
-.col.s6.form-group.right {
-    padding-left: 10px;
-    padding-right: 0;
-}
-

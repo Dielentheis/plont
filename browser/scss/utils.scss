@@ -1,18 +1,107 @@
-.bottom_spacing-small {
-    margin-bottom: 30px;
-}
-.bottom_spacing {
-    margin-bottom: 50px;
-}
-.bottom_spacing-large {
-    margin-bottom: 80px;
+// ADDS MATERIALIZE-GRID
+.container {
+	display: flex;
 }
 
+// ALIGNS BLOCK ELEMENTS
+.float_align-left {
+	float: left;
+}
+.float_align-center {
+	margin: 0 auto;
+}
+.float_align-right {
+	float: right;
+}
 
+// ALIGNS TEXT ELEMENTS
+.text_align-left {
+	text-align: left;
+}
+.text_align-center {
+    text-align: center;
+}
+.text_align-right {
+	text-align: right;
+}
+
+// STRETCHES *SQUARE* IMAGE TO DIV DIMENSIONS
+.fit_image-width {
+   width: 100%;
+}
+
+// ADDS SPACE UNDERNEATH DIVS
+.margin_bottom-xsmall {
+    margin-bottom: 1vh !important;
+}
+.margin_bottom-small {
+    margin-bottom: 3vh !important;
+}
+.margin_bottom-medium {
+    margin-bottom: 5vh !important;
+}
+.margin_bottom-large {
+    margin-bottom: 7vh !important;
+}
+.margin_bottom-xlarge {
+    margin-bottom: 10vh !important;
+}
+.margin_top-xsmall {
+	margin-top: 0.1vh !important;
+}
+
+// ADDS MARGIN SPACE TO SIDES OF DIVS
+.margin_sides-xsmall {
+	margin: 0 0.5vw !important;
+}
+
+// ADDS PAD SPACE TO SIDES OF DIVS
+.pad_left-xsmall {
+	padding-left: 1vw !important;
+}
+.pad_left-small {
+	padding-left: 3vw !important;
+}
+.pad_right-xsmall {
+	padding-right: 1vw !important;
+}
+.pad_right-small {
+	padding-right: 3vw !important;
+}
+.pad_top-xsmall {
+	padding-top: 1vh !important;
+}
+
+// CHANGES INPUT FORM LINE COLORS
 .inputColor {
     border-bottom: 1px solid $linesUnfocused !important;
 }
 .inputColor:focus {
     border-bottom: 1px solid $linesFocused !important;
     box-shadow: none !important;
+}
+
+// CHANGE FONT COLORS
+.font_color-white {
+	color: $themeWhite !important;
+}
+
+// SCROLL BAR
+::-webkit-scrollbar {
+    width: .3vw;
+}
+/* Track */
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.1);
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+}
+/* Handle */
+::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: $buttons;
+}
+::-webkit-scrollbar-thumb:window-inactive {
+	background: $header;
 }
