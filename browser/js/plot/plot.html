@@ -7,14 +7,16 @@
         </div>
 
         <div class="row">
-            <div class="col s8 offset-s2">
+            <div class="col s12">
                 <table class="plot">
                 	<tr ng-repeat="row in plot">
                 		<td class="{{ cell.class }}" ng-repeat="cell in row track by $index"></td>
                 	</tr>
                 </table>
             </div>
-            <div class="col s2 key-title">
+        </div>
+        <div class="row">
+            <div class="col s12 key-title">
             	<p>Plot Key</p>
             	<table class="key">
             	<th>Color</th><th>Plant</th><th>Amount</th>
