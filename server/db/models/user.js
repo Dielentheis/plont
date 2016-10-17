@@ -15,13 +15,16 @@ module.exports = db.define('user', {
         }
     },
     firstName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     lastName: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     zip: {
-        type: Sequelize.STRING(5)
+        type: Sequelize.STRING([5, 9]),
+        allowNull: false
     },
     phoneNumber: {
         type: Sequelize.STRING
@@ -38,7 +41,8 @@ module.exports = db.define('user', {
         type: Sequelize.ARRAY(Sequelize.STRING)
     },
     password: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false
     },
     salt: {
         type: Sequelize.STRING
@@ -85,6 +89,10 @@ module.exports = db.define('user', {
         }
     },
     hooks: {
+        beforeValidate: function (user) {
+            user.email = user.email.toLowerCase();
+            if (user.zip.indexOf('-') > -1) zip = zip.substring(0, zip.indexOf('-')) + zip.substring(zip.indexOf('-') + 1);
+        },
         beforeCreate: function (user) {
             if (user.changed('password')) {
                 user.salt = user.Model.generateSalt();
