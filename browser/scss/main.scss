@@ -30,8 +30,12 @@ h1, h2 {
 
 hr {
   border: 0;
-  border-top: 1px dotted $themeBlack;
-  overflow-x: scroll;
+  border-bottom: 0.1vw solid $borders;
+  clear: both;
+}
+
+divider {
+  clear: both;
 }
 
 div.row.create {

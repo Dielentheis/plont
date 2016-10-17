@@ -1,6 +1,11 @@
-// ADDS FLEX-BOX
+// ADDS MATERIALIZE-GRID
 .container {
 	display: flex;
+}
+
+.offset-one {
+	position: relative;
+	margin: 0 auto;
 }
 
 // ALIGNS BLOCK ELEMENTS
@@ -23,6 +28,11 @@
 }
 .text_align-right {
 	text-align: right;
+}
+
+// STRETCHES *SQUARE* IMAGE TO DIV DIMENSIONS
+.fit_image-width {
+   width: 100%;
 }
 
 // ADDS SPACE UNDERNEATH DIVS

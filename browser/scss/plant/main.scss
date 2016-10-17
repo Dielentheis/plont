@@ -2,18 +2,29 @@
     overflow: hidden;
 }
 
-.card-stacked {
+#shadow_div {
+	max-width: 60vw;
+}
+
+.faux_card {
     max-height: 60vh;
+    background-color: $themeWhite;
+    padding: 1.5vw 1vw 0vw 0.5vw;
+    margins: 0;
+}
+
+.faux_content {
+	max-height: 45vh;
 	overflow-y: auto;
+	overflow-x: hidden;
+}
+
+.test {
+	position: relative;
+	top: -1vw;
 }
 
 .material-icons {
 	position: relative;
 	top: -0.5px;
-}
-
-#move_righter {
-	position: relative;
-	right: -2.5vw;
-	padding: 0;
 }
