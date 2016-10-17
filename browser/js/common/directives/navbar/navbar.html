@@ -23,13 +23,14 @@
                 <span ng-show="user">
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown-plot_links">Plot<i class="material-icons right">arrow_drop_down</i></a></li>
                     <li><a class="dropdown-button" href="#!" data-activates="dropdown-plant_links">Plant<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a ui-sref="calendar">Harvest Calendar</a></li>
                     <li ng-show="showAlert"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
                 </span>
                 <!-- NON-USER MENU OPTIONS -->
                 <span ng-show="!user">
                     <li><a ui-sref="plants">All Plants</a></li>
-                    <li ng-show="!user"><a ui-sref="login">Login</a></li>
-                    <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+                    <li><a ui-sref="login">Login</a></li>
+                    <li><a ui-sref="signup">Signup</a></li>
                 </span>
                 <!-- LOG OUT -->
                 <li ng-show="user" ng-click="logout()"><a>Logout</a></li>
@@ -46,13 +47,14 @@
                     <li><a ui-sref="user-plots">My Plots</a></li>
                     <li><a ui-sref="plants">All Plants</a></li>
                     <li><a ui-sref="userPlants">My Plants</a></li>
+                    <li><a ui-sref="calendar">Calendar</a></li>
                     <li ng-show="showAlert"><a ng-click="showConfirm()"><i class="material-icons">warning</i></a></li>
                 </span>
                 <!-- NON-USER MENU OPTIONS -->
                 <span ng-show="!user">
                     <li><a ui-sref="plants">All Plants</a></li>
-                    <li ng-show="!user"><a ui-sref="login">Login</a></li>
-                    <li ng-show="!user"><a ui-sref="signup">Signup</a></li>
+                    <li><a ui-sref="login">Login</a></li>
+                    <li><a ui-sref="signup">Signup</a></li>
                 </span>
                 <!-- LOG OUT -->
                 <li ng-show="user" ng-click="logout()"><a>Logout</a></li>
