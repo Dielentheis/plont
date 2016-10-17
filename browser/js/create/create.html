@@ -1,12 +1,12 @@
 <section id="plots">
     <div ng-show="!switch">
 
-        <div class="row bottom_spacing-medium">
+        <div class="row margin_bottom-medium">
             <div class="col s12">
                 <h1 class="title">Create Your Plot</h1>
             </div>
         </div>
-        <div class="row bottom_spacing-medium">
+        <div class="row margin_bottom-medium">
             <div class="col s12">
                 <div ng-show="!switch"">
                     <center>
@@ -16,13 +16,13 @@
             </div>
         </div>
 
-        <div class="row  bottom_spacing-xlarge">
+        <div class="row  margin_bottom-xlarge">
             <div class="col s12">
                 <hr>
             </div>
         </div>
 
-        <div class="row bottom_spacing-medium">
+        <div class="row margin_bottom-medium">
             <div class="col s6 offset-s3">
                 <h2 class="size">Plot Size?</h2>
             </div>
@@ -64,7 +64,7 @@
             </div>
         </div>
 
-        <div class="row bottom_spacing-medium">
+        <div class="row margin_bottom-medium">
             <div class="col s12">
                 <hr>
             </div>
@@ -76,13 +76,13 @@
             </div>
         </div>
 
-        <div class="row bottom_spacing-small">
+        <div class="row margin_bottom-small">
             <div class="col s8 offset-s2 input-field">
                 <multiple-autocomplete ng-model="selectedPlants" object-property="name" suggestions-arr="optionsList"></multiple-autocomplete>
             </div>
         </div>
 
-        <div class="row bottom_spacing-medium text_align-right">
+        <div class="row margin_bottom-medium text_align-right">
             <div class="col s4 offset-s6">
                 <div ng-show="selectedPlants.length > 0 && selectedPlants.length <= 10">
                     <button type="submit" class="waves-effect btn-flat" ng-click="createPlantList(selectedPlants)"> Done </buttontyp>

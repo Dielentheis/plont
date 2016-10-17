@@ -2,6 +2,7 @@
     overflow: hidden;
 }
 
+// Workaround until `col s10 offset-s1` works -- alternatively un-extrapolate the ui-view column and row
 #shadow_div {
 	max-width: 60vw;
 }
@@ -19,7 +20,7 @@
 	overflow-x: hidden;
 }
 
-.test {
+.btn-add_plants-more_responsive {
 	position: relative;
 	top: -1vw;
 }
