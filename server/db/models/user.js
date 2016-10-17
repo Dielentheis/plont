@@ -23,7 +23,7 @@ module.exports = db.define('user', {
         allowNull: false
     },
     zip: {
-        type: Sequelize.STRING([5]),
+        type: Sequelize.STRING(5),
         allowNull: false
     },
     phoneNumber: {
