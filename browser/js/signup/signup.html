@@ -41,17 +41,10 @@
             <div class="row form-group">
                 <div class="col s12">
                     <label class="float_align-left">Password (must contain a number & be at least 8 characters long)</label>
-                    <input type="password"
-                        name="password"
-                        minlength="8"
-                        ng-model="myForm.password"
-                        ng-pattern="/\d/"
-                        invalid-message="'must contain number'"
-                        class="inputColor form-control"
-                        required />
+                    <input type="password" class="inputColor form-control" ng-model="user.password" invalid-message="'must contain number'" ng-pattern="/\d/" minlength="8" required />
                 </div>
                 <div class="col s12">
-                    <span ng-show="myForm.password.$error.minlength">
+                    <span ng-show="user.password.$error.minlength">
                         Password must be at least 8 characters long
                     </span>
                 </div>
