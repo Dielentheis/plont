@@ -13,7 +13,7 @@
     <nav>
         <div class="nav-wrapper">
             <a class="brand-logo" ui-sref="home">Plont</a>
-            <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons pad_left-small">menu</i></a>
+            <div class="float_align-right"><a href="#" data-activates="mobile-menu" class="button-collapse"><i class="material-icons pad_left-small">menu</i></a></div>
 
             <!-- DESKTOP MENU -->
             <ul class="right hide-on-med-and-down">
@@ -37,7 +37,7 @@
             </ul>
 
             <!-- MOBILE MENU -->
-            <ul class="side-nav" id="mobile-demo">
+            <ul class="side-nav text_align-right" id="mobile-menu">
                 <!-- HOME -->
                 <li><a ui-sref="home">Home</a></li>
                 <!-- =USER MENU OPTIONS -->
@@ -62,8 +62,13 @@
 </div>
 
 <script>
-    $(document).ready(function() {
-        $(".button-collapse").sideNav();
-        $(".dropdown-button").dropdown();
+$(document).ready(function() {
+    $(".button-collapse").sideNav({
+        menuWidth: 100, // Default is 240
+        edge: 'right', // Choose the horizontal origin
+        closeOnClick: true // Closes side-nav on <a> clicks, useful for Angular/Meteor
     });
+
+    $(".dropdown-button").dropdown();
+});
 </script>
