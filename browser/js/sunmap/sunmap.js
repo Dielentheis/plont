@@ -37,24 +37,33 @@ app.controller('SunController', function($scope, CreatePlotFactory, PlotService)
         this.cells.sun = shadeDict[this.cells.sunniness];
     };
 
+    $scope.resetSunlight = function() {
+        $scope.board.forEach(row =>
+            row.forEach(cell => {
+                cell.sunniness = 'sun';
+                cell.sun = shadeDict.sun;
+            })
+        );
+    };
+
     $scope.changesTheGridSizeBackFromHalfFeetToInches = function() {
         const inchesBoard = mag($scope.board, 6);
 
         function mag(arr, scale) {
-            var res = [];
+            const res = [];
             if(!arr.length)
                 return arr;
-            for (var i = 0; i < arr.length; i++) {
-                var temp = mag(arr[i], scale);
-                for (var k = 0; k < scale; k++) {
+            for (let i = 0; i < arr.length; i++) {
+                let temp = mag(arr[i], scale);
+                for (let k = 0; k < scale; k++) {
                     res.push(temp.slice ? temp.slice(0) : temp);
                 }
             }
             return res;
         }
 
-        for (var i = 0; i < inchesBoard.length; i++) {
-            for (var j = 0; j < inchesBoard[0].length; j++) {
+        for (let i = 0; i < inchesBoard.length; i++) {
+            for (let j = 0; j < inchesBoard[0].length; j++) {
                 inchesBoard[i][j] = _.clone(inchesBoard[i][j]);
             }
         }

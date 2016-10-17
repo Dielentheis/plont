@@ -1,18 +1,32 @@
-<div class="container" ng-controller="CalendarCtrl">
-  <calendar-md flex layout layout-fill
-    calendar-direction="direction"
-    on-prev-month="prevMonth"
-    on-next-month="nextMonth"
-    on-day-click="dayClick"
-    title-format="'MMMM y'"
-    ng-model='selectedDate'
-    week-starts-on="firstDayOfWeek"
-    tooltips="tooltips"
-    day-format="dayFormat"
-    day-label-format="'EEE'"
-    day-label-tooltip-format="'EEEE'"
-    day-tooltip-format="'fullDate'"
-    day-content="setDayContent"
-    disable-future-selection="false">
-  </calendar-md>
+<div ng-controller="CalendarCtrl">
+    <div class="row">
+        <div class="col s12">
+            <h1>Harvest Calendar</h1>
+        </div>
+    </div>
+
+    <div class="row margin_bottom-medium">
+        <div class="col s12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="col s12">
+        <calendar-md flex layout layout-fill
+            calendar-direction="direction"
+            on-prev-month="prevMonth"
+            on-next-month="nextMonth"
+            on-day-click="dayClick"
+            title-format="'MMMM y'"
+            ng-model='selectedDate'
+            week-starts-on="firstDayOfWeek"
+            tooltips="tooltips"
+            day-format="dayFormat"
+            day-label-format="'EEE'"
+            day-label-tooltip-format="'EEEE'"
+            day-tooltip-format="'fullDate'"
+            day-content="setDayContent"
+            disable-future-selection="false">
+        </calendar-md>
+    </div>
 </div>

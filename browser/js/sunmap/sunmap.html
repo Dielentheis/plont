@@ -1,48 +1,49 @@
 <section id="plots">
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h2 class="size">How sunny is your plot?</h2>
-            </div>
+    <div class="row">
+        <div class="col s12">
+            <h2 class="size">How sunny is your plot?</h2>
         </div>
-        <div id="sunTable" class="row">
-            <div class="col s6 offset-s3">
-                <table id="board">
+    </div>
+    <div class="row">
+        <div class="col s6 offset-s3">
+            <table id="board">
+                <tbody>
                     <tr ng-repeat="rows in board">
-                        <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click='sunToggle(cells.sunniness)'>
+                        <td ng-repeat="cells in rows" class="{{ cells.sunniness }}" ng-click="sunToggle(cells.sunniness)">
                             <div class='sqTable'></div>
                         </td>
                     </tr>
-                </table>
-            </div>
-            <div id='legend' class="col s2">
-                <table>
-                    <tr>
-                        <td class='sun'>
-                            <div class='sqTable'></div>
-                        </td>
-                        <td>sunny</td>
-                    </tr>
-                    <tr>
-                        <td class='partial_shade'>
-                            <div class='sqTable'></div>
-                        </td>
-                        <td>semi-shady</td>
-                    </tr>
-                    <tr>
-                        <td class='full_shade'>
-                            <div class='sqTable'></div>
-                        </td>
-                        <td>shady</td>
-                    </tr>
-                </table>
-                </div='legend'>
-            </div>
+                </tbody>
+            </table>
         </div>
-        <div id='control_panel' class="row">
-            <div "col 2 offset-8">
-                <!-- <button id='clear_btn' class='waves-effect btn-flat'>Clear</button> -->
-                <button class="waves-effect btn-flat" type="submit" ng-click="changesTheGridSizeBackFromHalfFeetToInches()">Next</button>
-            </div>
+        <div class="col s3 pad_left-small margin_bottom-small">
+            <table>
+                <tr>
+                    <td class='sun'>
+                        <div class='sqTable'></div>
+                    </td>
+                    <td>sunny</td>
+                </tr>
+                <tr>
+                    <td class='partial_shade'>
+                        <div class='sqTable'></div>
+                    </td>
+                    <td>semi-shady</td>
+                </tr>
+                <tr>
+                    <td class='full_shade'>
+                        <div class='sqTable'></div>
+                    </td>
+                    <td>shady</td>
+                </tr>
+            </table>
+            </div='legend'>
         </div>
+    </div>
+    <div class="row">
+        <div class="col s10 text_align-right">
+            <a class="waves-effect btn-flat margin_right-xsmall" ng-click="resetSunlight()">Start Over</a>
+            <button type="submit" class="waves-effect btn-flat" ng-click="changesTheGridSizeBackFromHalfFeetToInches()">Next</button>
+        </div>
+    </div>
 </section>

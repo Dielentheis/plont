@@ -6,12 +6,6 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
         templateUrl: 'js/common/directives/navbar/navbar.html',
         link: function (scope) {
 
-            scope.items = [
-                { label: 'Home', state: 'home' },
-                { label: 'All Plants', state: 'plants' },
-                { label: 'My Plots', state: 'user-plots', auth: true }
-            ];
-
             scope.user = null;
 
             scope.isLoggedIn = function () {
@@ -70,7 +64,7 @@ app.directive('navbar', function ($rootScope, AuthService, AUTH_EVENTS, $log, $s
                     .targetEvent(ev)
                     .clickOutsideToClose(true)
                     .ok('Thanks!');
-                    
+
                 $mdDialog.show(confirm).then(function() {
                     scope.status = 'Confirmed.';
                 });

@@ -11,7 +11,7 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
     PlotFactory.fetchPlot()
     .then(function(plotty) {
         plot = plotty;
-        return PlotFactory.getPlotPlants(plot)
+        return PlotFactory.getPlotPlants(plot);
     })
     .then(function(plants) {
         $scope.plotName = plot.name;
@@ -23,7 +23,7 @@ app.controller('PlotCtrl', function($scope, PlotFactory, $log, CreatePlotFactory
         if (plants.length !== compare && CreatePlotFactory.justCreated) {
             var insincereApology = $mdDialog.confirm()
             .title('Sorry!')
-            .htmlContent('One or more of your plants was not able to be planted, either because your plot\'s amount of sun doesn\'t support it or because the plant would have crowded out one or more other type(s) of plants.')
+            .htmlContent('One or more of your plants was not able to be planted either because it wouldn\'t get the right amount of sun or because the it would have crowded out one or more plants.')
             .ariaLabel('Could not plant 1+ plant(s)')
             .clickOutsideToClose(true)
             .ok('OK');
