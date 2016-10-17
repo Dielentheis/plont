@@ -23,7 +23,7 @@ module.exports = db.define('user', {
         allowNull: false
     },
     zip: {
-        type: Sequelize.STRING([5, 9]),
+        type: Sequelize.STRING([5]),
         allowNull: false
     },
     phoneNumber: {
@@ -91,7 +91,7 @@ module.exports = db.define('user', {
     hooks: {
         beforeValidate: function (user) {
             user.email = user.email.toLowerCase();
-            if (user.zip.indexOf('-') > -1) zip = zip.substring(0, zip.indexOf('-')) + zip.substring(zip.indexOf('-') + 1);
+            if (user.zip.length > 5) user.zip = user.zip.substr(0, 5);
         },
         beforeCreate: function (user) {
             if (user.changed('password')) {
