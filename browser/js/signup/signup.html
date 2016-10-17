@@ -50,12 +50,14 @@
                         class="inputColor form-control"
                         required />
                 </div>
-                <span class="col s12" ng-show="myForm.password.$error.minlength">
-                    Password must be at least 8 characters long
-                </span>
+                <div class="col s12">
+                    <span ng-show="myForm.password.$error.minlength">
+                        Password must be at least 8 characters long
+                    </span>
+                </div>
             </div>
 
-            <div class="row">
+            <div class="row form-group">
                 <div class="col l6 m12 form-group">
                     <label>Zip Code (for harvest times):</label>
                     <input type="text" class="inputColor form-control" ng-model="user.zip" required>

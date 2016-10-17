@@ -1,15 +1,15 @@
+// BUTTON COLORS
 .btn, .btn-large {
     background-color: $buttons;
 }
-
 .btn:hover, .btn-large:hover {
     background-color: $buttons;
 }
-
 .btn:focus {
     background-color: $buttons;
 }
 
+// COLORS FORM WHEN INVALID OR TOUCHED
 .css-form input.ng-invalid.ng-touched {
 background-color: lighten($buttons, 11%);
 }

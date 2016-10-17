@@ -18,6 +18,7 @@
                 <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in userPlants" >
                     <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
                     ng-mouseleave="hover = ''" ng-class="hover">
+
                         <md-card-title-text>
                             <span class="md-headline">
                                 <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
@@ -30,6 +31,7 @@
                         <md-card-content>
                             <p>{{plant.watering}}</p>
                         </md-card-content>
+
                     </md-card>
                 </div>
             </md-content>
