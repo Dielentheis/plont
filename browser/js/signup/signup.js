@@ -7,12 +7,10 @@ app.config(function($stateProvider) {
 });
 
 app.controller('SignupCtrl', function(AuthService, $log, $scope, $state) {
-
     $scope.error = null;
 
     $scope.createUser = function(user) {
         $scope.error = null;
-
         AuthService.signup(user)
         .then(function() {
             $state.go('user-plots');

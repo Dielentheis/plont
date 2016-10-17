@@ -9,3 +9,10 @@
 .btn:focus {
     background-color: $buttons;
 }
+
+.css-form input.ng-invalid.ng-touched {
+background-color: lighten($buttons, 11%);
+}
+.css-form input.ng-valid.ng-touched {
+background-color: none;
+}

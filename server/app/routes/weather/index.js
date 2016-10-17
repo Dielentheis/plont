@@ -71,7 +71,7 @@ var textUser = function() {
             }
             client.sendMessage({
 
-                to: '+12024684923', // Any number Twilio can deliver to
+                to: user.phoneNumber, // Any number Twilio can deliver to
                 from: '+12027590518', // A number you bought from Twilio and can use for outbound communication
                 body: weatherAlert + weather // body of the SMS message
 

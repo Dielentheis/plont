@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <form name="myForm">
+        <form name="myForm" class="css-form">
 
             <div class="row form-group">
                 <div class="col s12">
@@ -40,9 +40,19 @@
 
             <div class="row form-group">
                 <div class="col s12">
-                    <label class="float_align-left">Password:</label>
-                    <input type="password" class="inputColor form-control" ng-model="user.password" required />
+                    <label class="float_align-left">Password (must contain a number & be at least 8 characters long)</label>
+                    <input type="password"
+                        name="password"
+                        minlength="8"
+                        ng-model="myForm.password"
+                        ng-pattern="/\d/"
+                        invalid-message="'must contain number'"
+                        class="inputColor form-control"
+                        required />
                 </div>
+                <span class="col s12" ng-show="myForm.password.$error.minlength">
+                    Password must be at least 8 characters long
+                </span>
             </div>
 
             <div class="row">
