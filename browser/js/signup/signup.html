@@ -15,7 +15,7 @@
             </div>
         </div>
 
-        <form name="myForm">
+        <form name="myForm" class="css-form">
 
             <div class="row form-group">
                 <div class="col s12">
@@ -40,12 +40,17 @@
 
             <div class="row form-group">
                 <div class="col s12">
-                    <label class="float_align-left">Password:</label>
-                    <input type="password" class="inputColor form-control" ng-model="user.password" required />
+                    <label class="float_align-left">Password (must contain a number & be at least 8 characters long)</label>
+                    <input type="password" class="inputColor form-control" ng-model="user.password" invalid-message="'must contain number'" ng-pattern="/\d/" minlength="8" required />
+                </div>
+                <div class="col s12">
+                    <span ng-show="user.password.$error.minlength">
+                        Password must be at least 8 characters long
+                    </span>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row form-group">
                 <div class="col l6 m12 form-group">
                     <label>Zip Code (for harvest times):</label>
                     <input type="text" class="inputColor form-control" ng-model="user.zip" required>
