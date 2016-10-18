@@ -6,16 +6,24 @@ app.config(function($stateProvider) {
     });
 });
 
-app.factory('PlantsFactory', function($http, $log) {
-	var returnObj = {};
+app.controller('PlantsCtrl', function($scope, PlantsFactory, $log) {
+    PlantsFactory.fetchAll()
+    .then(function(plants) {
+        $scope.plants = plants.sort(PlantsFactory.sortByName);
+    })
+    .catch($log.error);
+});
 
-	returnObj.fetchAll = function() {
-		return $http.get('/api/plants/')
-		.then(function(plants) {
-			return plants.data;
-		})
-		.catch($log.error);
-	};
+app.factory('PlantsFactory', function($http, $log) {
+    var returnObj = {};
+
+    returnObj.fetchAll = function() {
+        return $http.get('/api/plants/')
+        .then(function(plants) {
+            return plants.data;
+        })
+        .catch($log.error);
+    };
 
     returnObj.sortByName = function (one, two) {
         if (one.name < two.name) {
@@ -27,14 +35,5 @@ app.factory('PlantsFactory', function($http, $log) {
         return 0;
     };
 
-	return returnObj;
-});
-
-app.controller('PlantsCtrl', function($scope, PlantsFactory, $log) {
-	PlantsFactory.fetchAll()
-	.then(function(plants) {
-		$scope.plants = plants.sort(PlantsFactory.sortByName);
-	})
-	.catch($log.error);
-
+    return returnObj;
 });

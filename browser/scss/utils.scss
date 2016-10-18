@@ -1,28 +1,28 @@
 // ADDS MATERIALIZE-GRID
 .container {
-	display: flex;
+    display: flex;
 }
 
 // ALIGNS BLOCK ELEMENTS
 .float_align-left {
-	float: left;
+    float: left;
 }
 .float_align-center {
-	margin: 0 auto;
+    margin: 0 auto;
 }
 .float_align-right {
-	float: right;
+    float: right;
 }
 
 // ALIGNS TEXT ELEMENTS
 .text_align-left {
-	text-align: left;
+    text-align: left;
 }
 .text_align-center {
     text-align: center;
 }
 .text_align-right {
-	text-align: right;
+    text-align: right;
 }
 
 // STRETCHES *SQUARE* IMAGE TO DIV DIMENSIONS
@@ -47,32 +47,32 @@
     margin-bottom: 10vh !important;
 }
 .margin_top-xsmall {
-	margin-top: 0.1vh !important;
+    margin-top: 0.1vh !important;
 }
 .margin_right-xsmall {
-	margin-right: 0.2vw !important;
+    margin-right: 0.2vw !important;
 }
 
 // ADDS MARGIN SPACE TO SIDES OF DIVS
 .margin_sides-xsmall {
-	margin: 0 0.5vw !important;
+    margin: 0 0.5vw !important;
 }
 
 // ADDS PAD SPACE TO SIDES OF DIVS
 .pad_left-xsmall {
-	padding-left: 1vw !important;
+    padding-left: 1vw !important;
 }
 .pad_left-small {
-	padding-left: 3vw !important;
+    padding-left: 3vw !important;
 }
 .pad_right-xsmall {
-	padding-right: 1vw !important;
+    padding-right: 1vw !important;
 }
 .pad_right-small {
-	padding-right: 3vw !important;
+    padding-right: 3vw !important;
 }
 .pad_top-xsmall {
-	padding-top: 1vh !important;
+    padding-top: 1vh !important;
 }
 
 // CHANGES INPUT FORM LINE COLORS
@@ -86,7 +86,7 @@
 
 // CHANGE FONT COLORS
 .font_color-white {
-	color: $themeWhite !important;
+    color: $themeWhite !important;
 }
 
 // SCROLL BAR
@@ -106,5 +106,5 @@
     background: $buttons;
 }
 ::-webkit-scrollbar-thumb:window-inactive {
-	background: $header;
+    background: $header;
 }

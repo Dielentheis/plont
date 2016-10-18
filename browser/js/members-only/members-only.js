@@ -1,5 +1,4 @@
 app.config(function ($stateProvider) {
-
     $stateProvider.state('membersOnly', {
         url: '/members-area',
         template: '<img ng-repeat="item in stash" width="300" ng-src="{{ item }}" />',
@@ -14,11 +13,9 @@ app.config(function ($stateProvider) {
             authenticate: true
         }
     });
-
 });
 
 app.factory('SecretStash', function ($http) {
-
     var getStash = function () {
         return $http.get('/api/users/secret-stash').then(function (response) {
             return response.data;
@@ -28,5 +25,4 @@ app.factory('SecretStash', function ($http) {
     return {
         getStash: getStash
     };
-
 });

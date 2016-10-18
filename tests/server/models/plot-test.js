@@ -44,6 +44,5 @@ describe('Plot model', function () {
                 expect(plot.width).to.equal(200);
             });
         });
-
     });
 });
