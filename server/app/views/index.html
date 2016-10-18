@@ -27,9 +27,15 @@
 
     <script src="/main.js"></script>
 </head>
+
 <body ng-app="Plont">
     <navbar></navbar>
-    <div class="bottom_spacing-small"></div>
-    <div id="main" ui-view></div>
+    <div class="margin_bottom-small"></div>
+    <div class="row">
+        <div class="col s8 offset-s2">
+            <div id="main" ui-view></div>
+        </div>
+    </div>
 </body>
+
 </html>

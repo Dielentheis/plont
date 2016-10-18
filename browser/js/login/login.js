@@ -13,6 +13,8 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     $scope.sendLogin = function (loginInfo) {
         $scope.error = null;
 
+        loginInfo.email = loginInfo.email.toLowerCase();  // RESOLVES CASE-SENSITIVE EMAIL ISSUE PT (2/2)
+
         AuthService.login(loginInfo)
         .then(function () {
             $state.go('home');

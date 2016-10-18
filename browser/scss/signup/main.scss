@@ -1,27 +1,18 @@
-#signup-form {
-  width: 60%;
-  margin: 0 auto;
-}
-
+// BUTTON COLORS
 .btn, .btn-large {
     background-color: $buttons;
 }
-
 .btn:hover, .btn-large:hover {
     background-color: $buttons;
 }
-
-button:focus {
+.btn:focus {
     background-color: $buttons;
 }
 
-.col.s6.form-group.left {
-    padding-left: 0;
-    padding-right: 10px;
+// COLORS FORM WHEN INVALID OR TOUCHED
+.css-form input.ng-invalid.ng-touched {
+background-color: lighten($buttons, 11%);
 }
-
-.col.s6.form-group.right {
-    padding-left: 10px;
-    padding-right: 0;
+.css-form input.ng-valid.ng-touched {
+background-color: none;
 }
-

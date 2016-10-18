@@ -1,27 +1,41 @@
 <section id="myPlants">
-    <h1> {{user.firstName}}'s Plants</h1>
-    <div class="divider"></div>
-    <div class="container">
-        <div class="col s5">
+
+    <div class="row">
+        <div class="col s12">
+            <h1>My Plants</h1>
+        </div>
+    </div>
+
+    <div class="row margin_bottom-small">
+        <div class="col s12">
+            <hr>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col s12">
             <md-content layout-xs="column" layout-gt-xs="row" layout-wrap flex>
                 <div flex-xs="100" layout-padding flex-gt-xs='33' flex-gt-md='33' layout="column" layout-align='center center' ng-repeat="plant in userPlants" >
                     <md-card flex='33' layout-fill ng-mouseenter="hover = 'md-whiteframe-z3'"
                     ng-mouseleave="hover = ''" ng-class="hover">
+
                         <md-card-title-text>
                             <span class="md-headline">
                                 <a ui-sref="plant({id: plant.id})">{{plant.name}}</a>
                                 <img class="removebtn" src="/images/remove_circle.png" ng-click="removePlant(user.id, plant.id)">
                             </span>
-
                         </md-card-title-text>
-                            <img ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image" ui-sref="plant({id: plant.id})">
-                            <img ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9" ui-sref="plant({id: plant.id})">
-                            <md-card-content>
-                                <p>{{plant.watering}}</p>
+
+                        <img ng-hide="!plant.image" src="{{plant.image}}" class="md-card-image" ui-sref="plant({id: plant.id})">
+                        <img ng-show="!plant.image" src="https://dummyimage.com/377x377/e8f5e9/e8f5e9" ui-sref="plant({id: plant.id})">
+                        <md-card-content>
+                            <p>{{plant.watering}}</p>
                         </md-card-content>
+
                     </md-card>
                 </div>
             </md-content>
         </div>
     </div>
+
 </section>

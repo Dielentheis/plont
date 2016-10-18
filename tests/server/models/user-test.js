@@ -91,7 +91,7 @@ describe('User model', function () {
             var saltSpy;
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({ email: 'obama@gmail.com', password: 'potus', zip: '55115', firstName: 'Emily', lastName: 'Obama' });
             };
 
             beforeEach(function () {
@@ -133,7 +133,7 @@ describe('User model', function () {
         describe('sanitize method', function () {
 
             var createUser = function () {
-                return User.create({ email: 'obama@gmail.com', password: 'potus' });
+                return User.create({ email: 'obama@gmail.com', password: 'potus', zip: '55115', firstName: 'Barack', lastName: 'Obama' });
             };
 
             it('should remove sensitive information from a user object', function () {
@@ -150,7 +150,7 @@ describe('User model', function () {
         describe('full name method', function () {
 
             var createUser = function () {
-                return User.create({ firstName: 'Barack', lastName: 'Obama', email: 'obama@gmail.com', password: 'potus' });
+                return User.create({ email: 'obama@gmail.com', password: 'potus', zip: '55115', firstName: 'Barack', lastName: 'Obama' });
             };
 
             it('should create a full name virtual field', function () {
