@@ -1,78 +1,78 @@
 #plot {
-		table.plot {
-			max-width: 60%;
-			margin: 50px auto;
-			border: 1px solid $borders;
-		}
+    table.plot {
+        max-width: 60%;
+        margin: 50px auto;
+        border: 1px solid $borders;
+    }
 
-		td {
-			text-align: center;
-			height: 10px;
-			width: 10px;
-			text-transform: uppercase;
-			font-weight: 300;
-		}
+    td {
+        text-align: center;
+        height: 10px;
+        width: 10px;
+        text-transform: uppercase;
+        font-weight: 300;
+    }
 
-		th {
-			text-align: center;
-			font-family: "Roboto";
-			font-weight: 400;
-			border-right: 1px solid $borders;
-			border-bottom: 1px solid $borders;
-			text-transform: uppercase;
-		}
+    th {
+        text-align: center;
+        font-family: "Roboto";
+        font-weight: 400;
+        border-right: 1px solid $borders;
+        border-bottom: 1px solid $borders;
+        text-transform: uppercase;
+    }
 
-		table.key {
-			max-width: 20%;
-			margin: 0 auto;
-			border: 1px solid $borders;
-			td {
-				border: 1px solid $borders;
-				width: 6%;
-			}
-		}
+    table.key {
+        max-width: 20%;
+        margin: 0 auto;
+        border: 1px solid $borders;
+        td {
+            border: 1px solid $borders;
+            width: 6%;
+        }
+    }
 
-	.key-title {
-		text-align: center;
-		margin: 50px auto;
-		p {
-			font-size: 20px;
-			text-transform: uppercase;
-			font-weight: 300;
-		}
-	}
+    .key-title {
+        text-align: center;
+        margin: 50px auto;
+        p {
+            font-size: 20px;
+            text-transform: uppercase;
+            font-weight: 300;
+        }
+    }
 
-	.class1 {
-		background-color: $gridColor0;
-	}
-	.class2 {
-		background-color: $gridColor1;
-	}
-	.class3 {
-		background-color: $gridColor2;
-	}
-	.class4 {
-		background-color: $gridColor3;
-	}
-	.class5 {
-		background-color: $gridColor4;
-	}
-	.class6 {
-		background-color: $gridColor5;
-	}
-	.class7 {
-		background-color: $gridColor6;
-	}
-	.class8 {
-		background-color: $gridColor7;
-	}
-	.class9 {
-		background-color: $gridColor8;
-	}
-	.class10 {
-		background-color: $gridColor9;
-	}
-	.no-plant {
-		background-color: $themeWhite;
-	}
+    .class1 {
+        background-color: $gridColor0;
+    }
+    .class2 {
+        background-color: $gridColor1;
+    }
+    .class3 {
+        background-color: $gridColor2;
+    }
+    .class4 {
+        background-color: $gridColor3;
+    }
+    .class5 {
+        background-color: $gridColor4;
+    }
+    .class6 {
+        background-color: $gridColor5;
+    }
+    .class7 {
+        background-color: $gridColor6;
+    }
+    .class8 {
+        background-color: $gridColor7;
+    }
+    .class9 {
+        background-color: $gridColor8;
+    }
+    .class10 {
+        background-color: $gridColor9;
+    }
+    .no-plant {
+        background-color: $themeWhite;
+    }
 }

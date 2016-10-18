@@ -2,24 +2,24 @@
 @import 'utils.scss';
 
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 section {
-  padding-bottom: 5%;
+    padding-bottom: 5%;
 }
 
 @mixin clearfix {
-  &:after {
-    content: "";
-    display: table;
-    clear: both;
-  }
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
 }
 
 #main {
-  margin: 0 auto;
-  padding-top: 5vh;
+    margin: 0 auto;
+    padding-top: 5vh;
 }
 
 h1, h2 {
@@ -29,13 +29,13 @@ h1, h2 {
 }
 
 hr {
-  border: 0;
-  border-bottom: 0.1vw solid $borders;
-  clear: both;
+    border: 0;
+    border-bottom: 0.1vw solid $borders;
+    clear: both;
 }
 
 divider {
-  clear: both;
+    clear: both;
 }
 
 div.row.create {
@@ -43,20 +43,16 @@ div.row.create {
 }
 
 .md-cancel-button {
-  display: none;
+    display: none;
 }
 
-// for post-presentation styling
-// .layout-fill {
-// }
-
 .plot-header {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 md-dialog.md-dialog-content {
-  max-width: 30vw;
+    max-width: 30vw;
 }
 
 .layout-column > .flex {
@@ -64,49 +60,45 @@ md-dialog.md-dialog-content {
 }
 
 md-card md-card-title {
-  display: inline;
-  padding: 0;
-  button .btn-flat {
-    text-align: left;
-    margin: auto;
-  }
+    display: inline;
+    padding: 0;
+    button .btn-flat {
+        text-align: left;
+        margin: auto;
+    }
 }
 
 #user-plots {
-  .btn-flat {
-    margin: 0 auto 0 auto;
-  }
+    .btn-flat {
+        margin: 0 auto 0 auto;
+    }
 }
 
 .glyphicon.glyphicon-remove {
-  content:url("/images/remove_circle.png");
-  max-height: 12px;
-  margin-top: 2px;
+    content:url("/images/remove_circle.png");
+    max-height: 12px;
+    margin-top: 2px;
 }
 
 #plots.btn-flat {
-  margin-left: 45vw;
+    margin-left: 45vw;
 }
 
 .btn-flat {
-  background-color: $buttons;
+    background-color: $buttons;
 }
 
 input:-webkit-autofill {
-  background-color: $themeWhite;
+    background-color: $themeWhite;
 }
 
-@import 'home/main';
 @import 'about/main';
 @import 'tutorial/main';
-@import 'login/main';
 @import 'navbar/main';
 @import 'signup/main';
 @import 'create/main';
-@import 'plants/main';
 @import 'plant/main';
 @import 'plotview/main';
 @import 'sunmap/main';
 @import 'users-plants/main';
 @import 'user-plots/main';
-@import 'calendar/main';

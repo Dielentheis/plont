@@ -4,7 +4,7 @@
 
 // Workaround until `col s10 offset-s1` works -- alternatively un-extrapolate the ui-view column and row
 #shadow_div {
-	max-width: 60vw;
+    max-width: 60vw;
 }
 
 .faux_card {
@@ -15,17 +15,17 @@
 }
 
 .faux_content {
-	max-height: 45vh;
-	overflow-y: auto;
-	overflow-x: hidden;
+    max-height: 45vh;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
 .btn-add_plants-more_responsive {
-	position: relative;
-	top: -1vw;
+    position: relative;
+    top: -1vw;
 }
 
 .material-icons {
-	position: relative;
-	top: -0.5px;
+    position: relative;
+    top: -0.5px;
 }

@@ -18,4 +18,3 @@ app.controller('HomeCtrl', function ($scope, AuthService, $log) {
     })
     .catch($log.error);
 });
-
