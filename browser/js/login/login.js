@@ -23,4 +23,16 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
             $scope.error = 'Invalid login credentials.';
         });
     };
+
+    $scope.guestLogin = function() {
+        var loginInfo = {email: 'guest@guest.com', password: 'guest'};
+
+        AuthService.login(loginInfo)
+        .then(function() {
+            $state.go('home');
+        })
+        .catch(function() {
+            $scope.error = 'Try again';
+        });
+    };
 });
