@@ -22,6 +22,13 @@ var seedUsers = function () {
             zip: '20500',
             email: 'obama@gmail.com',
             password: 'potus'
+        },
+        {
+            firstName: 'Guest',
+            lastName: 'A Guest',
+            zip: '10075',
+            email: 'guest@guest.com',
+            password: 'guest'
         }
     ];
 
