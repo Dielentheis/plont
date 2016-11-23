@@ -143,6 +143,5 @@ describe('Plant Factory', function () {
             PlantFactory.removePlantFromUser(userId, plantId);
             $httpBackend.flush();
         });
-
     });
 });

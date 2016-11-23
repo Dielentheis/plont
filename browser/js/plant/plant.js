@@ -6,7 +6,6 @@ app.config(function($stateProvider) {
     });
 });
 
-
 app.factory('PlantFactory', function($http, $log) {
     var returnObj = {};
 
@@ -46,18 +45,17 @@ app.factory('PlantFactory', function($http, $log) {
 });
 
 app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $stateParams, $log, $state) {
-
     AuthService.getLoggedInUser()
     .then(function (user) {
         $scope.user = user;
     })
     .catch($log.error);
 
-	PlantFactory.fetchOne($stateParams.id)
-	.then(function(plant) {
-		$scope.plant = plant;
-	})
-	.catch($log.error);
+    PlantFactory.fetchOne($stateParams.id)
+    .then(function(plant) {
+        $scope.plant = plant;
+    })
+    .catch($log.error);
 
     $scope.addPlant = function (plantId) {
         const plantArr = [];
@@ -70,5 +68,4 @@ app.controller('PlantCtrl', function(PlantFactory, $scope, AuthService, $statePa
         })
         .catch($log.error);
     };
-
 });

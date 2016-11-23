@@ -7,7 +7,6 @@ app.config(function($stateProvider) {
 });
 
 app.controller('SunController', function($scope, CreatePlotFactory, PlotService) {
-
     const height = CreatePlotFactory.height,
         width = CreatePlotFactory.width,
 

@@ -91,7 +91,6 @@ module.exports = db.define('user', {
     hooks: {
         beforeValidate: function (user) {
             user.email = user.email.toLowerCase();  // RESOLVES CASE SENSITIVE-EMAIL ISSUE PT (1/2)
-            if (user.zip.length > 5) user.zip = user.zip.substr(0, 5);  // IN CASE OF 9-DIGIT ZIP
         },
         beforeCreate: function (user) {
             if (user.changed('password')) {

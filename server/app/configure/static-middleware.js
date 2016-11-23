@@ -4,7 +4,6 @@ var express = require('express');
 var favicon = require('serve-favicon');
 
 module.exports = function (app) {
-
     var root = app.getValue('projectRoot');
 
     var npmPath = path.join(root, './node_modules');
@@ -15,5 +14,4 @@ module.exports = function (app) {
     app.use(express.static(npmPath));
     app.use(express.static(publicPath));
     app.use(express.static(browserPath));
-
 };

@@ -3,7 +3,6 @@ var socketio = require('socket.io');
 var io = null;
 
 module.exports = function (server) {
-
     if (io) return io;
 
     io = socketio(server);
@@ -13,5 +12,4 @@ module.exports = function (server) {
     });
 
     return io;
-
 };
