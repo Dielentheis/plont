@@ -24,9 +24,14 @@
 
         </div>
     </div>
-    <div class="row" ng-show="login.email && login.password">
-        <div class="col s6 offset-s3 text_align-right">
-            <button type="submit" class="waves-effect btn-flat">Submit</button>
+    <div class ="row">
+        <div class="col s12 offset-s3">
+            <div class="col s3" style="padding: 0">
+                <button ng-click='guestLogin()' class="waves-effect btn-flat">Guest</button>
+            </div>
+            <div class="col s3 push-s1" style="padding: 0">
+                <button type="submit" ng-show="login.email && login.password" class="waves-effect btn-flat">Submit</button>
+            </div>
         </div>
     </div>
 </form>
