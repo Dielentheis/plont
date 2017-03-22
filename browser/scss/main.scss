@@ -92,6 +92,17 @@ input:-webkit-autofill {
     background-color: $themeWhite;
 }
 
+
+#sidenav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 120vh;
+  background-color: none;
+  z-index: 0;
+}
+
 @import 'about/main';
 @import 'tutorial/main';
 @import 'navbar/main';
